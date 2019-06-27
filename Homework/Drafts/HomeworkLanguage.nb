@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     36053,        774]
-NotebookOptionsPosition[     33847,        731]
-NotebookOutlinePosition[     34184,        746]
-CellTagsIndexPosition[     34141,        743]
+NotebookDataLength[     36362,        779]
+NotebookOptionsPosition[     34155,        736]
+NotebookOutlinePosition[     34492,        751]
+CellTagsIndexPosition[     34449,        748]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -62,13 +62,14 @@ to define. There are at least two troublesome issues: \n    -    making the \
 distinction between words and phrases, and \n    -    the status of certain \
 grammatical formatives known as clitics.\n-    Morphology is the study of \
 words, how they are formed, and their relationship to other words in the same \
-language.\n-    Phonology is a branch of linguistics concerned with the \
-systematic organization of sounds in spoken languages and signs in sign \
-languages. \n-    Syntax is the set of rules, principles, and processes that \
-govern the structure of sentences (sentence structure) in a given language, \
-usually including word order.\n-    Semantics is the linguistic and \
-philosophical study of meaning in language. Branch of this is \"lexical \
-semantics\".",
+language.\n-    Typology is a field of linguistics that studies and \
+classifies languages according to their structural and functional features. \n\
+-    Phonology is a branch of linguistics concerned with the systematic \
+organization of sounds in spoken languages and signs in sign languages. \n-   \
+ Syntax is the set of rules, principles, and processes that govern the \
+structure of sentences (sentence structure) in a given language, usually \
+including word order.\n-    Semantics is the linguistic and philosophical \
+study of meaning in language. Branch of this is \"lexical semantics\".",
  StyleBox["\n", "Code"],
  "\nOne of the best-known works in this field is the \
 \[OpenCurlyDoubleQuote]Greenbergs universals\[CloseCurlyDoubleQuote] list \
@@ -93,7 +94,8 @@ matching translation in the other language:"
    3.7704661301807423`*^9, 3.770466131123852*^9}, {3.770597482420833*^9, 
    3.770597519432729*^9}, 3.770597551823814*^9, {3.770597957239036*^9, 
    3.770597989286227*^9}, {3.770598054590849*^9, 3.770598059947935*^9}, 
-   3.770598339678268*^9},ExpressionUUID->"4d606507-463b-42fb-b56f-\
+   3.770598339678268*^9, {3.770599207815493*^9, 
+   3.7705992136158123`*^9}},ExpressionUUID->"4d606507-463b-42fb-b56f-\
 52647016b809"],
 
 Cell[CellGroupData[{
@@ -669,7 +671,7 @@ Cell[BoxData[
       RowBox[{"Length", ",", " ", "wordsPerLang"}], "]"}]}], ";"}], "\n", 
    RowBox[{
     RowBox[{
-     RowBox[{"CountSame", "[", 
+     RowBox[{"WordsPresentInBoth", "[", 
       RowBox[{"langWordsA_", ",", " ", "langWordsB_"}], "]"}], " ", ":=", " ", 
      RowBox[{"Length", "[", 
       RowBox[{"Intersection", "[", 
@@ -677,10 +679,10 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
-     RowBox[{"CountSame", "[", 
+     RowBox[{"WordsPresentInBoth", "[", 
       RowBox[{"langIdxA_Integer", ",", " ", "langIdxB_Integer"}], "]"}], " ", 
      ":=", " ", 
-     RowBox[{"CountSame", "[", 
+     RowBox[{"WordsPresentInBoth", "[", 
       RowBox[{
        RowBox[{"wordsPerLang", "[", 
         RowBox[{"[", "langIdxA", "]"}], "]"}], ",", 
@@ -693,8 +695,10 @@ Cell[BoxData[
   3.77045932313461*^9, 3.770459351206161*^9}, {3.770459458282968*^9, 
   3.7704594649751663`*^9}, {3.770463045381282*^9, 3.770463052106279*^9}, {
   3.7704630917534943`*^9, 3.7704631128904753`*^9}, {3.7705900128232517`*^9, 
-  3.770590018607195*^9}, {3.7705902316216497`*^9, 3.7705902596584663`*^9}},
- CellLabel->"In[31]:=",ExpressionUUID->"c520ca13-6e8e-41e6-bdbc-5baa743ca246"],
+  3.770590018607195*^9}, {3.7705902316216497`*^9, 3.7705902596584663`*^9}, {
+  3.7705993007266912`*^9, 3.7705993118035307`*^9}},
+ CellLabel->
+  "In[116]:=",ExpressionUUID->"c520ca13-6e8e-41e6-bdbc-5baa743ca246"],
 
 Cell[BoxData[{
  RowBox[{
@@ -702,7 +706,7 @@ Cell[BoxData[{
    RowBox[{"MatrixForm", "[", 
     RowBox[{"Table", "[", 
      RowBox[{
-      RowBox[{"CountSame", "[", 
+      RowBox[{"WordsPresentInBoth", "[", 
        RowBox[{"i", ",", " ", "j"}], "]"}], ",", 
       RowBox[{"{", 
        RowBox[{"i", ",", "langsCount"}], "}"}], ",", 
@@ -716,7 +720,8 @@ Cell[BoxData[{
    3.7704585714519863`*^9}, {3.770458742687622*^9, 3.770458771079269*^9}, {
    3.7704604809352713`*^9, 3.770460484235462*^9}, {3.770475386708603*^9, 
    3.770475387273498*^9}, 3.770590265078326*^9, {3.770592855460915*^9, 
-   3.7705928610803757`*^9}},ExpressionUUID->"496e1313-553f-4512-a031-\
+   3.7705928610803757`*^9}, 
+   3.770599316508278*^9},ExpressionUUID->"496e1313-553f-4512-a031-\
 aa83fbb7bef2"],
 
 Cell["\<\
@@ -749,31 +754,31 @@ Cell[CellGroupData[{
 Cell[580, 22, 603, 9, 98, "Title",ExpressionUUID->"45e8e99b-7955-4b4b-85ff-e4c7f6ebdf4d"],
 Cell[CellGroupData[{
 Cell[1208, 35, 683, 10, 64, "Subsection",ExpressionUUID->"c5ec2a6d-3515-4ec0-864a-0422d0a21d36"],
-Cell[1894, 47, 3412, 49, 541, "Text",ExpressionUUID->"4d606507-463b-42fb-b56f-52647016b809"],
+Cell[1894, 47, 3601, 51, 564, "Text",ExpressionUUID->"4d606507-463b-42fb-b56f-52647016b809"],
 Cell[CellGroupData[{
-Cell[5331, 100, 1141, 29, 54, "Input",ExpressionUUID->"6454ff99-537f-4b97-b71b-2cc9d3ffe0bb"],
-Cell[6475, 131, 338, 6, 34, "Output",ExpressionUUID->"ed5bdc86-1c90-4d34-ad2b-dc15fdb155c8"],
-Cell[6816, 139, 335, 6, 34, "Output",ExpressionUUID->"5ca0ba8e-2c68-4ec7-878d-384e68ff63df"]
+Cell[5520, 102, 1141, 29, 54, "Input",ExpressionUUID->"6454ff99-537f-4b97-b71b-2cc9d3ffe0bb"],
+Cell[6664, 133, 338, 6, 34, "Output",ExpressionUUID->"ed5bdc86-1c90-4d34-ad2b-dc15fdb155c8"],
+Cell[7005, 141, 335, 6, 34, "Output",ExpressionUUID->"5ca0ba8e-2c68-4ec7-878d-384e68ff63df"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7200, 151, 652, 10, 54, "Subsection",ExpressionUUID->"8ae0c4b2-bbeb-4bb0-b231-a4293c4f8112"],
-Cell[7855, 163, 1410, 22, 58, "Text",ExpressionUUID->"c645d227-19d8-4e05-91cb-8d67029c33ce"],
+Cell[7389, 153, 652, 10, 54, "Subsection",ExpressionUUID->"8ae0c4b2-bbeb-4bb0-b231-a4293c4f8112"],
+Cell[8044, 165, 1410, 22, 58, "Text",ExpressionUUID->"c645d227-19d8-4e05-91cb-8d67029c33ce"],
 Cell[CellGroupData[{
-Cell[9290, 189, 280, 7, 30, "Input",ExpressionUUID->"03f9bc66-c846-4278-9e94-c7fc86727db9"],
-Cell[9573, 198, 158, 3, 34, "Output",ExpressionUUID->"31000b06-f59e-4802-99d9-d29b9dab6e8a"]
+Cell[9479, 191, 280, 7, 30, "Input",ExpressionUUID->"03f9bc66-c846-4278-9e94-c7fc86727db9"],
+Cell[9762, 200, 158, 3, 34, "Output",ExpressionUUID->"31000b06-f59e-4802-99d9-d29b9dab6e8a"]
 }, Open  ]],
-Cell[9746, 204, 3484, 71, 178, "Input",ExpressionUUID->"d994677b-b452-4e58-93b2-b20afe771505"],
-Cell[13233, 277, 9353, 219, 640, "Input",ExpressionUUID->"1e1393db-0d1c-4269-80fa-40daff1cfe5c"],
-Cell[22589, 498, 3714, 65, 52, "Input",ExpressionUUID->"4613af00-f4ee-4882-b323-30fb3b17ccf4"],
-Cell[26306, 565, 1056, 20, 196, "Text",ExpressionUUID->"1ec43760-583b-45bf-b24b-d1b858a78da2"]
+Cell[9935, 206, 3484, 71, 178, "Input",ExpressionUUID->"d994677b-b452-4e58-93b2-b20afe771505"],
+Cell[13422, 279, 9353, 219, 640, "Input",ExpressionUUID->"1e1393db-0d1c-4269-80fa-40daff1cfe5c"],
+Cell[22778, 500, 3714, 65, 52, "Input",ExpressionUUID->"4613af00-f4ee-4882-b323-30fb3b17ccf4"],
+Cell[26495, 567, 1056, 20, 196, "Text",ExpressionUUID->"1ec43760-583b-45bf-b24b-d1b858a78da2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27399, 590, 753, 11, 54, "Subsection",ExpressionUUID->"2a664f56-c90d-416e-a387-6d779c160a6e"],
-Cell[28155, 603, 1366, 20, 81, "Text",ExpressionUUID->"e2f06df6-626a-474b-a25d-18eb32bbae25"],
-Cell[29524, 625, 3039, 71, 220, "Input",ExpressionUUID->"c520ca13-6e8e-41e6-bdbc-5baa743ca246"],
-Cell[32566, 698, 975, 21, 52, "Input",ExpressionUUID->"496e1313-553f-4512-a031-aa83fbb7bef2"],
-Cell[33544, 721, 275, 6, 35, "Text",ExpressionUUID->"957e430b-3001-47b9-9c72-1c06e84c8efc"]
+Cell[27588, 592, 753, 11, 54, "Subsection",ExpressionUUID->"2a664f56-c90d-416e-a387-6d779c160a6e"],
+Cell[28344, 605, 1366, 20, 81, "Text",ExpressionUUID->"e2f06df6-626a-474b-a25d-18eb32bbae25"],
+Cell[29713, 627, 3123, 73, 220, "Input",ExpressionUUID->"c520ca13-6e8e-41e6-bdbc-5baa743ca246"],
+Cell[32839, 702, 1010, 22, 52, "Input",ExpressionUUID->"496e1313-553f-4512-a031-aa83fbb7bef2"],
+Cell[33852, 726, 275, 6, 35, "Text",ExpressionUUID->"957e430b-3001-47b9-9c72-1c06e84c8efc"]
 }, Open  ]]
 }, Open  ]]
 }
