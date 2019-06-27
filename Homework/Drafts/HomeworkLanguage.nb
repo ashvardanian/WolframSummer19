@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     40540,        883]
-NotebookOptionsPosition[     38325,        840]
-NotebookOutlinePosition[     38662,        855]
-CellTagsIndexPosition[     38619,        852]
+NotebookDataLength[     36053,        774]
+NotebookOptionsPosition[     33847,        731]
+NotebookOutlinePosition[     34184,        746]
+CellTagsIndexPosition[     34141,        743]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,7 +33,7 @@ e4c7f6ebdf4d"],
 
 Cell[CellGroupData[{
 
-Cell["Shared Concepts", "Subsection",
+Cell[TextData[StyleBox["Shared Concepts", "Section"]], "Subsection",
  CellChangeTimes->{{3.770457947233717*^9, 3.7704579678341293`*^9}, {
   3.7704588056632347`*^9, 3.770458817184811*^9}, {3.77045917098946*^9, 
   3.770459229909153*^9}, {3.770459268414435*^9, 3.7704592704054117`*^9}, {
@@ -46,21 +46,39 @@ Cell["Shared Concepts", "Subsection",
 0422d0a21d36"],
 
 Cell[TextData[{
- "Language is what we use to store & pass knowledge , so similarities between \
-languages may help us to understand the processes of cognition and \
-perception.\nAll of those can be divided into ",
- StyleBox["absolute",
-  FontWeight->"Bold"],
- " & ",
- StyleBox["implicational. ",
-  FontWeight->"Bold"],
- "The first group is relatively small, the second one is much smaller and \
-generally describes features shared between languages of geographically & \
-chronologically close cultures.\n\nWhat are the examples of absolute \
-features?\nAll languages have nouns and verbs.  // use computations\nAll \
-languages have pronouns. ",
+ "Linguistic universals are the features shared across languages. \nThey help \
+us understand the similarities and differences between the way we pass & \
+store information.\nStudying them may potentially help us understand the \
+processes of cognition and perception.\nWhat are the examples of those \
+features?\n-    All languages seem to have nouns and verbs.\n-    All spoken \
+languages seem to have consonants and vowels.\n-    Most languages have \
+pronouns. \nThey are generally divided into 2 categories: absolute & \
+implicational. The first one contains features shared between all the \
+languages, while the second has features that appear just within a subset of \
+them.\n\nIf you haven't done any linguistics before, its the right time to \
+define some terms:\n-    Morpheme is the smallest unit of form and meaning. \
+It arises naturally in the analysis of every language.\n-    Word is trickier \
+to define. There are at least two troublesome issues: \n    -    making the \
+distinction between words and phrases, and \n    -    the status of certain \
+grammatical formatives known as clitics.\n-    Morphology is the study of \
+words, how they are formed, and their relationship to other words in the same \
+language.\n-    Phonology is a branch of linguistics concerned with the \
+systematic organization of sounds in spoken languages and signs in sign \
+languages. \n-    Syntax is the set of rules, principles, and processes that \
+govern the structure of sentences (sentence structure) in a given language, \
+usually including word order.\n-    Semantics is the linguistic and \
+philosophical study of meaning in language. Branch of this is \"lexical \
+semantics\".",
  StyleBox["\n", "Code"],
- "\n"
+ "\nOne of the best-known works in this field is the \
+\[OpenCurlyDoubleQuote]Greenbergs universals\[CloseCurlyDoubleQuote] list \
+with over 30 different features shared across languages. It primarily covers \
+structural patterns present in most of the known languages. Those properties \
+are hard to define and even harder to study using statistical methods. \
+Lexical similarities, on the other hand, are a natural entry point for \
+universals analysis. Most common modern languages today have very similar \
+corpora, but often words in one language don\[CloseCurlyQuote]t have a fully \
+matching translation in the other language:"
 }], "Text",
  CellChangeTimes->{{3.770457947233717*^9, 3.7704579678341293`*^9}, {
    3.7704588056632347`*^9, 3.770458817184811*^9}, {3.77045917098946*^9, 
@@ -72,200 +90,60 @@ languages have pronouns. ",
    3.770463927808119*^9, 3.770464174117756*^9}, {3.7704642142694807`*^9, 
    3.770464359196204*^9}, {3.770464400891035*^9, 3.77046460196367*^9}, 
    3.7704658288824244`*^9, {3.770466073133292*^9, 3.770466098262006*^9}, {
-   3.7704661301807423`*^9, 
-   3.770466131123852*^9}},ExpressionUUID->"4d606507-463b-42fb-b56f-\
+   3.7704661301807423`*^9, 3.770466131123852*^9}, {3.770597482420833*^9, 
+   3.770597519432729*^9}, 3.770597551823814*^9, {3.770597957239036*^9, 
+   3.770597989286227*^9}, {3.770598054590849*^9, 3.770598059947935*^9}, 
+   3.770598339678268*^9},ExpressionUUID->"4d606507-463b-42fb-b56f-\
 52647016b809"],
-
-Cell["\<\
-Morphology is the study of words, how they are formed, and their relationship \
-to other words in the same language.
-Phonology is a branch of linguistics concerned with the systematic \
-organization of sounds in spoken languages and signs in sign languages. 
-\tAll spoken languages have consonants and vowels. // use computations 
-Syntax is the set of rules, principles, and processes that govern the \
-structure of sentences (sentence structure) in a given language, usually \
-including word order.
-Semantics is the linguistic and philosophical study of meaning in language. \
-Branch of this is \[OpenCurlyDoubleQuote]lexical semantics\
-\[CloseCurlyDoubleQuote].
-\tThe concept of morpheme -- the minimal unit of form and meaning -- arises \
-naturally in the analysis of every language.
-\tThe concept of word is trickier. There are at least two troublesome issues: \
-making the distinction between words and phrases, and the status of certain \
-grammatical formatives known as clitics.
-\t
-\t
-Greenbergs universals
-\
-\>", "Text",
- CellChangeTimes->{{3.770457947233717*^9, 3.7704579678341293`*^9}, {
-  3.7704588056632347`*^9, 3.770458817184811*^9}, {3.77045917098946*^9, 
-  3.770459229909153*^9}, {3.770459268414435*^9, 3.7704592704054117`*^9}, {
-  3.77045932313461*^9, 3.770459351206161*^9}, {3.770459458282968*^9, 
-  3.7704594649751663`*^9}, {3.770463045381282*^9, 3.770463089171501*^9}, {
-  3.770463178137966*^9, 3.7704631792176456`*^9}, {3.770463436768697*^9, 
-  3.770463459130919*^9}, {3.770463868005093*^9, 3.770463880936152*^9}, {
-  3.770463927808119*^9, 3.770464174117756*^9}, {3.7704642142694807`*^9, 
-  3.770464302382122*^9}, {3.770464365754643*^9, 3.7704643694762173`*^9}, {
-  3.770465437199854*^9, 3.770465577623581*^9}, {3.770465649295388*^9, 
-  3.770465658883628*^9}, {3.770465830877221*^9, 3.770465833171916*^9}, {
-  3.770466062130538*^9, 3.7704660663864098`*^9}, {3.770550062307837*^9, 
-  3.770550072076461*^9}},ExpressionUUID->"61bce85e-a3da-4f14-918a-\
-2524ac2463f9"],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[
- StyleBox[
-  RowBox[{"Min", "[", 
-   RowBox[{"Map", "[", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"EntityValue", "[", 
-       RowBox[{"#", ",", " ", "\"\<Pronouns\>\""}], "]"}], " ", "&"}], ",", 
-     " ", 
-     RowBox[{"{", 
-      RowBox[{
-       NamespaceBox["LinguisticAssistant",
-        DynamicModuleBox[{Typeset`query$$ = "English", Typeset`boxes$$ = 
-         TemplateBox[{"\"English\"", 
-           RowBox[{"Entity", "[", 
-             RowBox[{"\"Language\"", ",", "\"English::385w8\""}], "]"}], 
-           "\"Entity[\\\"Language\\\", \\\"English::385w8\\\"]\"", 
-           "\"language\""}, "Entity"], 
-         Typeset`allassumptions$$ = {{
-          "type" -> "Clash", "word" -> "English", "template" -> 
-           "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", 
-           "count" -> "3", 
-           "Values" -> {{
-             "name" -> "Language", "desc" -> "a language", "input" -> 
-              "*C.English-_*Language-"}, {
-             "name" -> "GivenName", "desc" -> "a given name", "input" -> 
-              "*C.English-_*GivenName-"}, {
-             "name" -> "Surname", "desc" -> "a surname", "input" -> 
-              "*C.English-_*Surname-"}}}}, Typeset`assumptions$$ = {}, 
-         Typeset`open$$ = {1, 2}, Typeset`querystate$$ = {
-         "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
-          0.320812`5.957795598233759, "Messages" -> {}}}, 
-         DynamicBox[ToBoxes[
-           AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
-            Dynamic[Typeset`query$$], 
-            Dynamic[Typeset`boxes$$], 
-            Dynamic[Typeset`allassumptions$$], 
-            Dynamic[Typeset`assumptions$$], 
-            Dynamic[Typeset`open$$], 
-            Dynamic[Typeset`querystate$$]], StandardForm],
-          ImageSizeCache->{160., {7., 15.}},
-          
-          TrackedSymbols:>{
-           Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
-            Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
-         DynamicModuleValues:>{},
-         UndoTrackedVariables:>{Typeset`open$$}],
-        BaseStyle->{"Deploy"},
-        DeleteWithContents->True,
-        Editable->False,
-        SelectWithContents->True], ",", " ", 
-       NamespaceBox["LinguisticAssistant",
-        DynamicModuleBox[{Typeset`query$$ = "German", Typeset`boxes$$ = 
-         TemplateBox[{"\"German\"", 
-           RowBox[{"Entity", "[", 
-             RowBox[{"\"Language\"", ",", "\"German::8jz29\""}], "]"}], 
-           "\"Entity[\\\"Language\\\", \\\"German::8jz29\\\"]\"", 
-           "\"language\""}, "Entity"], 
-         Typeset`allassumptions$$ = {{
-          "type" -> "Clash", "word" -> "German", "template" -> 
-           "Assuming \"${word}\" is ${desc1}. Use as ${desc2} instead", 
-           "count" -> "5", 
-           "Values" -> {{
-             "name" -> "Language", "desc" -> "a language", "input" -> 
-              "*C.German-_*Language-"}, {
-             "name" -> "Chemical", "desc" -> "a chemical compound", "input" -> 
-              "*C.German-_*Chemical-"}, {
-             "name" -> "Country", "desc" -> "a country", "input" -> 
-              "*C.German-_*Country-"}, {
-             "name" -> "Surname", "desc" -> "a surname", "input" -> 
-              "*C.German-_*Surname-"}, {
-             "name" -> "Alphabet", "desc" -> "an alphabet", "input" -> 
-              "*C.German-_*Alphabet-"}}}, {
-          "type" -> "SubCategory", "word" -> "German", "template" -> 
-           "Assuming ${desc1}. Use ${desc2} instead", "count" -> "2", 
-           "Values" -> {{
-             "name" -> "German::8jz29", "desc" -> "German", "input" -> 
-              "*DPClash.LanguageE.German-_*German%3A%3A8jz29-"}, {
-             "name" -> "Plautdietsch::s4v44", "desc" -> "Plautdietsch", 
-              "input" -> 
-              "*DPClash.LanguageE.German-_*Plautdietsch%3A%3As4v44-"}}}}, 
-         Typeset`assumptions$$ = {}, Typeset`open$$ = {1, 2}, 
-         Typeset`querystate$$ = {
-         "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
-          0.411505`6.065920109980391, "Messages" -> {}}}, 
-         DynamicBox[ToBoxes[
-           AlphaIntegration`LinguisticAssistantBoxes["", 4, Automatic, 
-            Dynamic[Typeset`query$$], 
-            Dynamic[Typeset`boxes$$], 
-            Dynamic[Typeset`allassumptions$$], 
-            Dynamic[Typeset`assumptions$$], 
-            Dynamic[Typeset`open$$], 
-            Dynamic[Typeset`querystate$$]], StandardForm],
-          ImageSizeCache->{162., {7., 15.}},
-          
-          TrackedSymbols:>{
-           Typeset`query$$, Typeset`boxes$$, Typeset`allassumptions$$, 
-            Typeset`assumptions$$, Typeset`open$$, Typeset`querystate$$}],
-         DynamicModuleValues:>{},
-         UndoTrackedVariables:>{Typeset`open$$}],
-        BaseStyle->{"Deploy"},
-        DeleteWithContents->True,
-        Editable->False,
-        SelectWithContents->True]}], "}"}]}], "]"}], "]"}], "Code"]], "Input",\
-
+Cell[BoxData[{
+ RowBox[{"WordTranslation", 
+  StyleBox["[", "Code"], 
+  RowBox[{
+   StyleBox["\"\<\:0433\:043e\:043b\:0443\:0431\:043e\:0439\>\"", "Code"], 
+   StyleBox[",", "Code"], 
+   StyleBox[" ", "Code"], 
+   RowBox[{
+    StyleBox["\"\<Russian\>\"", "Code"], 
+    StyleBox["\[Rule]", "Code"], " ", 
+    StyleBox["\"\<English\>\"", "Code"]}]}], 
+  StyleBox["]", "Code"]}], "\n", 
+ RowBox[{"WordTranslation", 
+  StyleBox["[", "Code"], 
+  RowBox[{
+   StyleBox["\"\<\:0441\:0438\:043d\:0438\:0439\>\"", "Code"], 
+   StyleBox[",", "Code"], 
+   StyleBox[" ", "Code"], 
+   RowBox[{
+    StyleBox["\"\<Russian\>\"", "Code"], 
+    StyleBox["\[Rule]", "Code"], " ", 
+    StyleBox["\"\<English\>\"", "Code"]}]}], 
+  StyleBox["]", "Code"]}]}], "Input",
  CellChangeTimes->{{3.770466152369815*^9, 3.7704662016172028`*^9}, {
   3.770466234671508*^9, 3.770466242179784*^9}, {3.770466280021558*^9, 
-  3.770466323960513*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"6454ff99-537f-4b97-b71b-2cc9d3ffe0bb"],
+  3.770466323960513*^9}, {3.7705981210071917`*^9, 3.770598125333214*^9}, {
+  3.770598193099018*^9, 3.770598206633563*^9}, {3.7705982566537447`*^9, 
+  3.770598320731956*^9}},
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"6454ff99-537f-4b97-b71b-2cc9d3ffe0bb"],
 
 Cell[BoxData[
- RowBox[{"Min", "[", 
-  RowBox[{
-   RowBox[{"Missing", "[", "\<\"NotAvailable\"\>", "]"}], ",", 
-   RowBox[{
-    TemplateBox[{"\"he\"",RowBox[{"Entity", "[", 
-        RowBox[{"\"Word\"", ",", "\"he\""}], "]"}],
-      "\"Entity[\\\"Word\\\", \\\"he\\\"]\"","\"word\""},
-     "Entity"], "\[Rule]", 
-    RowBox[{"{", "\<\"er\"\>", "}"}]}], ",", 
-   RowBox[{
-    TemplateBox[{"\"she\"",RowBox[{"Entity", "[", 
-        RowBox[{"\"Word\"", ",", "\"she\""}], "]"}],
-      "\"Entity[\\\"Word\\\", \\\"she\\\"]\"","\"word\""},
-     "Entity"], "\[Rule]", 
-    RowBox[{"{", "\<\"sie\"\>", "}"}]}], ",", 
-   RowBox[{
-    TemplateBox[{"\"they\"",RowBox[{"Entity", "[", 
-        RowBox[{"\"Word\"", ",", "\"they\""}], "]"}],
-      "\"Entity[\\\"Word\\\", \\\"they\\\"]\"","\"word\""},
-     "Entity"], "\[Rule]", 
-    RowBox[{"{", 
-     RowBox[{"\<\"man\"\>", ",", "\<\"sie\"\>"}], "}"}]}], ",", 
-   RowBox[{
-    TemplateBox[{"\"we\"",RowBox[{"Entity", "[", 
-        RowBox[{"\"Word\"", ",", "\"we\""}], "]"}],
-      "\"Entity[\\\"Word\\\", \\\"we\\\"]\"","\"word\""},
-     "Entity"], "\[Rule]", 
-    RowBox[{"{", "\<\"wir\"\>", "}"}]}], ",", 
-   RowBox[{
-    TemplateBox[{"\"you\"",RowBox[{"Entity", "[", 
-        RowBox[{"\"Word\"", ",", "\"you\""}], "]"}],
-      "\"Entity[\\\"Word\\\", \\\"you\\\"]\"","\"word\""},
-     "Entity"], "\[Rule]", 
-    RowBox[{"{", 
-     RowBox[{"\<\"dich\"\>", ",", "\<\"dir\"\>", ",", "\<\"du\"\>", 
-      ",", "\<\"euch\"\>", ",", "\<\"Ihnen\"\>", ",", "\<\"ihr\"\>", 
-      ",", "\<\"sich\"\>", ",", "\<\"Sie\"\>"}], "}"}]}]}], "]"}]], "Output",
+ RowBox[{"{", "\<\"blue\"\>", "}"}]], "Output",
  CellChangeTimes->{{3.770466209623664*^9, 3.7704662431525307`*^9}, 
-   3.7704662827648478`*^9, 3.770466325381156*^9, 3.7705883872337227`*^9},
- CellLabel->"Out[2]=",ExpressionUUID->"812c2e8e-f2ef-40ae-9a42-937d7f5f7028"]
+   3.7704662827648478`*^9, 3.770466325381156*^9, 3.7705883872337227`*^9, {
+   3.770598278542509*^9, 3.7705983223013697`*^9}},
+ CellLabel->
+  "Out[100]=",ExpressionUUID->"ed5bdc86-1c90-4d34-ad2b-dc15fdb155c8"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"blue\"\>", "}"}]], "Output",
+ CellChangeTimes->{{3.770466209623664*^9, 3.7704662431525307`*^9}, 
+   3.7704662827648478`*^9, 3.770466325381156*^9, 3.7705883872337227`*^9, {
+   3.770598278542509*^9, 3.77059832246593*^9}},
+ CellLabel->
+  "Out[101]=",ExpressionUUID->"5ca0ba8e-2c68-4ec7-878d-384e68ff63df"]
 }, Open  ]]
 }, Open  ]],
 
@@ -283,18 +161,12 @@ Cell["Swadesh Corpora", "Subsection",
   3.770463965125637*^9}},ExpressionUUID->"8ae0c4b2-bbeb-4bb0-b231-\
 a4293c4f8112"],
 
-Cell[TextData[{
- "\nConcepts above primarily describe structural similarities between \
-languages, but in many cases even lexic shows the same similarities. The \
-Swadesh lists ",
- StyleBox["Length[]", "Code"],
- "  were compiled specifically for those purposes - for \
-historical-comparative linguistics. It allows researchers to quantify the \
-interrelatedness of those languages. \n\nLets find the distance between every \
-single language and build and show a graph.\nRemove diactrics !and non alpha \
-chars.\nFor that compute the edit distance for every word Wi in languages La, \
-Lb, and sum Wi.\n"
-}], "Text",
+Cell["\<\
+The Swadesh corpora was constructed specially for that purpose. It originally \
+defined 100 popular & common words in 30 languages, but was later extended to \
+[[#]] languages. Let\[CloseCurlyQuote]s see how close are they to each other?\
+\
+\>", "Text",
  CellChangeTimes->{{3.770457947233717*^9, 3.7704579678341293`*^9}, {
    3.7704588056632347`*^9, 3.770458817184811*^9}, {3.77045917098946*^9, 
    3.770459229909153*^9}, {3.770459268414435*^9, 3.7704592704054117`*^9}, {
@@ -308,8 +180,27 @@ Lb, and sum Wi.\n"
    3.770466500970873*^9, 3.7704665153913193`*^9}, {3.770466742567923*^9, 
    3.770466826900751*^9}, {3.770466858099468*^9, 3.770466885092778*^9}, {
    3.7705438137230453`*^9, 3.770543876990506*^9}, {3.770590301440119*^9, 
-   3.770590305913533*^9}},ExpressionUUID->"c645d227-19d8-4e05-91cb-\
+   3.770590305913533*^9}, {3.770598367223571*^9, 3.770598400415941*^9}, {
+   3.7705988879521513`*^9, 
+   3.7705989730413933`*^9}},ExpressionUUID->"c645d227-19d8-4e05-91cb-\
 8d67029c33ce"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"Keys", "[", 
+   RowBox[{"ResourceData", "[", "\"\<Swadesh Lists\>\"", "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{3.7705985715688133`*^9},
+ CellLabel->
+  "In[108]:=",ExpressionUUID->"03f9bc66-c846-4278-9e94-c7fc86727db9"],
+
+Cell[BoxData["1193"], "Output",
+ CellChangeTimes->{3.7705985729346743`*^9},
+ CellLabel->
+  "Out[108]=",ExpressionUUID->"31000b06-f59e-4802-99d9-d29b9dab6e8a"]
+}, Open  ]],
 
 Cell[BoxData[
  RowBox[{
@@ -380,8 +271,8 @@ Cell[BoxData[
    3.7705918592469683`*^9}, {3.770591928239417*^9, 3.770591940142209*^9}, {
    3.770592007091342*^9, 3.770592010984049*^9}, {3.770592210155209*^9, 
    3.770592238751375*^9}, {3.7705926217070017`*^9, 3.770592641793895*^9}, {
-   3.770592788811501*^9, 
-   3.770592843545546*^9}},ExpressionUUID->"d994677b-b452-4e58-93b2-\
+   3.770592788811501*^9, 3.770592843545546*^9}, {3.770598352199149*^9, 
+   3.770598354035536*^9}},ExpressionUUID->"d994677b-b452-4e58-93b2-\
 b20afe771505"],
 
 Cell[BoxData[
@@ -672,18 +563,27 @@ Cell[BoxData[{
    3.7705924860161324`*^9}},
  CellLabel->"In[92]:=",ExpressionUUID->"4613af00-f4ee-4882-b323-30fb3b17ccf4"],
 
-Cell[CellGroupData[{
+Cell["\<\
+In origin, the words in the Swadesh lists were chosen for their universal, \
+culturally independent availability in as many languages as possible, \
+regardless of their \[OpenCurlyDoubleQuote]stability\[CloseCurlyDoubleQuote]. \
+Nevertheless, the stability of the resulting list of \
+\[OpenCurlyDoubleQuote]universal\[CloseCurlyDoubleQuote] vocabulary under \
+language change and the potential use of this fact for purposes of \
+glottochronology have been analyzed by numerous authors, including Marisa \
+Lohr (1999, 2000).
 
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.770584675995854*^9, 3.770584719663268*^9}},
- NumberMarks->False,ExpressionUUID->"f13bd7fc-1433-4d39-869a-103746ee7774"],
-
-Cell[BoxData[
- RowBox[{"{", "\<\"mekejan\"\>", "}"}]], "Output",
- CellChangeTimes->{{3.770584697269001*^9, 3.7705847174302464`*^9}},
- CellLabel->
-  "Out[301]=",ExpressionUUID->"35583132-f938-4960-98d5-1414d77af5f7"]
-}, Open  ]]
+The Swadesh list was put together by Morris Swadesh on the basis of his \
+intuitions. More recent similar lists:
+-\tthe Dolgopolsky list (1964) or
+-\tthe Leipzig\[Dash]Jakarta list (2009), 
+are based on systematic data from many different languages, but they are not \
+yet as widely known nor as widely used as the Swadesh list.\
+\>", "Text",
+ CellChangeTimes->{{3.770598765491235*^9, 3.7705987695531607`*^9}, {
+  3.770599049673341*^9, 
+  3.7705990712010317`*^9}},ExpressionUUID->"1ec43760-583b-45bf-b24b-\
+d1b858a78da2"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -702,10 +602,12 @@ Cell["Full European Lexicon", "Subsection",
 6d779c160a6e"],
 
 Cell["\<\
-Swadesh list is comprised of just 100 predefined keywords, while modern \
-languages often have (/*code*/) words. So lets jump into lexicostatistics \
-(the quantitative assessment of the genealogical relatedness of languages).
-\
+To be able to compare languages coming not just from a different region in \
+space, but also from different periods in time, we had to give up some of the \
+information encoded into the structure of each word. Nowadays our languages \
+often use the same writing system & alphabet derived from Latin, so \
+similarities are much easier to trace. So the next logical step to make the \
+statistics more representative is to analyze modern European languages.\
 \>", "Text",
  CellChangeTimes->{{3.770457947233717*^9, 3.7704579678341293`*^9}, {
    3.7704588056632347`*^9, 3.770458817184811*^9}, {3.77045917098946*^9, 
@@ -716,8 +618,9 @@ languages often have (/*code*/) words. So lets jump into lexicostatistics \
    3.770463459130919*^9}, {3.770463868005093*^9, 3.770463880936152*^9}, {
    3.770463927808119*^9, 3.770463955275551*^9}, {3.770464285083357*^9, 
    3.770464286854187*^9}, {3.770464713041507*^9, 3.770464811180645*^9}, 
-   3.770465213453991*^9, {3.770466486029293*^9, 
-   3.770466503393311*^9}},ExpressionUUID->"e2f06df6-626a-474b-a25d-\
+   3.770465213453991*^9, {3.770466486029293*^9, 3.770466503393311*^9}, {
+   3.77059859991159*^9, 3.770598602941607*^9}, {3.770598778267367*^9, 
+   3.7705988633963118`*^9}},ExpressionUUID->"e2f06df6-626a-474b-a25d-\
 18eb32bbae25"],
 
 Cell[BoxData[
@@ -816,18 +719,6 @@ Cell[BoxData[{
    3.7705928610803757`*^9}},ExpressionUUID->"496e1313-553f-4512-a031-\
 aa83fbb7bef2"],
 
-Cell[BoxData[
- RowBox[{
-  RowBox[{"(*", " ", 
-   RowBox[{
-   "How", " ", "can", " ", "we", " ", "measure", " ", "the", " ", "edit", " ", 
-    RowBox[{"distance", "?"}]}], " ", "*)"}], "\[IndentingNewLine]"}]], \
-"Input",
- CellChangeTimes->{{3.770462747760882*^9, 3.770462747776081*^9}, {
-  3.7704634976330748`*^9, 3.770463498729121*^9}, {3.7704635840587673`*^9, 
-  3.770463595487774*^9}},ExpressionUUID->"ff0ca3a9-0d49-41a9-b9dc-\
-37f7428e203a"],
-
 Cell["\<\
 The Levenstein distance computations are very costly and ideally we should \
 run the for every pair of words in the language.\
@@ -857,32 +748,32 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 603, 9, 98, "Title",ExpressionUUID->"45e8e99b-7955-4b4b-85ff-e4c7f6ebdf4d"],
 Cell[CellGroupData[{
-Cell[1208, 35, 652, 10, 54, "Subsection",ExpressionUUID->"c5ec2a6d-3515-4ec0-864a-0422d0a21d36"],
-Cell[1863, 47, 1533, 29, 219, "Text",ExpressionUUID->"4d606507-463b-42fb-b56f-52647016b809"],
-Cell[3399, 78, 1993, 35, 265, "Text",ExpressionUUID->"61bce85e-a3da-4f14-918a-2524ac2463f9"],
+Cell[1208, 35, 683, 10, 64, "Subsection",ExpressionUUID->"c5ec2a6d-3515-4ec0-864a-0422d0a21d36"],
+Cell[1894, 47, 3412, 49, 541, "Text",ExpressionUUID->"4d606507-463b-42fb-b56f-52647016b809"],
 Cell[CellGroupData[{
-Cell[5417, 117, 5199, 108, 39, "Input",ExpressionUUID->"6454ff99-537f-4b97-b71b-2cc9d3ffe0bb"],
-Cell[10619, 227, 1800, 40, 43, "Output",ExpressionUUID->"812c2e8e-f2ef-40ae-9a42-937d7f5f7028"]
+Cell[5331, 100, 1141, 29, 54, "Input",ExpressionUUID->"6454ff99-537f-4b97-b71b-2cc9d3ffe0bb"],
+Cell[6475, 131, 338, 6, 34, "Output",ExpressionUUID->"ed5bdc86-1c90-4d34-ad2b-dc15fdb155c8"],
+Cell[6816, 139, 335, 6, 34, "Output",ExpressionUUID->"5ca0ba8e-2c68-4ec7-878d-384e68ff63df"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12468, 273, 652, 10, 54, "Subsection",ExpressionUUID->"8ae0c4b2-bbeb-4bb0-b231-a4293c4f8112"],
-Cell[13123, 285, 1657, 26, 196, "Text",ExpressionUUID->"c645d227-19d8-4e05-91cb-8d67029c33ce"],
-Cell[14783, 313, 3438, 71, 178, "Input",ExpressionUUID->"d994677b-b452-4e58-93b2-b20afe771505"],
-Cell[18224, 386, 9353, 219, 640, "Input",ExpressionUUID->"1e1393db-0d1c-4269-80fa-40daff1cfe5c"],
-Cell[27580, 607, 3714, 65, 52, "Input",ExpressionUUID->"4613af00-f4ee-4882-b323-30fb3b17ccf4"],
+Cell[7200, 151, 652, 10, 54, "Subsection",ExpressionUUID->"8ae0c4b2-bbeb-4bb0-b231-a4293c4f8112"],
+Cell[7855, 163, 1410, 22, 58, "Text",ExpressionUUID->"c645d227-19d8-4e05-91cb-8d67029c33ce"],
 Cell[CellGroupData[{
-Cell[31319, 676, 168, 2, 30, "Input",ExpressionUUID->"f13bd7fc-1433-4d39-869a-103746ee7774"],
-Cell[31490, 680, 215, 4, 34, "Output",ExpressionUUID->"35583132-f938-4960-98d5-1414d77af5f7"]
-}, Open  ]]
+Cell[9290, 189, 280, 7, 30, "Input",ExpressionUUID->"03f9bc66-c846-4278-9e94-c7fc86727db9"],
+Cell[9573, 198, 158, 3, 34, "Output",ExpressionUUID->"31000b06-f59e-4802-99d9-d29b9dab6e8a"]
+}, Open  ]],
+Cell[9746, 204, 3484, 71, 178, "Input",ExpressionUUID->"d994677b-b452-4e58-93b2-b20afe771505"],
+Cell[13233, 277, 9353, 219, 640, "Input",ExpressionUUID->"1e1393db-0d1c-4269-80fa-40daff1cfe5c"],
+Cell[22589, 498, 3714, 65, 52, "Input",ExpressionUUID->"4613af00-f4ee-4882-b323-30fb3b17ccf4"],
+Cell[26306, 565, 1056, 20, 196, "Text",ExpressionUUID->"1ec43760-583b-45bf-b24b-d1b858a78da2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31754, 690, 753, 11, 54, "Subsection",ExpressionUUID->"2a664f56-c90d-416e-a387-6d779c160a6e"],
-Cell[32510, 703, 1041, 17, 81, "Text",ExpressionUUID->"e2f06df6-626a-474b-a25d-18eb32bbae25"],
-Cell[33554, 722, 3039, 71, 220, "Input",ExpressionUUID->"c520ca13-6e8e-41e6-bdbc-5baa743ca246"],
-Cell[36596, 795, 975, 21, 52, "Input",ExpressionUUID->"496e1313-553f-4512-a031-aa83fbb7bef2"],
-Cell[37574, 818, 445, 10, 52, "Input",ExpressionUUID->"ff0ca3a9-0d49-41a9-b9dc-37f7428e203a"],
-Cell[38022, 830, 275, 6, 35, "Text",ExpressionUUID->"957e430b-3001-47b9-9c72-1c06e84c8efc"]
+Cell[27399, 590, 753, 11, 54, "Subsection",ExpressionUUID->"2a664f56-c90d-416e-a387-6d779c160a6e"],
+Cell[28155, 603, 1366, 20, 81, "Text",ExpressionUUID->"e2f06df6-626a-474b-a25d-18eb32bbae25"],
+Cell[29524, 625, 3039, 71, 220, "Input",ExpressionUUID->"c520ca13-6e8e-41e6-bdbc-5baa743ca246"],
+Cell[32566, 698, 975, 21, 52, "Input",ExpressionUUID->"496e1313-553f-4512-a031-aa83fbb7bef2"],
+Cell[33544, 721, 275, 6, 35, "Text",ExpressionUUID->"957e430b-3001-47b9-9c72-1c06e84c8efc"]
 }, Open  ]]
 }, Open  ]]
 }
