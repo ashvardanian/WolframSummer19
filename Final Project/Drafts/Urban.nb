@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5911,        164]
-NotebookOptionsPosition[      4281,        125]
-NotebookOutlinePosition[      4617,        140]
-CellTagsIndexPosition[      4574,        137]
+NotebookDataLength[     41182,        979]
+NotebookOptionsPosition[     38686,        931]
+NotebookOutlinePosition[     39023,        946]
+CellTagsIndexPosition[     38980,        943]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -51,11 +51,79 @@ Cell[TextData[StyleBox["What is quality of life?", "Subtitle"]], "Chapter",
   3.7711017087241497`*^9}},ExpressionUUID->"ac13fabb-576a-4a4b-8847-\
 2bb61f653aef"],
 
-Cell["We have ", "Text",
+Cell["\<\
+This is a very non-trivial question and we are not going to answer it in this \
+work. Instead we will define a very simple approximation of quality of life \
+as average sentiment across Tweets related to that specific city.\
+\>", "Text",
  CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
-  3.771101487741495*^9, 
-  3.771101723293976*^9}},ExpressionUUID->"d7112578-2f96-4683-9976-\
-1d246abd738b"]
+  3.771101487741495*^9, 3.771101723293976*^9}, {3.7711024759486427`*^9, 
+  3.771102550634573*^9}},ExpressionUUID->"d7112578-2f96-4683-9976-\
+1d246abd738b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"EstimateSentimentWL", "[", "sentence_String", "]"}], " ", ":=", 
+   " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "probs", ",", " ", "pPos", ",", " ", "pNeu", ",", " ", "pNeg", ",", " ",
+        "resultPositivness", ",", " ", "resultCertainity"}], "}"}], ",", 
+     "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"probs", " ", "=", " ", 
+       RowBox[{"Classify", "[", 
+        RowBox[{
+        "\"\<Sentiment\>\"", ",", " ", "sentence", ",", " ", 
+         "\"\<Probabilities\>\""}], "]"}]}], ";", "\[IndentingNewLine]", "\t", 
+      RowBox[{"pPos", " ", "=", " ", 
+       RowBox[{"Lookup", "[", 
+        RowBox[{"probs", ",", " ", "\"\<Positive\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\t", 
+      RowBox[{"pNeu", " ", "=", " ", 
+       RowBox[{"Lookup", "[", 
+        RowBox[{"probs", ",", " ", "\"\<Neutral\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\t", 
+      RowBox[{"pNeg", " ", "=", " ", 
+       RowBox[{"Lookup", "[", 
+        RowBox[{"probs", ",", " ", "\"\<Negative\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\t", 
+      RowBox[{"resultPositivness", " ", "=", " ", 
+       RowBox[{"(", 
+        RowBox[{"pPos", " ", "+", " ", 
+         RowBox[{"pNeu", " ", "*", " ", "0.5"}]}], ")"}]}], ";", 
+      "\[IndentingNewLine]", "\t", 
+      RowBox[{"resultCertainity", " ", "=", " ", 
+       RowBox[{"Max", "[", "probs", "]"}]}], ";", "\[IndentingNewLine]", "\t", 
+      RowBox[{"{", 
+       RowBox[{"resultPositivness", ",", "resultCertainity"}], "}"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"EstimateSentiments", "[", 
+    RowBox[{"sentences_List", ",", " ", "func_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"{", 
+        RowBox[{"#", ",", " ", 
+         RowBox[{"func", "[", "#", "]"}]}], "}"}], ")"}], " ", "&"}], ",", 
+     " ", "sentences"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"EstimateSentiments", "[", "sentences_List", "]"}], " ", ":=", " ", 
+   RowBox[{"EstimateSentiments", "[", 
+    RowBox[{"sentences", ",", " ", "EstimateSentimentWL"}], "]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
+   3.771101487741495*^9, 3.771101723293976*^9}, {3.7711024759486427`*^9, 
+   3.771102595812048*^9}, 3.771102630105879*^9, {3.771102663030601*^9, 
+   3.771102675942957*^9}, {3.771102819347427*^9, 3.771102841217803*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"20961709-7c7a-45d4-a981-9ac2574c6877"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -69,9 +137,733 @@ Cell[TextData[StyleBox["Which regions are we going to analyze?", \
 
 Cell["rer", "Text",
  CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
-  3.771101487741495*^9, 
-  3.771101735714161*^9}},ExpressionUUID->"2c0225ee-0b7c-4924-8b64-\
-a72ab5040bfe"]
+  3.771101487741495*^9, 3.771101735714161*^9}, {3.771101948449766*^9, 
+  3.771101949271914*^9}, {3.7711027061183147`*^9, 
+  3.771102706518423*^9}},ExpressionUUID->"2c0225ee-0b7c-4924-8b64-\
+a72ab5040bfe"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"constantCountCities", " ", "=", " ", "100"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "constantDirectory", " ", "=", " ", 
+   "\"\</Users/ashvardanian/CodeMine/WolframSummer19/Final \
+Project/Drafts\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"constantPathTweets", " ", "=", " ", 
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"constantDirectory", ",", " ", "\"\</Tweets\>\""}], "}"}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"constantPathMaps", " ", "=", " ", 
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"constantDirectory", ",", " ", "\"\</Maps\>\""}], "}"}], "]"}]}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{"constantCountries", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     TemplateBox[{"\"United States\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"Country\"", ",", "\"UnitedStates\""}], "]"}],
+       "\"Entity[\\\"Country\\\", \\\"UnitedStates\\\"]\"","\"country\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"United Kingdom\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"Country\"", ",", "\"UnitedKingdom\""}], "]"}],
+       "\"Entity[\\\"Country\\\", \\\"UnitedKingdom\\\"]\"","\"country\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Canada\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"Country\"", ",", "\"Canada\""}], "]"}],
+       "\"Entity[\\\"Country\\\", \\\"Canada\\\"]\"","\"country\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Australia\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"Country\"", ",", "\"Australia\""}], "]"}],
+       "\"Entity[\\\"Country\\\", \\\"Australia\\\"]\"","\"country\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"New Zealand\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"Country\"", ",", "\"NewZealand\""}], "]"}],
+       "\"Entity[\\\"Country\\\", \\\"NewZealand\\\"]\"","\"country\""},
+      "Entity"]}], "}"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
+  3.771101487741495*^9, 3.771101735714161*^9}, {3.771101948449766*^9, 
+  3.771101949271914*^9}, {3.7711027061183147`*^9, 3.771102789628256*^9}, {
+  3.7711028769656677`*^9, 
+  3.77110295393472*^9}},ExpressionUUID->"acdb5163-89af-4011-8610-\
+a985ea22ddfc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"CityName", "[", "city_", "]"}], " ", ":=", " ", 
+   RowBox[{"EntityValue", "[", 
+    RowBox[{"city", ",", " ", "\"\<Name\>\""}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
+   3.771101487741495*^9, 3.771101735714161*^9}, {3.771101948449766*^9, 
+   3.7711019694188023`*^9}, {3.771102012743895*^9, 3.771102061843712*^9}, {
+   3.771102281657967*^9, 3.771102330678136*^9}, {3.771102421135929*^9, 
+   3.771102433948555*^9}, 3.771102723320777*^9, {3.7711029824549303`*^9, 
+   3.771102994714838*^9}, {3.771103029629031*^9, 3.771103051319016*^9}, {
+   3.77110331414259*^9, 3.771103325928699*^9}, {3.771105001333716*^9, 
+   3.771105017084805*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"ac9cfed5-f409-4c3b-becd-c72835a8d983"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"citiesLargest", " ", "=", " ", 
+   RowBox[{"CityData", "[", "All", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"citiesLargest", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"#", ",", " ", 
+        RowBox[{"CityData", "[", 
+         RowBox[{"#", ",", " ", "\"\<Population\>\""}], "]"}]}], "}"}], " ", 
+      "&"}], ",", " ", "citiesLargest"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"citiesLargest", " ", "=", " ", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{"citiesLargest", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"_", ",", " ", "_Missing"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"citiesLargest", " ", "=", " ", 
+   RowBox[{"Reverse", "[", 
+    RowBox[{"SortBy", "[", 
+     RowBox[{"citiesLargest", ",", " ", "Last"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"citiesLargest", " ", "=", " ", 
+   RowBox[{"Take", "[", 
+    RowBox[{"citiesLargest", ",", " ", 
+     RowBox[{"UpTo", "[", "constantCountCities", "]"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"citiesLargest", " ", "=", " ", 
+   RowBox[{"citiesLargest", "\[LeftDoubleBracket]", 
+    RowBox[{"All", ",", " ", "1"}], "\[RightDoubleBracket]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
+   3.771101487741495*^9, 3.771101735714161*^9}, {3.771101948449766*^9, 
+   3.7711019694188023`*^9}, {3.771102012743895*^9, 3.771102061843712*^9}, {
+   3.771102281657967*^9, 3.771102330678136*^9}, {3.771102421135929*^9, 
+   3.771102433948555*^9}, 3.771102723320777*^9, {3.7711029824549303`*^9, 
+   3.771102994714838*^9}, {3.771103029629031*^9, 3.771103051319016*^9}, {
+   3.77110331414259*^9, 3.771103325928699*^9}, 
+   3.771105001333716*^9},ExpressionUUID->"f23191de-01c1-4058-a510-\
+c564fb3a536a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"citiesEng", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     TemplateBox[{"\"New York City\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"NewYork\"", ",", "\"NewYork\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"NewYork\\\", \\\"NewYork\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"San Francisco\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"SanFrancisco\"", ",", "\"California\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"SanFrancisco\\\", \\\"California\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Los Angeles\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"LosAngeles\"", ",", "\"California\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"LosAngeles\\\", \\\"California\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Washington\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Washington\"", ",", "\"DistrictOfColumbia\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Washington\\\", \
+\\\"DistrictOfColumbia\\\", \\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Chicago\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Chicago\"", ",", "\"Illinois\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Chicago\\\", \\\"Illinois\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", "\n", 
+     TemplateBox[{"\"Philadelphia\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Philadelphia\"", ",", "\"Pennsylvania\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Philadelphia\\\", \\\"Pennsylvania\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Dublin\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Dublin\"", ",", "\"Dublin\"", ",", "\"Ireland\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Dublin\\\", \\\"Dublin\\\", \\\"Ireland\\\
+\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"San Diego\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"SanDiego\"", ",", "\"California\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"SanDiego\\\", \\\"California\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Detroit\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Detroit\"", ",", "\"Michigan\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Detroit\\\", \\\"Michigan\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Houston\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Houston\"", ",", "\"Texas\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Houston\\\", \\\"Texas\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Austin\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Austin\"", ",", "\"Texas\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Austin\\\", \\\"Texas\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Phoenix\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Phoenix\"", ",", "\"Arizona\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Phoenix\\\", \\\"Arizona\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", "\n", 
+     TemplateBox[{"\"San Antonio\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"SanAntonio\"", ",", "\"Texas\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"SanAntonio\\\", \\\"Texas\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Dallas\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Dallas\"", ",", "\"Texas\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Dallas\\\", \\\"Texas\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"San Jose\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"SanJose\"", ",", "\"California\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"SanJose\\\", \\\"California\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Jacksonville\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Jacksonville\"", ",", "\"Florida\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Jacksonville\\\", \\\"Florida\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Indianapolis\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Indianapolis\"", ",", "\"Indiana\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Indianapolis\\\", \\\"Indiana\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Detroit\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Detroit\"", ",", "\"Michigan\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Detroit\\\", \\\"Michigan\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", "\[IndentingNewLine]", 
+     TemplateBox[{"\"London\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"London\"", ",", "\"GreaterLondon\"", ",", 
+               "\"UnitedKingdom\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"London\\\", \\\"GreaterLondon\\\", \
+\\\"UnitedKingdom\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"York\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"York\"", ",", "\"York\"", ",", "\"UnitedKingdom\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"York\\\", \\\"York\\\", \\\"UnitedKingdom\
+\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Edinburgh\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Edinburgh\"", ",", "\"Edinburgh\"", ",", 
+               "\"UnitedKingdom\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Edinburgh\\\", \\\"Edinburgh\\\", \
+\\\"UnitedKingdom\\\"}]\"","\"city\""},
+      "Entity"], ",", "\[IndentingNewLine]", 
+     TemplateBox[{"\"Toronto\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Toronto\"", ",", "\"Ontario\"", ",", "\"Canada\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Toronto\\\", \\\"Ontario\\\", \
+\\\"Canada\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Vancouver\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Vancouver\"", ",", "\"BritishColumbia\"", ",", 
+               "\"Canada\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Vancouver\\\", \\\"BritishColumbia\\\", \
+\\\"Canada\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Calgary\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Calgary\"", ",", "\"Alberta\"", ",", "\"Canada\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Calgary\\\", \\\"Alberta\\\", \
+\\\"Canada\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Ottawa\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Ottawa\"", ",", "\"Ontario\"", ",", "\"Canada\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Ottawa\\\", \\\"Ontario\\\", \\\"Canada\\\
+\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Montreal\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Montreal\"", ",", "\"Quebec\"", ",", "\"Canada\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Montreal\\\", \\\"Quebec\\\", \
+\\\"Canada\\\"}]\"","\"city\""},
+      "Entity"], ",", "\[IndentingNewLine]", 
+     TemplateBox[{"\"Sydney\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Sydney\"", ",", "\"NewSouthWales\"", ",", 
+               "\"Australia\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Sydney\\\", \\\"NewSouthWales\\\", \
+\\\"Australia\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Melbourne\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Melbourne\"", ",", "\"Victoria\"", ",", 
+               "\"Australia\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Melbourne\\\", \\\"Victoria\\\", \
+\\\"Australia\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Perth\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Perth\"", ",", "\"WesternAustralia\"", ",", 
+               "\"Australia\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Perth\\\", \\\"WesternAustralia\\\", \
+\\\"Australia\\\"}]\"","\"city\""},
+      "Entity"]}], "}"}]}], ";"}]], "Code",
+ CellChangeTimes->{
+  3.771103114668171*^9, {3.771103336765457*^9, 3.771103346164105*^9}, {
+   3.771103643065106*^9, 3.7711036778718863`*^9}, {3.771103726208727*^9, 
+   3.771103730201872*^9}},ExpressionUUID->"a778518b-faf2-4f83-8bda-\
+681e8f43dcd8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"citiesPopular", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{"north", " ", "america"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     TemplateBox[{"\"New York City\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"NewYork\"", ",", "\"NewYork\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"NewYork\\\", \\\"NewYork\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"San Francisco\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"SanFrancisco\"", ",", "\"California\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"SanFrancisco\\\", \\\"California\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Los Angeles\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"LosAngeles\"", ",", "\"California\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"LosAngeles\\\", \\\"California\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Washington\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Washington\"", ",", "\"DistrictOfColumbia\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Washington\\\", \
+\\\"DistrictOfColumbia\\\", \\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Chicago\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Chicago\"", ",", "\"Illinois\"", ",", 
+               "\"UnitedStates\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Chicago\\\", \\\"Illinois\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+      "Entity"], ",", "\[IndentingNewLine]", 
+     TemplateBox[{"\"Toronto\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Toronto\"", ",", "\"Ontario\"", ",", "\"Canada\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Toronto\\\", \\\"Ontario\\\", \
+\\\"Canada\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Vancouver\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Vancouver\"", ",", "\"BritishColumbia\"", ",", 
+               "\"Canada\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Vancouver\\\", \\\"BritishColumbia\\\", \
+\\\"Canada\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Montreal\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Montreal\"", ",", "\"Quebec\"", ",", "\"Canada\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Montreal\\\", \\\"Quebec\\\", \
+\\\"Canada\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Sydney\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Sydney\"", ",", "\"NewSouthWales\"", ",", 
+               "\"Australia\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Sydney\\\", \\\"NewSouthWales\\\", \
+\\\"Australia\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Melbourne\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Melbourne\"", ",", "\"Victoria\"", ",", 
+               "\"Australia\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Melbourne\\\", \\\"Victoria\\\", \
+\\\"Australia\\\"}]\"","\"city\""},
+      "Entity"], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", "asia", "*)"}], "\[IndentingNewLine]", 
+     TemplateBox[{"\"Bangkok\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Bangkok\"", ",", "\"Bangkok\"", ",", "\"Thailand\""}],
+              "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Bangkok\\\", \\\"Bangkok\\\", \
+\\\"Thailand\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Beijing\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Beijing\"", ",", "\"Beijing\"", ",", "\"China\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Beijing\\\", \\\"Beijing\\\", \\\"China\\\
+\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Shanghai\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Shanghai\"", ",", "\"Shanghai\"", ",", "\"China\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Shanghai\\\", \\\"Shanghai\\\", \\\"China\
+\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Shenzhen\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Shenzhen\"", ",", "\"Guangdong\"", ",", "\"China\""}],
+              "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Shenzhen\\\", \\\"Guangdong\\\", \
+\\\"China\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Hong Kong\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"HongKong\"", ",", "\"HongKong\"", ",", 
+               "\"HongKong\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"HongKong\\\", \\\"HongKong\\\", \
+\\\"HongKong\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Singapore\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"Singapore\"", ",", "\"Singapore\"", ",", 
+               "\"Singapore\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Singapore\\\", \\\"Singapore\\\", \
+\\\"Singapore\\\"}]\"","\"city\""},
+      "Entity"], ",", "\n", 
+     TemplateBox[{"\"Tokyo\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Tokyo\"", ",", "\"Tokyo\"", ",", "\"Japan\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Tokyo\\\", \\\"Tokyo\\\", \\\"Japan\\\"}]\
+\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Kyoto\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Kyoto\"", ",", "\"Kyoto\"", ",", "\"Japan\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Kyoto\\\", \\\"Kyoto\\\", \\\"Japan\\\"}]\
+\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Osaka\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Osaka\"", ",", "\"Osaka\"", ",", "\"Japan\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Osaka\\\", \\\"Osaka\\\", \\\"Japan\\\"}]\
+\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Ho Chi Minh City\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"HoChiMinhCity\"", ",", "\"HoChiMinh\"", ",", 
+               "\"Vietnam\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"HoChiMinhCity\\\", \\\"HoChiMinh\\\", \
+\\\"Vietnam\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Hanoi\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Hanoi\"", ",", "\"Hanoi\"", ",", "\"Vietnam\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Hanoi\\\", \\\"Hanoi\\\", \
+\\\"Vietnam\\\"}]\"","\"city\""},
+      "Entity"], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", "europe", "*)"}], "\[IndentingNewLine]", 
+     TemplateBox[{"\"London\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{
+              "\"London\"", ",", "\"GreaterLondon\"", ",", 
+               "\"UnitedKingdom\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"London\\\", \\\"GreaterLondon\\\", \
+\\\"UnitedKingdom\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Paris\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Paris\"", ",", "\"IleDeFrance\"", ",", "\"France\""}],
+              "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Paris\\\", \\\"IleDeFrance\\\", \
+\\\"France\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Berlin\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Berlin\"", ",", "\"Berlin\"", ",", "\"Germany\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Berlin\\\", \\\"Berlin\\\", \\\"Germany\\\
+\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Frankfurt\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Frankfurt\"", ",", "\"Hesse\"", ",", "\"Germany\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Frankfurt\\\", \\\"Hesse\\\", \\\"Germany\
+\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Monaco\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"MonacoVille\"", ",", "\"Monaco\"", ",", 
+               "\"Monaco\""}], "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"MonacoVille\\\", \\\"Monaco\\\", \
+\\\"Monaco\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     TemplateBox[{"\"Moscow\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Moscow\"", ",", "\"Moscow\"", ",", "\"Russia\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Moscow\\\", \\\"Moscow\\\", \
+\\\"Russia\\\"}]\"","\"city\""},
+      "Entity"], ",", 
+     RowBox[{
+      TemplateBox[{"\"Saint Petersburg\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"SaintPetersburg\"", ",", "\"SaintPetersburg\"", ",", 
+                "\"Russia\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"SaintPetersburg\\\", \\\"SaintPetersburg\
+\\\", \\\"Russia\\\"}]\"","\"city\""},
+       "Entity"], "\n", 
+      TemplateBox[{"\"Istanbul\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Istanbul\"", ",", "\"Istanbul\"", ",", 
+                "\"Turkey\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Istanbul\\\", \\\"Istanbul\\\", \
+\\\"Turkey\\\"}]\"","\"city\""},
+       "Entity"]}], ",", 
+     TemplateBox[{"\"Yerevan\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             RowBox[{"\"Yerevan\"", ",", "\"Yerevan\"", ",", "\"Armenia\""}], 
+             "}"}]}], "]"}],
+       "\"Entity[\\\"City\\\", {\\\"Yerevan\\\", \\\"Yerevan\\\", \\\"Armenia\
+\\\"}]\"","\"city\""},
+      "Entity"]}], "\[IndentingNewLine]", "}"}]}], ";"}]], "Code",
+ CellChangeTimes->{
+  3.771103114668171*^9, {3.771103336765457*^9, 3.771103346164105*^9}, {
+   3.771103643065106*^9, 3.7711036644470778`*^9}, {3.771103735756893*^9, 
+   3.7711037395370007`*^9}, {3.771103829814451*^9, 
+   3.771103869261223*^9}},ExpressionUUID->"09dab040-4674-4eed-af0e-\
+a3547207de16"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tw", " ", "=", " ", 
+   RowBox[{"ServiceConnect", "[", "\"\<Twitter\>\"", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TwPath", "[", "city_String", "]"}], " ", ":=", " ", 
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "constantPathTweets", ",", " ", "\"\</\>\"", ",", " ", "city", ",", " ", 
+      "\"\<.mx\>\""}], "}"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TwDownloadCity", "[", "city_", "]"}], " ", ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"name", ",", " ", "data", ",", " ", "path"}], "}"}], ",", "\n", 
+     "\t", 
+     RowBox[{
+      RowBox[{"name", " ", "=", " ", 
+       RowBox[{"CityName", "[", "city", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"data", " ", "=", " ", 
+       RowBox[{"tw", "[", 
+        RowBox[{"\"\<TweetSearch\>\"", ",", " ", 
+         RowBox[{"\"\<Query\>\"", "\[Rule]", "name"}]}], "]"}]}], ";", "\n", 
+      "\t", 
+      RowBox[{"path", " ", "=", " ", 
+       RowBox[{"TwPath", "[", "name", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"Export", "[", 
+       RowBox[{"path", ",", " ", "dataset", ",", " ", 
+        RowBox[{"OverwriteTarget", "\[Rule]", "True"}]}], "]"}], ";", "\n", 
+      "\t", "data"}]}], "\n", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TwPullCity", "[", "city_", "]"}], " ", ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"name", ",", " ", "data", ",", " ", "path"}], "}"}], ",", "\n", 
+     "\t", 
+     RowBox[{
+      RowBox[{"name", " ", "=", " ", 
+       RowBox[{"CityName", "[", "city", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"path", " ", "=", " ", 
+       RowBox[{"TwPath", "[", "name", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"data", " ", "=", " ", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"FileExistsQ", "[", "path", "]"}], ",", " ", 
+         RowBox[{"Import", "[", "path", "]"}], ",", " ", 
+         RowBox[{"TwDownloadCity", "[", "city", "]"}]}], "]"}]}], ";", "\n", 
+      "\t", "data"}]}], "\n", "]"}]}], ";"}]}], "Code",
+ CellChangeTimes->{
+  3.771103114668171*^9, {3.771103336765457*^9, 3.771103338095792*^9}, {
+   3.771103900064671*^9, 3.771103953970173*^9}, {3.771104192105047*^9, 
+   3.771104206425777*^9}, {3.771104623555089*^9, 3.771104634861293*^9}, {
+   3.771104668974058*^9, 3.771104690035036*^9}, {3.7711047224932117`*^9, 
+   3.771104799500358*^9}, {3.771104931900667*^9, 3.771104987366683*^9}, {
+   3.771105022012245*^9, 3.771105218274828*^9}, 3.771105264350816*^9},
+ CellLabel->"In[71]:=",ExpressionUUID->"4c25a172-1f5e-4ece-a2a0-a28dcc91de33"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EstimateQualityOfLife", " ", ":=", " ", 
+   RowBox[{"Module", "[", "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.771105232661023*^9, 3.771105236965727*^9}, 
+   3.771105343619289*^9, {3.7711053807205553`*^9, 
+   3.771105391254448*^9}},ExpressionUUID->"69f3f931-547e-44ed-abca-\
+6971192283c7"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -86,8 +878,22 @@ Cell[TextData[StyleBox["Are there any correlations at all?", "Subtitle"]], \
 Cell["wew", "Text",
  CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
   3.771101487741495*^9, 3.7711017038951178`*^9}, {3.771101737640126*^9, 
-  3.771101738955223*^9}},ExpressionUUID->"1e314e11-051b-4643-8db0-\
-01d456f6b7b3"]
+  3.771101738955223*^9}, {3.771102348054689*^9, 
+  3.771102348771636*^9}},ExpressionUUID->"1e314e11-051b-4643-8db0-\
+01d456f6b7b3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExtractFeatures", "[", "city_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ","}], " ", "\n", "\t", "\n", "]"}]}], ";"}]], "Code",\
+
+ CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
+  3.771101487741495*^9, 3.7711017038951178`*^9}, {3.771101737640126*^9, 
+  3.771101738955223*^9}, {3.771102348054689*^9, 3.771102377179801*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"ce916f56-0286-4291-9303-f08a2c807b22"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -123,7 +929,7 @@ a409c7f2831f"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{808, 834},
+WindowSize->{1103, 878},
 WindowMargins->{{52, Automatic}, {Automatic, 4}},
 FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
@@ -140,30 +946,39 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 184, 3, 160, "Title",ExpressionUUID->"112c77e2-f45b-4372-906b-a938d28da3f8"],
+Cell[580, 22, 184, 3, 98, "Title",ExpressionUUID->"112c77e2-f45b-4372-906b-a938d28da3f8"],
 Cell[CellGroupData[{
 Cell[789, 29, 182, 3, 62, "Section",ExpressionUUID->"2f1f3b8e-3200-48b9-b773-a77a1c396b17"],
-Cell[974, 34, 538, 8, 104, "Text",ExpressionUUID->"c6307c66-135d-4af1-918e-b52e229fb589"]
+Cell[974, 34, 538, 8, 81, "Text",ExpressionUUID->"c6307c66-135d-4af1-918e-b52e229fb589"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[1549, 47, 254, 4, 56, "Chapter",ExpressionUUID->"ac13fabb-576a-4a4b-8847-2bb61f653aef"],
-Cell[1806, 53, 201, 4, 35, "Text",ExpressionUUID->"d7112578-2f96-4683-9976-1d246abd738b"]
+Cell[1806, 53, 472, 8, 58, "Text",ExpressionUUID->"d7112578-2f96-4683-9976-1d246abd738b"],
+Cell[2281, 63, 2626, 62, 243, "Code",ExpressionUUID->"20961709-7c7a-45d4-a981-9ac2574c6877"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2044, 62, 270, 5, 56, "Chapter",ExpressionUUID->"684ffadd-38af-4be8-83bf-99937c2f50b6"],
-Cell[2317, 69, 196, 4, 35, "Text",ExpressionUUID->"2c0225ee-0b7c-4924-8b64-a72ab5040bfe"]
+Cell[4944, 130, 270, 5, 56, "Chapter",ExpressionUUID->"684ffadd-38af-4be8-83bf-99937c2f50b6"],
+Cell[5217, 137, 293, 5, 35, "Text",ExpressionUUID->"2c0225ee-0b7c-4924-8b64-a72ab5040bfe"],
+Cell[5513, 144, 2192, 49, 139, "Code",ExpressionUUID->"acdb5163-89af-4011-8610-a985ea22ddfc"],
+Cell[7708, 195, 814, 14, 52, "Code",ExpressionUUID->"ac9cfed5-f409-4c3b-becd-c72835a8d983"],
+Cell[8525, 211, 1826, 44, 148, "Code",ExpressionUUID->"f23191de-01c1-4058-a510-c564fb3a536a"],
+Cell[10354, 257, 11330, 264, 206, "Code",ExpressionUUID->"a778518b-faf2-4f83-8bda-681e8f43dcd8"],
+Cell[21687, 523, 11717, 270, 319, "Code",ExpressionUUID->"09dab040-4674-4eed-af0e-a3547207de16"],
+Cell[33407, 795, 2623, 61, 319, "Code",ExpressionUUID->"4c25a172-1f5e-4ece-a2a0-a28dcc91de33"],
+Cell[36033, 858, 327, 7, 52, "Code",ExpressionUUID->"69f3f931-547e-44ed-abca-6971192283c7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2550, 78, 266, 5, 56, "Chapter",ExpressionUUID->"8a65fa07-75ab-4cd8-9e92-75fdfaaad169"],
-Cell[2819, 85, 244, 4, 35, "Text",ExpressionUUID->"1e314e11-051b-4643-8db0-01d456f6b7b3"]
+Cell[36397, 870, 266, 5, 56, "Chapter",ExpressionUUID->"8a65fa07-75ab-4cd8-9e92-75fdfaaad169"],
+Cell[36666, 877, 293, 5, 35, "Text",ExpressionUUID->"1e314e11-051b-4643-8db0-01d456f6b7b3"],
+Cell[36962, 884, 506, 11, 91, "Code",ExpressionUUID->"ce916f56-0286-4291-9303-f08a2c807b22"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3100, 94, 299, 5, 56, "Chapter",ExpressionUUID->"6c1bcee3-7d57-470c-83c9-d43fb7fc74bf"],
-Cell[3402, 101, 244, 4, 35, "Text",ExpressionUUID->"3283bbee-62a9-4fc6-b5fd-8bd09809fc32"]
+Cell[37505, 900, 299, 5, 56, "Chapter",ExpressionUUID->"6c1bcee3-7d57-470c-83c9-d43fb7fc74bf"],
+Cell[37807, 907, 244, 4, 35, "Text",ExpressionUUID->"3283bbee-62a9-4fc6-b5fd-8bd09809fc32"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3683, 110, 320, 5, 56, "Chapter",ExpressionUUID->"ab3308a3-abcb-4b85-978f-770e36f58aa0"],
-Cell[4006, 117, 247, 4, 35, "Text",ExpressionUUID->"5e201699-c7fa-4448-9db3-a409c7f2831f"]
+Cell[38088, 916, 320, 5, 56, "Chapter",ExpressionUUID->"ab3308a3-abcb-4b85-978f-770e36f58aa0"],
+Cell[38411, 923, 247, 4, 35, "Text",ExpressionUUID->"5e201699-c7fa-4448-9db3-a409c7f2831f"]
 }, Open  ]]
 }, Open  ]]
 }
