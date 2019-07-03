@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     41182,        979]
-NotebookOptionsPosition[     38686,        931]
-NotebookOutlinePosition[     39023,        946]
-CellTagsIndexPosition[     38980,        943]
+NotebookDataLength[    111216,       2588]
+NotebookOptionsPosition[    108478,       2536]
+NotebookOutlinePosition[    108815,       2551]
+CellTagsIndexPosition[    108772,       2548]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -104,7 +104,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"EstimateSentiments", "[", 
-    RowBox[{"sentences_List", ",", " ", "func_"}], "]"}], " ", ":=", " ", 
+    RowBox[{"sentences_", ",", " ", "func_"}], "]"}], " ", ":=", " ", 
    RowBox[{"Map", "[", 
     RowBox[{
      RowBox[{
@@ -115,15 +115,17 @@ Cell[BoxData[{
      " ", "sentences"}], "]"}]}], ";"}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"EstimateSentiments", "[", "sentences_List", "]"}], " ", ":=", " ", 
+   RowBox[{"EstimateSentiments", "[", "sentences_", "]"}], " ", ":=", " ", 
    RowBox[{"EstimateSentiments", "[", 
     RowBox[{"sentences", ",", " ", "EstimateSentimentWL"}], "]"}]}], 
   ";"}]}], "Code",
  CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
    3.771101487741495*^9, 3.771101723293976*^9}, {3.7711024759486427`*^9, 
    3.771102595812048*^9}, 3.771102630105879*^9, {3.771102663030601*^9, 
-   3.771102675942957*^9}, {3.771102819347427*^9, 3.771102841217803*^9}},
- CellLabel->"In[27]:=",ExpressionUUID->"20961709-7c7a-45d4-a981-9ac2574c6877"]
+   3.771102675942957*^9}, {3.771102819347427*^9, 3.771102841217803*^9}, {
+   3.7711492274460793`*^9, 3.771149259526984*^9}, {3.7711494968232927`*^9, 
+   3.771149500439412*^9}, 3.7711495391273327`*^9},
+ CellLabel->"In[70]:=",ExpressionUUID->"20961709-7c7a-45d4-a981-9ac2574c6877"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -189,9 +191,8 @@ Project/Drafts\>\""}], ";"}], "\n",
  CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
   3.771101487741495*^9, 3.771101735714161*^9}, {3.771101948449766*^9, 
   3.771101949271914*^9}, {3.7711027061183147`*^9, 3.771102789628256*^9}, {
-  3.7711028769656677`*^9, 
-  3.77110295393472*^9}},ExpressionUUID->"acdb5163-89af-4011-8610-\
-a985ea22ddfc"],
+  3.7711028769656677`*^9, 3.77110295393472*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"acdb5163-89af-4011-8610-a985ea22ddfc"],
 
 Cell[BoxData[
  RowBox[{
@@ -207,568 +208,432 @@ Cell[BoxData[
    3.771102994714838*^9}, {3.771103029629031*^9, 3.771103051319016*^9}, {
    3.77110331414259*^9, 3.771103325928699*^9}, {3.771105001333716*^9, 
    3.771105017084805*^9}},
- CellLabel->"In[61]:=",ExpressionUUID->"ac9cfed5-f409-4c3b-becd-c72835a8d983"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"citiesLargest", " ", "=", " ", 
-   RowBox[{"CityData", "[", "All", "]"}]}], ";"}], "\n", 
- RowBox[{
-  RowBox[{"citiesLargest", " ", "=", " ", 
-   RowBox[{"Map", "[", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"{", 
-       RowBox[{"#", ",", " ", 
-        RowBox[{"CityData", "[", 
-         RowBox[{"#", ",", " ", "\"\<Population\>\""}], "]"}]}], "}"}], " ", 
-      "&"}], ",", " ", "citiesLargest"}], "]"}]}], ";"}], "\n", 
- RowBox[{
-  RowBox[{"citiesLargest", " ", "=", " ", 
-   RowBox[{"DeleteCases", "[", 
-    RowBox[{"citiesLargest", ",", " ", 
-     RowBox[{"{", 
-      RowBox[{"_", ",", " ", "_Missing"}], "}"}]}], "]"}]}], ";"}], "\n", 
- RowBox[{
-  RowBox[{"citiesLargest", " ", "=", " ", 
-   RowBox[{"Reverse", "[", 
-    RowBox[{"SortBy", "[", 
-     RowBox[{"citiesLargest", ",", " ", "Last"}], "]"}], "]"}]}], ";"}], "\n", 
- RowBox[{
-  RowBox[{"citiesLargest", " ", "=", " ", 
-   RowBox[{"Take", "[", 
-    RowBox[{"citiesLargest", ",", " ", 
-     RowBox[{"UpTo", "[", "constantCountCities", "]"}]}], "]"}]}], 
-  ";"}], "\n", 
- RowBox[{
-  RowBox[{"citiesLargest", " ", "=", " ", 
-   RowBox[{"citiesLargest", "\[LeftDoubleBracket]", 
-    RowBox[{"All", ",", " ", "1"}], "\[RightDoubleBracket]"}]}], 
-  ";"}]}], "Code",
- CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
-   3.771101487741495*^9, 3.771101735714161*^9}, {3.771101948449766*^9, 
-   3.7711019694188023`*^9}, {3.771102012743895*^9, 3.771102061843712*^9}, {
-   3.771102281657967*^9, 3.771102330678136*^9}, {3.771102421135929*^9, 
-   3.771102433948555*^9}, 3.771102723320777*^9, {3.7711029824549303`*^9, 
-   3.771102994714838*^9}, {3.771103029629031*^9, 3.771103051319016*^9}, {
-   3.77110331414259*^9, 3.771103325928699*^9}, 
-   3.771105001333716*^9},ExpressionUUID->"f23191de-01c1-4058-a510-\
-c564fb3a536a"],
+ CellLabel->"In[9]:=",ExpressionUUID->"ac9cfed5-f409-4c3b-becd-c72835a8d983"],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"citiesEng", " ", "=", " ", 
-   RowBox[{"{", 
+  RowBox[{"(*", " ", "\n", 
+   RowBox[{
+    RowBox[{"Ordered", " ", "list", " ", "of", " ", 
+     RowBox[{"cities", ":", " ", "https", ":"}]}], "//", 
     RowBox[{
-     TemplateBox[{"\"New York City\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"NewYork\"", ",", "\"NewYork\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"NewYork\\\", \\\"NewYork\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"San Francisco\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"SanFrancisco\"", ",", "\"California\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"SanFrancisco\\\", \\\"California\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Los Angeles\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"LosAngeles\"", ",", "\"California\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"LosAngeles\\\", \\\"California\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Washington\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Washington\"", ",", "\"DistrictOfColumbia\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Washington\\\", \
-\\\"DistrictOfColumbia\\\", \\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Chicago\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Chicago\"", ",", "\"Illinois\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Chicago\\\", \\\"Illinois\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", "\n", 
-     TemplateBox[{"\"Philadelphia\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Philadelphia\"", ",", "\"Pennsylvania\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Philadelphia\\\", \\\"Pennsylvania\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Dublin\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Dublin\"", ",", "\"Dublin\"", ",", "\"Ireland\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Dublin\\\", \\\"Dublin\\\", \\\"Ireland\\\
-\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"San Diego\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"SanDiego\"", ",", "\"California\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"SanDiego\\\", \\\"California\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Detroit\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Detroit\"", ",", "\"Michigan\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Detroit\\\", \\\"Michigan\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Houston\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Houston\"", ",", "\"Texas\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Houston\\\", \\\"Texas\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Austin\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Austin\"", ",", "\"Texas\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Austin\\\", \\\"Texas\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Phoenix\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Phoenix\"", ",", "\"Arizona\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Phoenix\\\", \\\"Arizona\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", "\n", 
-     TemplateBox[{"\"San Antonio\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"SanAntonio\"", ",", "\"Texas\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"SanAntonio\\\", \\\"Texas\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Dallas\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Dallas\"", ",", "\"Texas\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Dallas\\\", \\\"Texas\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"San Jose\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"SanJose\"", ",", "\"California\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"SanJose\\\", \\\"California\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Jacksonville\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Jacksonville\"", ",", "\"Florida\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Jacksonville\\\", \\\"Florida\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Indianapolis\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Indianapolis\"", ",", "\"Indiana\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Indianapolis\\\", \\\"Indiana\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Detroit\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Detroit\"", ",", "\"Michigan\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Detroit\\\", \\\"Michigan\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", "\[IndentingNewLine]", 
-     TemplateBox[{"\"London\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"London\"", ",", "\"GreaterLondon\"", ",", 
-               "\"UnitedKingdom\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"London\\\", \\\"GreaterLondon\\\", \
-\\\"UnitedKingdom\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"York\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"York\"", ",", "\"York\"", ",", "\"UnitedKingdom\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"York\\\", \\\"York\\\", \\\"UnitedKingdom\
-\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Edinburgh\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Edinburgh\"", ",", "\"Edinburgh\"", ",", 
-               "\"UnitedKingdom\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Edinburgh\\\", \\\"Edinburgh\\\", \
-\\\"UnitedKingdom\\\"}]\"","\"city\""},
-      "Entity"], ",", "\[IndentingNewLine]", 
-     TemplateBox[{"\"Toronto\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Toronto\"", ",", "\"Ontario\"", ",", "\"Canada\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Toronto\\\", \\\"Ontario\\\", \
-\\\"Canada\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Vancouver\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Vancouver\"", ",", "\"BritishColumbia\"", ",", 
-               "\"Canada\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Vancouver\\\", \\\"BritishColumbia\\\", \
-\\\"Canada\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Calgary\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Calgary\"", ",", "\"Alberta\"", ",", "\"Canada\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Calgary\\\", \\\"Alberta\\\", \
-\\\"Canada\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Ottawa\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Ottawa\"", ",", "\"Ontario\"", ",", "\"Canada\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Ottawa\\\", \\\"Ontario\\\", \\\"Canada\\\
-\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Montreal\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Montreal\"", ",", "\"Quebec\"", ",", "\"Canada\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Montreal\\\", \\\"Quebec\\\", \
-\\\"Canada\\\"}]\"","\"city\""},
-      "Entity"], ",", "\[IndentingNewLine]", 
-     TemplateBox[{"\"Sydney\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Sydney\"", ",", "\"NewSouthWales\"", ",", 
-               "\"Australia\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Sydney\\\", \\\"NewSouthWales\\\", \
-\\\"Australia\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Melbourne\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Melbourne\"", ",", "\"Victoria\"", ",", 
-               "\"Australia\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Melbourne\\\", \\\"Victoria\\\", \
-\\\"Australia\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Perth\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Perth\"", ",", "\"WesternAustralia\"", ",", 
-               "\"Australia\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Perth\\\", \\\"WesternAustralia\\\", \
-\\\"Australia\\\"}]\"","\"city\""},
-      "Entity"]}], "}"}]}], ";"}]], "Code",
- CellChangeTimes->{
-  3.771103114668171*^9, {3.771103336765457*^9, 3.771103346164105*^9}, {
-   3.771103643065106*^9, 3.7711036778718863`*^9}, {3.771103726208727*^9, 
-   3.771103730201872*^9}},ExpressionUUID->"a778518b-faf2-4f83-8bda-\
-681e8f43dcd8"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"citiesPopular", " ", "=", " ", 
-   RowBox[{"{", "\[IndentingNewLine]", 
-    RowBox[{"(*", 
-     RowBox[{"north", " ", "america"}], "*)"}], "\[IndentingNewLine]", 
-    RowBox[{
-     TemplateBox[{"\"New York City\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"NewYork\"", ",", "\"NewYork\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"NewYork\\\", \\\"NewYork\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"San Francisco\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"SanFrancisco\"", ",", "\"California\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"SanFrancisco\\\", \\\"California\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Los Angeles\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"LosAngeles\"", ",", "\"California\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"LosAngeles\\\", \\\"California\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Washington\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Washington\"", ",", "\"DistrictOfColumbia\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Washington\\\", \
-\\\"DistrictOfColumbia\\\", \\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Chicago\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Chicago\"", ",", "\"Illinois\"", ",", 
-               "\"UnitedStates\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Chicago\\\", \\\"Illinois\\\", \
-\\\"UnitedStates\\\"}]\"","\"city\""},
-      "Entity"], ",", "\[IndentingNewLine]", 
-     TemplateBox[{"\"Toronto\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Toronto\"", ",", "\"Ontario\"", ",", "\"Canada\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Toronto\\\", \\\"Ontario\\\", \
-\\\"Canada\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Vancouver\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Vancouver\"", ",", "\"BritishColumbia\"", ",", 
-               "\"Canada\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Vancouver\\\", \\\"BritishColumbia\\\", \
-\\\"Canada\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Montreal\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Montreal\"", ",", "\"Quebec\"", ",", "\"Canada\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Montreal\\\", \\\"Quebec\\\", \
-\\\"Canada\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Sydney\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Sydney\"", ",", "\"NewSouthWales\"", ",", 
-               "\"Australia\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Sydney\\\", \\\"NewSouthWales\\\", \
-\\\"Australia\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Melbourne\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Melbourne\"", ",", "\"Victoria\"", ",", 
-               "\"Australia\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Melbourne\\\", \\\"Victoria\\\", \
-\\\"Australia\\\"}]\"","\"city\""},
-      "Entity"], ",", "\[IndentingNewLine]", 
-     RowBox[{"(*", "asia", "*)"}], "\[IndentingNewLine]", 
-     TemplateBox[{"\"Bangkok\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Bangkok\"", ",", "\"Bangkok\"", ",", "\"Thailand\""}],
-              "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Bangkok\\\", \\\"Bangkok\\\", \
-\\\"Thailand\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Beijing\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Beijing\"", ",", "\"Beijing\"", ",", "\"China\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Beijing\\\", \\\"Beijing\\\", \\\"China\\\
-\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Shanghai\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Shanghai\"", ",", "\"Shanghai\"", ",", "\"China\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Shanghai\\\", \\\"Shanghai\\\", \\\"China\
-\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Shenzhen\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Shenzhen\"", ",", "\"Guangdong\"", ",", "\"China\""}],
-              "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Shenzhen\\\", \\\"Guangdong\\\", \
-\\\"China\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Hong Kong\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"HongKong\"", ",", "\"HongKong\"", ",", 
-               "\"HongKong\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"HongKong\\\", \\\"HongKong\\\", \
-\\\"HongKong\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Singapore\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"Singapore\"", ",", "\"Singapore\"", ",", 
-               "\"Singapore\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Singapore\\\", \\\"Singapore\\\", \
-\\\"Singapore\\\"}]\"","\"city\""},
-      "Entity"], ",", "\n", 
-     TemplateBox[{"\"Tokyo\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Tokyo\"", ",", "\"Tokyo\"", ",", "\"Japan\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Tokyo\\\", \\\"Tokyo\\\", \\\"Japan\\\"}]\
-\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Kyoto\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Kyoto\"", ",", "\"Kyoto\"", ",", "\"Japan\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Kyoto\\\", \\\"Kyoto\\\", \\\"Japan\\\"}]\
-\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Osaka\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Osaka\"", ",", "\"Osaka\"", ",", "\"Japan\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Osaka\\\", \\\"Osaka\\\", \\\"Japan\\\"}]\
-\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Ho Chi Minh City\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"HoChiMinhCity\"", ",", "\"HoChiMinh\"", ",", 
-               "\"Vietnam\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"HoChiMinhCity\\\", \\\"HoChiMinh\\\", \
-\\\"Vietnam\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Hanoi\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Hanoi\"", ",", "\"Hanoi\"", ",", "\"Vietnam\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Hanoi\\\", \\\"Hanoi\\\", \
-\\\"Vietnam\\\"}]\"","\"city\""},
-      "Entity"], ",", "\[IndentingNewLine]", 
-     RowBox[{"(*", "europe", "*)"}], "\[IndentingNewLine]", 
-     TemplateBox[{"\"London\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{
-              "\"London\"", ",", "\"GreaterLondon\"", ",", 
-               "\"UnitedKingdom\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"London\\\", \\\"GreaterLondon\\\", \
-\\\"UnitedKingdom\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Paris\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Paris\"", ",", "\"IleDeFrance\"", ",", "\"France\""}],
-              "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Paris\\\", \\\"IleDeFrance\\\", \
-\\\"France\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Berlin\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Berlin\"", ",", "\"Berlin\"", ",", "\"Germany\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Berlin\\\", \\\"Berlin\\\", \\\"Germany\\\
-\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Frankfurt\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Frankfurt\"", ",", "\"Hesse\"", ",", "\"Germany\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Frankfurt\\\", \\\"Hesse\\\", \\\"Germany\
-\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Monaco\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             
-             RowBox[{"\"MonacoVille\"", ",", "\"Monaco\"", ",", 
-               "\"Monaco\""}], "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"MonacoVille\\\", \\\"Monaco\\\", \
-\\\"Monaco\\\"}]\"","\"city\""},
-      "Entity"], ",", 
-     TemplateBox[{"\"Moscow\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Moscow\"", ",", "\"Moscow\"", ",", "\"Russia\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Moscow\\\", \\\"Moscow\\\", \
-\\\"Russia\\\"}]\"","\"city\""},
-      "Entity"], ",", 
      RowBox[{
-      TemplateBox[{"\"Saint Petersburg\"",RowBox[{"Entity", "[", 
+      RowBox[{"www", ".", "timeout", ".", "com"}], "/", "things"}], "-", "to",
+      "-", 
+     RowBox[{"do", "/", "best"}], "-", "cities", "-", "in", "-", "the", "-", 
+     RowBox[{
+     "world", " ", "\n", "Other", " ", "lists", " ", "can", " ", "be", " ", 
+      "found", " ", "in", " ", 
+      RowBox[{"\"\<CitiesLists.nb\>\"", "."}]}]}]}], "\n", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"citiesPopular", " ", "=", " ", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      TemplateBox[{"\"New York City\"",RowBox[{"Entity", "[", 
           RowBox[{"\"City\"", ",", 
             RowBox[{"{", 
               
-              RowBox[{"\"SaintPetersburg\"", ",", "\"SaintPetersburg\"", ",", 
-                "\"Russia\""}], "}"}]}], "]"}],
-        "\"Entity[\\\"City\\\", {\\\"SaintPetersburg\\\", \\\"SaintPetersburg\
-\\\", \\\"Russia\\\"}]\"","\"city\""},
-       "Entity"], "\n", 
+              RowBox[{"\"NewYork\"", ",", "\"NewYork\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"NewYork\\\", \\\"NewYork\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Melbourne\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Melbourne\"", ",", "\"Victoria\"", ",", 
+                "\"Australia\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Melbourne\\\", \\\"Victoria\\\", \
+\\\"Australia\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Chicago\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Chicago\"", ",", "\"Illinois\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Chicago\\\", \\\"Illinois\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"London\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"London\"", ",", "\"GreaterLondon\"", ",", 
+                "\"UnitedKingdom\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"London\\\", \\\"GreaterLondon\\\", \
+\\\"UnitedKingdom\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Los Angeles\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"LosAngeles\"", ",", "\"California\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"LosAngeles\\\", \\\"California\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Montreal\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Montreal\"", ",", "\"Quebec\"", ",", "\"Canada\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Montreal\\\", \\\"Quebec\\\", \\\"Canada\
+\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Berlin\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Berlin\"", ",", "\"Berlin\"", ",", "\"Germany\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Berlin\\\", \\\"Berlin\\\", \
+\\\"Germany\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Glasgow\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Glasgow\"", ",", "\"GlasgowCity\"", ",", 
+                "\"UnitedKingdom\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Glasgow\\\", \\\"GlasgowCity\\\", \
+\\\"UnitedKingdom\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Paris\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Paris\"", ",", "\"IleDeFrance\"", ",", 
+                "\"France\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Paris\\\", \\\"IleDeFrance\\\", \
+\\\"France\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Tokyo\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Tokyo\"", ",", "\"Tokyo\"", ",", "\"Japan\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Tokyo\\\", \\\"Tokyo\\\", \
+\\\"Japan\\\"}]\"","\"city\""},
+       "Entity"], ",", "\n", 
+      TemplateBox[{"\"Madrid\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Madrid\"", ",", "\"Madrid\"", ",", "\"Spain\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Madrid\\\", \\\"Madrid\\\", \
+\\\"Spain\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Cape Town\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"CapeTown\"", ",", "\"WesternCape\"", ",", 
+                "\"SouthAfrica\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"CapeTown\\\", \\\"WesternCape\\\", \
+\\\"SouthAfrica\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Las Vegas\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"LasVegas\"", ",", "\"Nevada\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"LasVegas\\\", \\\"Nevada\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Mexico City\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"MexicoCity\"", ",", "\"DistritoFederal\"", ",", 
+                "\"Mexico\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"MexicoCity\\\", \\\"DistritoFederal\\\", \
+\\\"Mexico\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Manchester\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Manchester\"", ",", "\"NewHampshire\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Manchester\\\", \\\"NewHampshire\\\", \\\
+\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Philadelphia\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Philadelphia\"", ",", "\"Pennsylvania\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Philadelphia\\\", \\\"Pennsylvania\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Barcelona\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Barcelona\"", ",", "\"Barcelona\"", ",", 
+                "\"Spain\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Barcelona\\\", \\\"Barcelona\\\", \
+\\\"Spain\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Buenos Aires\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"BuenosAires\"", ",", "\"BuenosAires\"", ",", 
+                "\"Argentina\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"BuenosAires\\\", \\\"BuenosAires\\\", \\\
+\"Argentina\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Lisbon\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Lisbon\"", ",", "\"Lisboa\"", ",", "\"Portugal\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Lisbon\\\", \\\"Lisboa\\\", \\\"Portugal\
+\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Washington\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Washington\"", ",", "\"DistrictOfColumbia\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Washington\\\", \\\"DistrictOfColumbia\\\
+\", \\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", "\n", 
+      TemplateBox[{"\"Tel Aviv\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"TelAvivYafo\"", ",", "\"TelAviv\"", ",", 
+                "\"Israel\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"TelAvivYafo\\\", \\\"TelAviv\\\", \
+\\\"Israel\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Mumbai\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Bombay\"", ",", "\"Maharashtra\"", ",", 
+                "\"India\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Bombay\\\", \\\"Maharashtra\\\", \
+\\\"India\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Toronto\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Toronto\"", ",", "\"Ontario\"", ",", "\"Canada\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Toronto\\\", \\\"Ontario\\\", \\\"Canada\
+\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Birmingham\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Birmingham\"", ",", "\"Alabama\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Birmingham\\\", \\\"Alabama\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Dublin\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Dublin\"", ",", "\"Dublin\"", ",", "\"Ireland\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Dublin\\\", \\\"Dublin\\\", \
+\\\"Ireland\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"S\[ATilde]o Paulo\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{
+               "\"SaoPaulo\"", ",", "\"SaoPaulo\"", ",", "\"Brazil\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"SaoPaulo\\\", \\\"SaoPaulo\\\", \
+\\\"Brazil\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Miami\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Miami\"", ",", "\"Florida\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Miami\\\", \\\"Florida\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Porto\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Porto\"", ",", "\"Norte\"", ",", "\"Portugal\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Porto\\\", \\\"Norte\\\", \\\"Portugal\\\
+\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Singapore\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"Country\"", ",", "\"Singapore\""}], "]"}],
+        "\"Entity[\\\"Country\\\", \\\"Singapore\\\"]\"","\"country\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Edinburgh\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Edinburgh\"", ",", "\"Edinburgh\"", ",", 
+                "\"UnitedKingdom\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Edinburgh\\\", \\\"Edinburgh\\\", \
+\\\"UnitedKingdom\\\"}]\"","\"city\""},
+       "Entity"], ",", "\n", 
+      TemplateBox[{"\"San Francisco\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"SanFrancisco\"", ",", "\"California\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"SanFrancisco\\\", \\\"California\\\", \\\
+\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Dubai\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Dubai\"", ",", "\"Dubai\"", ",", 
+                "\"UnitedArabEmirates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Dubai\\\", \\\"Dubai\\\", \
+\\\"UnitedArabEmirates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Munich\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Munich\"", ",", "\"Bavaria\"", ",", "\"Germany\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Munich\\\", \\\"Bavaria\\\", \\\"Germany\
+\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Vienna\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Vienna\"", ",", "\"Vienna\"", ",", "\"Austria\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Vienna\\\", \\\"Vienna\\\", \
+\\\"Austria\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Shanghai\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Shanghai\"", ",", "\"Shanghai\"", ",", "\"China\""}],
+               "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Shanghai\\\", \\\"Shanghai\\\", \
+\\\"China\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Moscow\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Moscow\"", ",", "\"Moscow\"", ",", "\"Russia\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Moscow\\\", \\\"Moscow\\\", \\\"Russia\\\
+\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Delhi\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Delhi\"", ",", "\"Delhi\"", ",", "\"India\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Delhi\\\", \\\"Delhi\\\", \
+\\\"India\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Seattle\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Seattle\"", ",", "\"Washington\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Seattle\\\", \\\"Washington\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Sydney\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Sydney\"", ",", "\"NewSouthWales\"", ",", 
+                "\"Australia\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Sydney\\\", \\\"NewSouthWales\\\", \
+\\\"Australia\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Abu Dhabi\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"AbuDhabi\"", ",", "\"AbuDhabi\"", ",", 
+                "\"UnitedArabEmirates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"AbuDhabi\\\", \\\"AbuDhabi\\\", \
+\\\"UnitedArabEmirates\\\"}]\"","\"city\""},
+       "Entity"], ",", "\n", 
+      TemplateBox[{"\"Hong Kong\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"HongKong\"", ",", "\"HongKong\"", ",", 
+                "\"HongKong\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"HongKong\\\", \\\"HongKong\\\", \
+\\\"HongKong\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Boston\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Boston\"", ",", "\"Massachusetts\"", ",", 
+                "\"UnitedStates\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Boston\\\", \\\"Massachusetts\\\", \
+\\\"UnitedStates\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Rio de Janeiro\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"RioDeJaneiro\"", ",", "\"RioDeJaneiro\"", ",", 
+                "\"Brazil\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"RioDeJaneiro\\\", \\\"RioDeJaneiro\\\", \
+\\\"Brazil\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Marseille\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Marseille\"", ",", "\"ProvenceAlpesCoteDAzur\"", ",",
+                 "\"France\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Marseille\\\", \
+\\\"ProvenceAlpesCoteDAzur\\\", \\\"France\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Bangkok\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"Bangkok\"", ",", "\"Bangkok\"", ",", 
+                "\"Thailand\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Bangkok\\\", \\\"Bangkok\\\", \
+\\\"Thailand\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Kuala Lumpur\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              
+              RowBox[{"\"KualaLumpur\"", ",", "\"KualaLumpur\"", ",", 
+                "\"Malaysia\""}], "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"KualaLumpur\\\", \\\"KualaLumpur\\\", \\\
+\"Malaysia\\\"}]\"","\"city\""},
+       "Entity"], ",", 
+      TemplateBox[{"\"Beijing\"",RowBox[{"Entity", "[", 
+          RowBox[{"\"City\"", ",", 
+            RowBox[{"{", 
+              RowBox[{"\"Beijing\"", ",", "\"Beijing\"", ",", "\"China\""}], 
+              "}"}]}], "]"}],
+        "\"Entity[\\\"City\\\", {\\\"Beijing\\\", \\\"Beijing\\\", \
+\\\"China\\\"}]\"","\"city\""},
+       "Entity"], ",", 
       TemplateBox[{"\"Istanbul\"",RowBox[{"Entity", "[", 
           RowBox[{"\"City\"", ",", 
             RowBox[{"{", 
@@ -777,21 +642,15 @@ Cell[BoxData[
                 "\"Turkey\""}], "}"}]}], "]"}],
         "\"Entity[\\\"City\\\", {\\\"Istanbul\\\", \\\"Istanbul\\\", \
 \\\"Turkey\\\"}]\"","\"city\""},
-       "Entity"]}], ",", 
-     TemplateBox[{"\"Yerevan\"",RowBox[{"Entity", "[", 
-         RowBox[{"\"City\"", ",", 
-           RowBox[{"{", 
-             RowBox[{"\"Yerevan\"", ",", "\"Yerevan\"", ",", "\"Armenia\""}], 
-             "}"}]}], "]"}],
-       "\"Entity[\\\"City\\\", {\\\"Yerevan\\\", \\\"Yerevan\\\", \\\"Armenia\
-\\\"}]\"","\"city\""},
-      "Entity"]}], "\[IndentingNewLine]", "}"}]}], ";"}]], "Code",
+       "Entity"]}], "\[IndentingNewLine]", "}"}]}], ";"}]}]], "Code",
  CellChangeTimes->{
   3.771103114668171*^9, {3.771103336765457*^9, 3.771103346164105*^9}, {
    3.771103643065106*^9, 3.7711036644470778`*^9}, {3.771103735756893*^9, 
-   3.7711037395370007`*^9}, {3.771103829814451*^9, 
-   3.771103869261223*^9}},ExpressionUUID->"09dab040-4674-4eed-af0e-\
-a3547207de16"],
+   3.7711037395370007`*^9}, {3.771103829814451*^9, 3.771103869261223*^9}, 
+   3.7711508443328543`*^9, {3.771150900172871*^9, 3.771150906516261*^9}, {
+   3.771164615098283*^9, 3.771164746909974*^9}, {3.771165042669468*^9, 
+   3.771165060799778*^9}},ExpressionUUID->"b7751103-9ec1-4927-af5b-\
+15ab1fcb72e2"],
 
 Cell[BoxData[{
  RowBox[{
@@ -816,15 +675,15 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"name", " ", "=", " ", 
        RowBox[{"CityName", "[", "city", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"path", " ", "=", " ", 
+       RowBox[{"TwPath", "[", "name", "]"}]}], ";", "\n", "\t", 
       RowBox[{"data", " ", "=", " ", 
        RowBox[{"tw", "[", 
         RowBox[{"\"\<TweetSearch\>\"", ",", " ", 
          RowBox[{"\"\<Query\>\"", "\[Rule]", "name"}]}], "]"}]}], ";", "\n", 
       "\t", 
-      RowBox[{"path", " ", "=", " ", 
-       RowBox[{"TwPath", "[", "name", "]"}]}], ";", "\n", "\t", 
       RowBox[{"Export", "[", 
-       RowBox[{"path", ",", " ", "dataset", ",", " ", 
+       RowBox[{"path", ",", " ", "data", ",", " ", 
         RowBox[{"OverwriteTarget", "\[Rule]", "True"}]}], "]"}], ";", "\n", 
       "\t", "data"}]}], "\n", "]"}]}], ";"}], "\n", 
  RowBox[{
@@ -846,24 +705,1765 @@ Cell[BoxData[{
          RowBox[{"FileExistsQ", "[", "path", "]"}], ",", " ", 
          RowBox[{"Import", "[", "path", "]"}], ",", " ", 
          RowBox[{"TwDownloadCity", "[", "city", "]"}]}], "]"}]}], ";", "\n", 
-      "\t", "data"}]}], "\n", "]"}]}], ";"}]}], "Code",
+      "\t", 
+      RowBox[{"Normal", "[", "data", "]"}]}]}], "\n", "]"}]}], ";"}]}], "Code",\
+
  CellChangeTimes->{
   3.771103114668171*^9, {3.771103336765457*^9, 3.771103338095792*^9}, {
    3.771103900064671*^9, 3.771103953970173*^9}, {3.771104192105047*^9, 
    3.771104206425777*^9}, {3.771104623555089*^9, 3.771104634861293*^9}, {
    3.771104668974058*^9, 3.771104690035036*^9}, {3.7711047224932117`*^9, 
    3.771104799500358*^9}, {3.771104931900667*^9, 3.771104987366683*^9}, {
-   3.771105022012245*^9, 3.771105218274828*^9}, 3.771105264350816*^9},
- CellLabel->"In[71]:=",ExpressionUUID->"4c25a172-1f5e-4ece-a2a0-a28dcc91de33"],
+   3.771105022012245*^9, 3.771105218274828*^9}, 3.771105264350816*^9, {
+   3.771150962719131*^9, 3.771150964531691*^9}, {3.771151012996887*^9, 
+   3.7711510150931873`*^9}, {3.7711511401199427`*^9, 3.771151202612028*^9}, 
+   3.771162598734274*^9},
+ CellLabel->
+  "In[129]:=",ExpressionUUID->"4c25a172-1f5e-4ece-a2a0-a28dcc91de33"],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"EstimateQualityOfLife", " ", ":=", " ", 
-   RowBox[{"Module", "[", "]"}]}], ";"}]], "Code",
+  RowBox[{
+   RowBox[{"EstimateQualityOfLife", "[", "city_", "]"}], " ", ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "data", ",", " ", "tweetsWSentiments", ",", " ", 
+       "sentimentsWCertainity", ",", " ", "meanPositivness", ",", " ", 
+       "meanCertainty"}], "}"}], ",", "\n", "\t", 
+     RowBox[{
+      RowBox[{"data", " ", "=", " ", 
+       RowBox[{"TwPullCity", "[", "city", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"data", " ", "=", " ", 
+       RowBox[{"data", "\[LeftDoubleBracket]", 
+        RowBox[{"All", ",", " ", "\"\<Text\>\""}], 
+        "\[RightDoubleBracket]"}]}], ";", "\n", "\t", 
+      RowBox[{"tweetsWSentiments", " ", "=", " ", 
+       RowBox[{"EstimateSentiments", "[", "data", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"sentimentsWCertainity", " ", "=", " ", 
+       RowBox[{"tweetsWSentiments", "\[LeftDoubleBracket]", 
+        RowBox[{"All", ",", " ", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+      "\n", "\t", 
+      RowBox[{"meanPositivness", " ", "=", " ", 
+       RowBox[{"MeanAround", "[", 
+        RowBox[{"sentimentsWCertainity", "\[LeftDoubleBracket]", 
+         RowBox[{"All", ",", " ", "1"}], "\[RightDoubleBracket]"}], "]"}]}], 
+      ";", "\n", "\t", 
+      RowBox[{"meanCertainty", " ", "=", " ", 
+       RowBox[{"MeanAround", "[", 
+        RowBox[{"sentimentsWCertainity", "\[LeftDoubleBracket]", 
+         RowBox[{"All", ",", " ", "2"}], "\[RightDoubleBracket]"}], "]"}]}], 
+      ";", "\n", "\t", "meanPositivness"}]}], "\n", "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.771105232661023*^9, 3.771105236965727*^9}, 
-   3.771105343619289*^9, {3.7711053807205553`*^9, 
-   3.771105391254448*^9}},ExpressionUUID->"69f3f931-547e-44ed-abca-\
-6971192283c7"]
+   3.771105343619289*^9, {3.7711053807205553`*^9, 3.771105391254448*^9}, {
+   3.771148444770472*^9, 3.77114848020079*^9}, {3.77114867624708*^9, 
+   3.7711487402579947`*^9}, {3.771148883971727*^9, 3.7711489144674997`*^9}, {
+   3.771148997447256*^9, 3.7711492080155497`*^9}, {3.771149309499318*^9, 
+   3.771149370219907*^9}, {3.771149482508939*^9, 3.771149521955628*^9}, {
+   3.771150211561305*^9, 3.77115029995325*^9}, 3.7711505430475483`*^9, {
+   3.771151019581071*^9, 3.7711510204730864`*^9}, {3.7711626490367823`*^9, 
+   3.771162663072826*^9}, 3.771163309543782*^9},
+ CellLabel->
+  "In[142]:=",ExpressionUUID->"69f3f931-547e-44ed-abca-6971192283c7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Map", "[", 
+   RowBox[{"TwDownloadCity", ",", " ", "citiesPopular"}], "]"}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.771105232661023*^9, 3.771105236965727*^9}, 
+   3.771105343619289*^9, {3.7711053807205553`*^9, 3.771105391254448*^9}, {
+   3.771148444770472*^9, 3.77114848020079*^9}, {3.77114867624708*^9, 
+   3.7711487402579947`*^9}, {3.771148883971727*^9, 3.7711489144674997`*^9}, {
+   3.771148997447256*^9, 3.7711492080155497`*^9}, {3.771149309499318*^9, 
+   3.771149370219907*^9}, {3.771149482508939*^9, 3.771149521955628*^9}, {
+   3.771150211561305*^9, 3.77115029995325*^9}, {3.7711505430475483`*^9, 
+   3.771150609282713*^9}, {3.771150988266674*^9, 3.771150991458864*^9}, {
+   3.771151028119976*^9, 3.771151057770471*^9}, {3.771163302479371*^9, 
+   3.7711633359953957`*^9}, {3.7711635116575327`*^9, 
+   3.7711635121821203`*^9}, {3.771163678045841*^9, 3.771163682514146*^9}},
+ CellLabel->
+  "In[155]:=",ExpressionUUID->"9711ea33-e3be-413f-9175-1b6147cbd792"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"citiesQuality", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{"EstimateQualityOfLife", ",", " ", "citiesPopular"}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.771105232661023*^9, 3.771105236965727*^9}, 
+   3.771105343619289*^9, {3.7711053807205553`*^9, 3.771105391254448*^9}, {
+   3.771148444770472*^9, 3.77114848020079*^9}, {3.77114867624708*^9, 
+   3.7711487402579947`*^9}, {3.771148883971727*^9, 3.7711489144674997`*^9}, {
+   3.771148997447256*^9, 3.7711492080155497`*^9}, {3.771149309499318*^9, 
+   3.771149370219907*^9}, {3.771149482508939*^9, 3.771149521955628*^9}, {
+   3.771150211561305*^9, 3.77115029995325*^9}, {3.7711505430475483`*^9, 
+   3.771150609282713*^9}, {3.771150988266674*^9, 3.771150991458864*^9}, {
+   3.771151028119976*^9, 3.771151057770471*^9}, {3.771163302479371*^9, 
+   3.7711633359953957`*^9}, {3.7711635116575327`*^9, 
+   3.7711635121821203`*^9}, {3.771163678045841*^9, 3.771163682514146*^9}, {
+   3.771163773443185*^9, 3.771163774340561*^9}},
+ CellLabel->
+  "In[156]:=",ExpressionUUID->"1ba0fedf-ebcf-47e3-8705-8f2f4c11ea50"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BarChart", "[", 
+  RowBox[{"citiesQuality", ",", 
+   RowBox[{"ChartLabels", "\[Rule]", 
+    RowBox[{"Map", "[", 
+     RowBox[{"CityName", ",", " ", "citiesPopular"}], "]"}]}]}], 
+  "]"}]], "Code",
+ CellChangeTimes->{{3.771105232661023*^9, 3.771105236965727*^9}, 
+   3.771105343619289*^9, {3.7711053807205553`*^9, 3.771105391254448*^9}, {
+   3.771148444770472*^9, 3.77114848020079*^9}, {3.77114867624708*^9, 
+   3.7711487402579947`*^9}, {3.771148883971727*^9, 3.7711489144674997`*^9}, {
+   3.771148997447256*^9, 3.7711492080155497`*^9}, {3.771149309499318*^9, 
+   3.771149370219907*^9}, {3.771149482508939*^9, 3.771149521955628*^9}, {
+   3.771150211561305*^9, 3.77115029995325*^9}, {3.7711505430475483`*^9, 
+   3.771150609282713*^9}, {3.771150988266674*^9, 3.771150991458864*^9}, {
+   3.771151028119976*^9, 3.771151057770471*^9}, {3.771163302479371*^9, 
+   3.7711633359953957`*^9}, {3.7711635116575327`*^9, 3.771163583264855*^9}, {
+   3.771163662501515*^9, 3.771163672579637*^9}},
+ CellLabel->
+  "In[157]:=",ExpressionUUID->"77c9c21f-8499-4330-890a-4069ecdd91a0"],
+
+Cell[BoxData[
+ GraphicsBox[{{
+    {Opacity[0], 
+     PointBox[{{0.043828264758497326`, 0.}, {30.36170359157837, 0.}}]}, {{}, 
+     {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+      0.48999999999999994`], Thickness[Small]}], 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{0.638296408421632, 0.}, {1.361703591578368, 
+              0.7509611331523438}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{46.195453611591695`, 
+             73.81933435057029}, {-311.9525950592978, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.7509611331523438]& ,
+          TagBoxNote->"0.7509611331523438"],
+         StyleBox["0.7509611331523438`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.7509611331523438, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{1.638296408421632, 0.}, {2.361703591578368, 
+              0.6010597387952117}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{83.69007817506086, 
+             111.31395891403946`}, {-178.6636651930604, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6010597387952117]& ,
+          TagBoxNote->"0.6010597387952117"],
+         StyleBox["0.6010597387952117`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6010597387952117, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{2.638296408421632, 0.}, {3.361703591578368, 
+              0.672841711374544}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{121.18470273853005`, 
+             148.80858347750862`}, {-242.49057187274173`, 
+             356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.672841711374544]& ,
+          TagBoxNote->"0.672841711374544"],
+         StyleBox["0.672841711374544`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.672841711374544, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{3.638296408421632, 0.}, {4.361703591578368, 
+              0.6864501053675349}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{158.67932730199922`, 
+             186.3032080409778}, {-254.59084805964972`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6864501053675349]& ,
+          TagBoxNote->"0.6864501053675349"],
+         StyleBox["0.6864501053675349`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6864501053675349, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{4.638296408421632, 0.}, {5.361703591578368, 
+              0.7235655288006507}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{196.17395186546838`, 
+             223.797832604447}, {-287.59304321699517`, 356.28506167351645`}}],
+           
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.7235655288006507]& ,
+          TagBoxNote->"0.7235655288006507"],
+         StyleBox["0.7235655288006507`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.7235655288006507, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{5.638296408421632, 0.}, {6.361703591578368, 
+              0.6526994316078304}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{233.66857642893757`, 
+             261.29245716791615`}, {-224.58051221862434`, 
+             356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6526994316078304]& ,
+          TagBoxNote->"0.6526994316078304"],
+         StyleBox["0.6526994316078304`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6526994316078304, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{6.638296408421632, 0.}, {7.361703591578368, 
+              0.6596602203561801}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{271.1632009924067, 
+             298.78708173138534`}, {-230.76988815652965`, 
+             356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6596602203561801]& ,
+          TagBoxNote->"0.6596602203561801"],
+         StyleBox["0.6596602203561801`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6596602203561801, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{7.638296408421632, 0.}, {8.361703591578369, 
+              0.6879277593717241}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{308.6578255558759, 
+             336.28170629485453`}, {-255.90474458326514`, 
+             356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6879277593717241]& ,
+          TagBoxNote->"0.6879277593717241"],
+         StyleBox["0.6879277593717241`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6879277593717241, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{8.638296408421633, 0.}, {9.361703591578369, 
+              0.6667289242531831}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{346.15245011934513`, 
+             373.7763308583237}, {-237.05521980413346`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6667289242531831]& ,
+          TagBoxNote->"0.6667289242531831"],
+         StyleBox["0.6667289242531831`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6667289242531831, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{9.638296408421633, 0.}, {10.361703591578369`, 
+              0.7016323436052834}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{383.6470746828143, 
+             411.2709554217929}, {-268.09055095675944`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.7016323436052834]& ,
+          TagBoxNote->"0.7016323436052834"],
+         StyleBox["0.7016323436052834`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.7016323436052834, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{10.638296408421633`, 0.}, {11.361703591578369`, 
+              0.6504699967387884}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{421.14169924628345`, 
+             448.76557998526204`}, {-222.5981491513861, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6504699967387884]& ,
+          TagBoxNote->"0.6504699967387884"],
+         StyleBox["0.6504699967387884`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6504699967387884, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{11.638296408421633`, 0.}, {12.361703591578369`, 
+              0.660288966382481}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{458.63632380975264`, 
+             486.2602045487312}, {-231.32895490412534`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.660288966382481]& ,
+          TagBoxNote->"0.660288966382481"],
+         StyleBox["0.660288966382481`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.660288966382481, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{12.638296408421633`, 0.}, {13.361703591578369`, 
+              0.6138471514694507}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{496.1309483732218, 
+             523.7548291122004}, {-190.03394335769565`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6138471514694507]& ,
+          TagBoxNote->"0.6138471514694507"],
+         StyleBox["0.6138471514694507`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6138471514694507, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{13.638296408421633`, 0.}, {14.361703591578369`, 
+              0.5336461718214995}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{533.625572936691, 
+             561.2494536756695}, {-118.72104598710035`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.5336461718214995]& ,
+          TagBoxNote->"0.5336461718214995"],
+         StyleBox["0.5336461718214995`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.5336461718214995, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{14.638296408421633`, 0.}, {15.361703591578369`, 
+              0.7004051615242037}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{571.1201975001602, 
+             598.7440782391387}, {-266.9993684027904, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.7004051615242037]& ,
+          TagBoxNote->"0.7004051615242037"],
+         StyleBox["0.7004051615242037`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.7004051615242037, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{15.638296408421633`, 0.}, {16.36170359157837, 
+              0.633994147626876}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{608.6148220636294, 
+             636.2387028026079}, {-207.94819671977348`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.633994147626876]& ,
+          TagBoxNote->"0.633994147626876"],
+         StyleBox["0.633994147626876`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.633994147626876, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{16.63829640842163, 0.}, {17.36170359157837, 
+              0.6342006089451481}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{646.1094466270985, 
+             673.7333273660771}, {-208.13177745489122`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6342006089451481]& ,
+          TagBoxNote->"0.6342006089451481"],
+         StyleBox["0.6342006089451481`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6342006089451481, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{17.63829640842163, 0.}, {18.36170359157837, 
+              0.5719272790097892}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{683.6040711905677, 
+             711.2279519295463}, {-152.7597407777942, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.5719272790097892]& ,
+          TagBoxNote->"0.5719272790097892"],
+         StyleBox["0.5719272790097892`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.5719272790097892, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{18.63829640842163, 0.}, {19.36170359157837, 
+              0.6738118500854506}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{721.0986957540368, 
+             748.7225764930155}, {-243.35319727494777`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6738118500854506]& ,
+          TagBoxNote->"0.6738118500854506"],
+         StyleBox["0.6738118500854506`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6738118500854506, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{19.63829640842163, 0.}, {20.36170359157837, 
+              0.7098705725900891}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{758.5933203175059, 
+             786.2172010564847}, {-275.4157978638142, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.7098705725900891]& ,
+          TagBoxNote->"0.7098705725900891"],
+         StyleBox["0.7098705725900891`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.7098705725900891, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{20.63829640842163, 0.}, {21.36170359157837, 
+              0.5798564471922847}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{796.0879448809751, 
+             823.7118256199537}, {-159.8101778087954, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.5798564471922847]& ,
+          TagBoxNote->"0.5798564471922847"],
+         StyleBox["0.5798564471922847`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.5798564471922847, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{21.63829640842163, 0.}, {22.36170359157837, 
+              0.7647786857110451}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{833.5825694444443, 
+             861.2064501834229}, {-324.2388503127477, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.7647786857110451]& ,
+          TagBoxNote->"0.7647786857110451"],
+         StyleBox["0.7647786857110451`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.7647786857110451, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{22.63829640842163, 0.}, {23.36170359157837, 
+              0.6335093757956228}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{871.0771940079135, 
+             898.7010747468921}, {-207.5171485704608, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6335093757956228]& ,
+          TagBoxNote->"0.6335093757956228"],
+         StyleBox["0.6335093757956228`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6335093757956228, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{23.63829640842163, 0.}, {24.36170359157837, 
+              0.6497605444812105}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{908.5718185713827, 
+             936.1956993103613}, {-221.9673202480975, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6497605444812105]& ,
+          TagBoxNote->"0.6497605444812105"],
+         StyleBox["0.6497605444812105`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6497605444812105, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{24.63829640842163, 0.}, {25.36170359157837, 
+              0.6117422456973184}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{946.0664431348519, 
+             973.6903238738305}, {-188.16230874722385`, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6117422456973184]& ,
+          TagBoxNote->"0.6117422456973184"],
+         StyleBox["0.6117422456973184`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6117422456973184, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{25.63829640842163, 0.}, {26.36170359157837, 
+              0.7416652671204501}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{983.561067698321, 
+             1011.1849484372997`}, {-303.6869212082655, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.7416652671204501]& ,
+          TagBoxNote->"0.7416652671204501"],
+         StyleBox["0.7416652671204501`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.7416652671204501, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{26.63829640842163, 0.}, {27.36170359157837, 
+              0.6124469852722684}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{1021.0556922617902`, 
+             1048.6795730007686`}, {-188.7889472396963, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.6124469852722684]& ,
+          TagBoxNote->"0.6124469852722684"],
+         StyleBox["0.6124469852722684`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.6124469852722684, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{27.63829640842163, 0.}, {28.36170359157837, 
+              0.736196927258874}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{1058.5503168252592`, 
+             1086.1741975642378`}, {-298.8245970689858, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.736196927258874]& ,
+          TagBoxNote->"0.736196927258874"],
+         StyleBox["0.736196927258874`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.736196927258874, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{28.63829640842163, 0.}, {29.36170359157837, 
+              0.7000807430160723}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{1096.0449413887284`, 
+             1123.668822127707}, {-266.7109028020327, 356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.7000807430160723]& ,
+          TagBoxNote->"0.7000807430160723"],
+         StyleBox["0.7000807430160723`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.7000807430160723, {}], "Tooltip"]& ]}, 
+      {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{Opacity[
+       0.48999999999999994`], Thickness[Small]}], 
+       TagBox[
+        TooltipBox[
+         TagBox[
+          TagBox[
+           DynamicBox[{
+             FEPrivate`If[
+              CurrentValue["MouseOver"], 
+              EdgeForm[{
+                GrayLevel[0.5], 
+                AbsoluteThickness[1.5], 
+                Opacity[0.66]}], {}, {}], 
+             
+             RectangleBox[{29.63829640842163, 0.}, {30.36170359157837, 
+              0.5923501259108493}, "RoundingRadius" -> 0]},
+            
+            ImageSizeCache->{{1133.5395659521976`, 
+             1161.1634466911762`}, {-170.91927438279163`, 
+             356.28506167351645`}}],
+           "DelayedMouseEffectStyle"],
+          StatusArea[#, 0.5923501259108493]& ,
+          TagBoxNote->"0.5923501259108493"],
+         StyleBox["0.5923501259108493`", {}, StripOnInput -> False]],
+        Annotation[#, 
+         Style[0.5923501259108493, {}], 
+         "Tooltip"]& ]}}, {}, {}}, {}, {}, {}, {}, 
+    StyleBox[
+     StyleBox[{
+       {Thickness[Tiny], 
+        LineBox[{{0.043828264758497326`, 0.}, {30.968061098114767`, 0.}}], 
+        StyleBox[{}, "GraphicsLabel",
+         StripOnInput->False]}, 
+       StyleBox[{
+         {Thickness[Tiny], 
+          LineBox[{{0.638296408421632, 0.}, 
+            Offset[{-1.102182119232618*^-15, -6.}, {0.638296408421632, 0.}]}],
+           LineBox[{{30.36170359157837, 0.}, 
+            Offset[{-1.102182119232618*^-15, -6.}, {30.36170359157837, 
+             0.}]}], {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {
+            LineBox[{{1.361703591578368, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {1.361703591578368, 
+               0.}]}], 
+            LineBox[{{1.638296408421632, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {1.638296408421632, 
+               0.}]}], 
+            LineBox[{{2.361703591578368, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {2.361703591578368, 
+               0.}]}], 
+            LineBox[{{2.638296408421632, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {2.638296408421632, 
+               0.}]}], 
+            LineBox[{{3.361703591578368, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {3.361703591578368, 
+               0.}]}], 
+            LineBox[{{3.638296408421632, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {3.638296408421632, 
+               0.}]}], 
+            LineBox[{{4.361703591578368, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {4.361703591578368, 
+               0.}]}], 
+            LineBox[{{4.638296408421632, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {4.638296408421632, 
+               0.}]}], 
+            LineBox[{{5.361703591578368, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {5.361703591578368, 
+               0.}]}], 
+            LineBox[{{5.638296408421632, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {5.638296408421632, 
+               0.}]}], 
+            LineBox[{{6.361703591578368, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {6.361703591578368, 
+               0.}]}], 
+            LineBox[{{6.638296408421632, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {6.638296408421632, 
+               0.}]}], 
+            LineBox[{{7.361703591578368, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {7.361703591578368, 
+               0.}]}], 
+            LineBox[{{7.638296408421632, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {7.638296408421632, 
+               0.}]}], 
+            LineBox[{{8.361703591578369, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {8.361703591578369, 
+               0.}]}], 
+            LineBox[{{8.638296408421631, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {8.638296408421631, 
+               0.}]}], 
+            LineBox[{{9.361703591578369, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {9.361703591578369, 
+               0.}]}], 
+            LineBox[{{9.638296408421631, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {9.638296408421631, 
+               0.}]}], 
+            LineBox[{{10.361703591578369`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {10.361703591578369`, 
+               0.}]}], 
+            LineBox[{{10.638296408421631`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {10.638296408421631`, 
+               0.}]}], 
+            LineBox[{{11.361703591578369`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {11.361703591578369`, 
+               0.}]}], 
+            LineBox[{{11.638296408421631`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {11.638296408421631`, 
+               0.}]}], 
+            LineBox[{{12.361703591578369`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {12.361703591578369`, 
+               0.}]}], 
+            LineBox[{{12.638296408421631`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {12.638296408421631`, 
+               0.}]}], 
+            LineBox[{{13.361703591578369`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {13.361703591578369`, 
+               0.}]}], 
+            LineBox[{{13.638296408421631`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {13.638296408421631`, 
+               0.}]}], 
+            LineBox[{{14.361703591578369`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {14.361703591578369`, 
+               0.}]}], 
+            LineBox[{{14.638296408421631`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {14.638296408421631`, 
+               0.}]}], 
+            LineBox[{{15.361703591578369`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {15.361703591578369`, 
+               0.}]}], 
+            LineBox[{{15.638296408421631`, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {15.638296408421631`, 
+               0.}]}], 
+            LineBox[{{16.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {16.36170359157837, 
+               0.}]}], 
+            LineBox[{{16.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {16.63829640842163, 
+               0.}]}], 
+            LineBox[{{17.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {17.36170359157837, 
+               0.}]}], 
+            LineBox[{{17.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {17.63829640842163, 
+               0.}]}], 
+            LineBox[{{18.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {18.36170359157837, 
+               0.}]}], 
+            LineBox[{{18.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {18.63829640842163, 
+               0.}]}], 
+            LineBox[{{19.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {19.36170359157837, 
+               0.}]}], 
+            LineBox[{{19.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {19.63829640842163, 
+               0.}]}], 
+            LineBox[{{20.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {20.36170359157837, 
+               0.}]}], 
+            LineBox[{{20.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {20.63829640842163, 
+               0.}]}], 
+            LineBox[{{21.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {21.36170359157837, 
+               0.}]}], 
+            LineBox[{{21.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {21.63829640842163, 
+               0.}]}], 
+            LineBox[{{22.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {22.36170359157837, 
+               0.}]}], 
+            LineBox[{{22.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {22.63829640842163, 
+               0.}]}], 
+            LineBox[{{23.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {23.36170359157837, 
+               0.}]}], 
+            LineBox[{{23.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {23.63829640842163, 
+               0.}]}], 
+            LineBox[{{24.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {24.36170359157837, 
+               0.}]}], 
+            LineBox[{{24.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {24.63829640842163, 
+               0.}]}], 
+            LineBox[{{25.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {25.36170359157837, 
+               0.}]}], 
+            LineBox[{{25.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {25.63829640842163, 
+               0.}]}], 
+            LineBox[{{26.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {26.36170359157837, 
+               0.}]}], 
+            LineBox[{{26.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {26.63829640842163, 
+               0.}]}], 
+            LineBox[{{27.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {27.36170359157837, 
+               0.}]}], 
+            LineBox[{{27.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {27.63829640842163, 
+               0.}]}], 
+            LineBox[{{28.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {28.36170359157837, 
+               0.}]}], 
+            LineBox[{{28.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {28.63829640842163, 
+               0.}]}], 
+            LineBox[{{29.36170359157837, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {29.36170359157837, 
+               0.}]}], 
+            LineBox[{{29.63829640842163, 0.}, 
+              Offset[{-7.347880794884119*^-16, -4.}, {29.63829640842163, 
+               0.}]}]}, {}}}, 
+         StyleBox[
+          {Thickness[Tiny], 
+           InsetBox["\<\"New York City\"\>", Offset[{0, -2}, {1., 0.}], {0, 1},
+             Automatic, {1, 0}], 
+           InsetBox["\<\"San Francisco\"\>", Offset[{0, -2}, {2., 0.}], {0, 1},
+             Automatic, {1, 0}], 
+           InsetBox["\<\"Los Angeles\"\>", Offset[{0, -2}, {3., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Washington\"\>", Offset[{0, -2}, {4., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Chicago\"\>", Offset[{0, -2}, {5., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Toronto\"\>", Offset[{0, -2}, {6., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Vancouver\"\>", Offset[{0, -2}, {7., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Montreal\"\>", Offset[{0, -2}, {8., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Sydney\"\>", Offset[{0, -2}, {9., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Melbourne\"\>", Offset[{0, -2}, {10., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Bangkok\"\>", Offset[{0, -2}, {11., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Beijing\"\>", Offset[{0, -2}, {12., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Shanghai\"\>", Offset[{0, -2}, {13., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Shenzhen\"\>", Offset[{0, -2}, {14., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Hong Kong\"\>", Offset[{0, -2}, {15., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Singapore\"\>", Offset[{0, -2}, {16., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Tokyo\"\>", Offset[{0, -2}, {17., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Kyoto\"\>", Offset[{0, -2}, {18., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Osaka\"\>", Offset[{0, -2}, {19., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Ho Chi Minh City\"\>", Offset[{0, -2}, {20., 0.}], {0, 1},
+             Automatic, {1, 0}], 
+           InsetBox["\<\"Hanoi\"\>", Offset[{0, -2}, {21., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"London\"\>", Offset[{0, -2}, {22., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Paris\"\>", Offset[{0, -2}, {23., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Berlin\"\>", Offset[{0, -2}, {24., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Frankfurt\"\>", Offset[{0, -2}, {25., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Monaco\"\>", Offset[{0, -2}, {26., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Moscow\"\>", Offset[{0, -2}, {27., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Saint Petersburg\"\>", Offset[{0, -2}, {28., 0.}], {0, 1},
+             Automatic, {1, 0}], 
+           InsetBox["\<\"Istanbul\"\>", Offset[{0, -2}, {29., 0.}], {0, 1}, 
+            Automatic, {1, 0}], 
+           InsetBox["\<\"Yerevan\"\>", Offset[{0, -2}, {30., 0.}], {0, 1}, 
+            Automatic, {1, 0}]}, "GraphicsLabel",
+          StripOnInput->False]}, "GraphicsTicks",
+        StripOnInput->False]},
+      Antialiasing->False], "GraphicsAxes",
+     StripOnInput->False]}, {{
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{1., 0.7339235590058238}, {1., 0.7509611331523438}}], 
+         LineBox[{{1., 0.7509611331523438}, {1., 0.7679987072988638}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{2., 0.5845510429211835}, {2., 0.6010597387952117}}], 
+         LineBox[{{2., 0.6010597387952117}, {2., 0.6175684346692398}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{3., 0.6576990957201104}, {3., 0.672841711374544}}], 
+         LineBox[{{3., 0.672841711374544}, {3., 0.6879843270289775}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{4., 0.669631145037435}, {4., 0.6864501053675349}}], 
+         LineBox[{{4., 0.6864501053675349}, {4., 0.7032690656976348}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{5., 0.7049761197465592}, {5., 0.7235655288006507}}], 
+         LineBox[{{5., 0.7235655288006507}, {5., 0.7421549378547423}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{6., 0.637122183987914}, {6., 0.6526994316078304}}], 
+         LineBox[{{6., 0.6526994316078304}, {6., 0.6682766792277468}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{7., 0.6444766464243893}, {7., 0.6596602203561801}}], 
+         LineBox[{{7., 0.6596602203561801}, {7., 0.6748437942879709}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{8., 0.6729080690913988}, {8., 0.6879277593717241}}], 
+         LineBox[{{8., 0.6879277593717241}, {8., 0.7029474496520495}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{9., 0.6490280078125596}, {9., 0.6667289242531831}}], 
+         LineBox[{{9., 0.6667289242531831}, {9., 0.6844298406938065}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{10., 0.6882682564136468}, {10., 0.7016323436052834}}], 
+         LineBox[{{10., 0.7016323436052834}, {10., 0.71499643079692}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{11., 0.6343040714160602}, {11., 0.6504699967387884}}], 
+         LineBox[{{11., 0.6504699967387884}, {11., 0.6666359220615166}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{12., 0.6439557816601125}, {12., 0.660288966382481}}], 
+         LineBox[{{12., 0.660288966382481}, {12., 0.6766221511048496}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{13., 0.5981304594192288}, {13., 0.6138471514694507}}], 
+         LineBox[{{13., 0.6138471514694507}, {13., 0.6295638435196725}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{14., 0.5208901336345897}, {14., 0.5336461718214995}}], 
+         LineBox[{{14., 0.5336461718214995}, {14., 0.5464022100084094}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{15., 0.6835518884525381}, {15., 0.7004051615242037}}], 
+         LineBox[{{15., 0.7004051615242037}, {15., 0.7172584345958694}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{16., 0.618796964288315}, {16., 0.633994147626876}}], 
+         LineBox[{{16., 0.633994147626876}, {16., 0.649191330965437}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{17., 0.6200126294263855}, {17., 0.6342006089451481}}], 
+         LineBox[{{17., 0.6342006089451481}, {17., 0.6483885884639107}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{18., 0.5624719848431468}, {18., 0.5719272790097892}}], 
+         LineBox[{{18., 0.5719272790097892}, {18., 0.5813825731764317}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{19., 0.6595317610340237}, {19., 0.6738118500854506}}], 
+         LineBox[{{19., 0.6738118500854506}, {19., 0.6880919391368776}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{20., 0.6956689779671924}, {20., 0.7098705725900891}}], 
+         LineBox[{{20., 0.7098705725900891}, {20., 0.7240721672129858}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{21., 0.56692283548284}, {21., 0.5798564471922847}}], 
+         LineBox[{{21., 0.5798564471922847}, {21., 0.5927900589017294}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{22., 0.7488224406560892}, {22., 0.7647786857110451}}], 
+         LineBox[{{22., 0.7647786857110451}, {22., 0.7807349307660011}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{23., 0.6188884593206616}, {23., 0.6335093757956228}}], 
+         LineBox[{{23., 0.6335093757956228}, {23., 0.648130292270584}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{24., 0.6353611222308887}, {24., 0.6497605444812105}}], 
+         LineBox[{{24., 0.6497605444812105}, {24., 0.6641599667315322}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{25., 0.6008320713570359}, {25., 0.6117422456973184}}], 
+         LineBox[{{25., 0.6117422456973184}, {25., 0.6226524200376009}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{26., 0.72960748024106}, {26., 0.7416652671204501}}], 
+         LineBox[{{26., 0.7416652671204501}, {26., 0.7537230539998402}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{27., 0.5989861806182663}, {27., 0.6124469852722684}}], 
+         LineBox[{{27., 0.6124469852722684}, {27., 0.6259077899262705}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{28., 0.7173701460372169}, {28., 0.736196927258874}}], 
+         LineBox[{{28., 0.736196927258874}, {28., 0.755023708480531}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{29., 0.6876710916770612}, {29., 0.7000807430160723}}], 
+         LineBox[{{29., 0.7000807430160723}, {29., 0.7124903943550833}}]}},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{{}, {
+         LineBox[{{30., 0.5792149162969576}, {30., 0.5923501259108493}}], 
+         LineBox[{{30., 0.5923501259108493}, {30., 0.605485335524741}}]}},
+       Antialiasing->False]}}, {
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{1., 0.7679987072988638}, 
+            Offset[{3, 0}, {1., 0.7679987072988638}]}, {{1., 
+            0.7679987072988638}, 
+            Offset[{-3, 0}, {1., 0.7679987072988638}]}, {{1., 
+            0.7339235590058238}, Offset[{3, 0}, {1., 0.7339235590058238}]}, {{
+            1., 0.7339235590058238}, 
+            Offset[{-3, 0}, {1., 0.7339235590058238}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{2., 0.6175684346692398}, 
+            Offset[{3, 0}, {2., 0.6175684346692398}]}, {{2., 
+            0.6175684346692398}, 
+            Offset[{-3, 0}, {2., 0.6175684346692398}]}, {{2., 
+            0.5845510429211835}, Offset[{3, 0}, {2., 0.5845510429211835}]}, {{
+            2., 0.5845510429211835}, 
+            Offset[{-3, 0}, {2., 0.5845510429211835}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{3., 0.6879843270289775}, 
+            Offset[{3, 0}, {3., 0.6879843270289775}]}, {{3., 
+            0.6879843270289775}, 
+            Offset[{-3, 0}, {3., 0.6879843270289775}]}, {{3., 
+            0.6576990957201104}, Offset[{3, 0}, {3., 0.6576990957201104}]}, {{
+            3., 0.6576990957201104}, 
+            Offset[{-3, 0}, {3., 0.6576990957201104}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{4., 0.7032690656976348}, 
+            Offset[{3, 0}, {4., 0.7032690656976348}]}, {{4., 
+            0.7032690656976348}, 
+            Offset[{-3, 0}, {4., 0.7032690656976348}]}, {{4., 
+            0.669631145037435}, Offset[{3, 0}, {4., 0.669631145037435}]}, {{
+            4., 0.669631145037435}, 
+            Offset[{-3, 0}, {4., 0.669631145037435}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{5., 0.7421549378547423}, 
+            Offset[{3, 0}, {5., 0.7421549378547423}]}, {{5., 
+            0.7421549378547423}, 
+            Offset[{-3, 0}, {5., 0.7421549378547423}]}, {{5., 
+            0.7049761197465592}, Offset[{3, 0}, {5., 0.7049761197465592}]}, {{
+            5., 0.7049761197465592}, 
+            Offset[{-3, 0}, {5., 0.7049761197465592}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{6., 0.6682766792277468}, 
+            Offset[{3, 0}, {6., 0.6682766792277468}]}, {{6., 
+            0.6682766792277468}, 
+            Offset[{-3, 0}, {6., 0.6682766792277468}]}, {{6., 
+            0.637122183987914}, Offset[{3, 0}, {6., 0.637122183987914}]}, {{
+            6., 0.637122183987914}, 
+            Offset[{-3, 0}, {6., 0.637122183987914}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{7., 0.6748437942879709}, 
+            Offset[{3, 0}, {7., 0.6748437942879709}]}, {{7., 
+            0.6748437942879709}, 
+            Offset[{-3, 0}, {7., 0.6748437942879709}]}, {{7., 
+            0.6444766464243893}, Offset[{3, 0}, {7., 0.6444766464243893}]}, {{
+            7., 0.6444766464243893}, 
+            Offset[{-3, 0}, {7., 0.6444766464243893}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{8., 0.7029474496520495}, 
+            Offset[{3, 0}, {8., 0.7029474496520495}]}, {{8., 
+            0.7029474496520495}, 
+            Offset[{-3, 0}, {8., 0.7029474496520495}]}, {{8., 
+            0.6729080690913988}, Offset[{3, 0}, {8., 0.6729080690913988}]}, {{
+            8., 0.6729080690913988}, 
+            Offset[{-3, 0}, {8., 0.6729080690913988}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{9., 0.6844298406938065}, 
+            Offset[{3, 0}, {9., 0.6844298406938065}]}, {{9., 
+            0.6844298406938065}, 
+            Offset[{-3, 0}, {9., 0.6844298406938065}]}, {{9., 
+            0.6490280078125596}, Offset[{3, 0}, {9., 0.6490280078125596}]}, {{
+            9., 0.6490280078125596}, 
+            Offset[{-3, 0}, {9., 0.6490280078125596}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{10., 0.71499643079692}, 
+            Offset[{3, 0}, {10., 0.71499643079692}]}, {{10., 
+            0.71499643079692}, Offset[{-3, 0}, {10., 0.71499643079692}]}, {{
+            10., 0.6882682564136468}, 
+            Offset[{3, 0}, {10., 0.6882682564136468}]}, {{10., 
+            0.6882682564136468}, 
+            Offset[{-3, 0}, {10., 0.6882682564136468}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{11., 0.6666359220615166}, 
+            Offset[{3, 0}, {11., 0.6666359220615166}]}, {{11., 
+            0.6666359220615166}, 
+            Offset[{-3, 0}, {11., 0.6666359220615166}]}, {{11., 
+            0.6343040714160602}, 
+            Offset[{3, 0}, {11., 0.6343040714160602}]}, {{11., 
+            0.6343040714160602}, 
+            Offset[{-3, 0}, {11., 0.6343040714160602}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{12., 0.6766221511048496}, 
+            Offset[{3, 0}, {12., 0.6766221511048496}]}, {{12., 
+            0.6766221511048496}, 
+            Offset[{-3, 0}, {12., 0.6766221511048496}]}, {{12., 
+            0.6439557816601125}, 
+            Offset[{3, 0}, {12., 0.6439557816601125}]}, {{12., 
+            0.6439557816601125}, 
+            Offset[{-3, 0}, {12., 0.6439557816601125}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{13., 0.6295638435196725}, 
+            Offset[{3, 0}, {13., 0.6295638435196725}]}, {{13., 
+            0.6295638435196725}, 
+            Offset[{-3, 0}, {13., 0.6295638435196725}]}, {{13., 
+            0.5981304594192288}, 
+            Offset[{3, 0}, {13., 0.5981304594192288}]}, {{13., 
+            0.5981304594192288}, 
+            Offset[{-3, 0}, {13., 0.5981304594192288}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{14., 0.5464022100084094}, 
+            Offset[{3, 0}, {14., 0.5464022100084094}]}, {{14., 
+            0.5464022100084094}, 
+            Offset[{-3, 0}, {14., 0.5464022100084094}]}, {{14., 
+            0.5208901336345897}, 
+            Offset[{3, 0}, {14., 0.5208901336345897}]}, {{14., 
+            0.5208901336345897}, 
+            Offset[{-3, 0}, {14., 0.5208901336345897}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{15., 0.7172584345958694}, 
+            Offset[{3, 0}, {15., 0.7172584345958694}]}, {{15., 
+            0.7172584345958694}, 
+            Offset[{-3, 0}, {15., 0.7172584345958694}]}, {{15., 
+            0.6835518884525381}, 
+            Offset[{3, 0}, {15., 0.6835518884525381}]}, {{15., 
+            0.6835518884525381}, 
+            Offset[{-3, 0}, {15., 0.6835518884525381}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{16., 0.649191330965437}, 
+            Offset[{3, 0}, {16., 0.649191330965437}]}, {{16., 
+            0.649191330965437}, Offset[{-3, 0}, {16., 0.649191330965437}]}, {{
+            16., 0.618796964288315}, 
+            Offset[{3, 0}, {16., 0.618796964288315}]}, {{16., 
+            0.618796964288315}, 
+            Offset[{-3, 0}, {16., 0.618796964288315}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{17., 0.6483885884639107}, 
+            Offset[{3, 0}, {17., 0.6483885884639107}]}, {{17., 
+            0.6483885884639107}, 
+            Offset[{-3, 0}, {17., 0.6483885884639107}]}, {{17., 
+            0.6200126294263855}, 
+            Offset[{3, 0}, {17., 0.6200126294263855}]}, {{17., 
+            0.6200126294263855}, 
+            Offset[{-3, 0}, {17., 0.6200126294263855}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{18., 0.5813825731764317}, 
+            Offset[{3, 0}, {18., 0.5813825731764317}]}, {{18., 
+            0.5813825731764317}, 
+            Offset[{-3, 0}, {18., 0.5813825731764317}]}, {{18., 
+            0.5624719848431468}, 
+            Offset[{3, 0}, {18., 0.5624719848431468}]}, {{18., 
+            0.5624719848431468}, 
+            Offset[{-3, 0}, {18., 0.5624719848431468}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{19., 0.6880919391368776}, 
+            Offset[{3, 0}, {19., 0.6880919391368776}]}, {{19., 
+            0.6880919391368776}, 
+            Offset[{-3, 0}, {19., 0.6880919391368776}]}, {{19., 
+            0.6595317610340237}, 
+            Offset[{3, 0}, {19., 0.6595317610340237}]}, {{19., 
+            0.6595317610340237}, 
+            Offset[{-3, 0}, {19., 0.6595317610340237}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{20., 0.7240721672129858}, 
+            Offset[{3, 0}, {20., 0.7240721672129858}]}, {{20., 
+            0.7240721672129858}, 
+            Offset[{-3, 0}, {20., 0.7240721672129858}]}, {{20., 
+            0.6956689779671924}, 
+            Offset[{3, 0}, {20., 0.6956689779671924}]}, {{20., 
+            0.6956689779671924}, 
+            Offset[{-3, 0}, {20., 0.6956689779671924}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{21., 0.5927900589017294}, 
+            Offset[{3, 0}, {21., 0.5927900589017294}]}, {{21., 
+            0.5927900589017294}, 
+            Offset[{-3, 0}, {21., 0.5927900589017294}]}, {{21., 
+            0.56692283548284}, Offset[{3, 0}, {21., 0.56692283548284}]}, {{
+            21., 0.56692283548284}, 
+            Offset[{-3, 0}, {21., 0.56692283548284}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{22., 0.7807349307660011}, 
+            Offset[{3, 0}, {22., 0.7807349307660011}]}, {{22., 
+            0.7807349307660011}, 
+            Offset[{-3, 0}, {22., 0.7807349307660011}]}, {{22., 
+            0.7488224406560892}, 
+            Offset[{3, 0}, {22., 0.7488224406560892}]}, {{22., 
+            0.7488224406560892}, 
+            Offset[{-3, 0}, {22., 0.7488224406560892}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{23., 0.648130292270584}, 
+            Offset[{3, 0}, {23., 0.648130292270584}]}, {{23., 
+            0.648130292270584}, Offset[{-3, 0}, {23., 0.648130292270584}]}, {{
+            23., 0.6188884593206616}, 
+            Offset[{3, 0}, {23., 0.6188884593206616}]}, {{23., 
+            0.6188884593206616}, 
+            Offset[{-3, 0}, {23., 0.6188884593206616}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{24., 0.6641599667315322}, 
+            Offset[{3, 0}, {24., 0.6641599667315322}]}, {{24., 
+            0.6641599667315322}, 
+            Offset[{-3, 0}, {24., 0.6641599667315322}]}, {{24., 
+            0.6353611222308887}, 
+            Offset[{3, 0}, {24., 0.6353611222308887}]}, {{24., 
+            0.6353611222308887}, 
+            Offset[{-3, 0}, {24., 0.6353611222308887}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{25., 0.6226524200376009}, 
+            Offset[{3, 0}, {25., 0.6226524200376009}]}, {{25., 
+            0.6226524200376009}, 
+            Offset[{-3, 0}, {25., 0.6226524200376009}]}, {{25., 
+            0.6008320713570359}, 
+            Offset[{3, 0}, {25., 0.6008320713570359}]}, {{25., 
+            0.6008320713570359}, 
+            Offset[{-3, 0}, {25., 0.6008320713570359}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{26., 0.7537230539998402}, 
+            Offset[{3, 0}, {26., 0.7537230539998402}]}, {{26., 
+            0.7537230539998402}, 
+            Offset[{-3, 0}, {26., 0.7537230539998402}]}, {{26., 
+            0.72960748024106}, Offset[{3, 0}, {26., 0.72960748024106}]}, {{
+            26., 0.72960748024106}, 
+            Offset[{-3, 0}, {26., 0.72960748024106}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{27., 0.6259077899262705}, 
+            Offset[{3, 0}, {27., 0.6259077899262705}]}, {{27., 
+            0.6259077899262705}, 
+            Offset[{-3, 0}, {27., 0.6259077899262705}]}, {{27., 
+            0.5989861806182663}, 
+            Offset[{3, 0}, {27., 0.5989861806182663}]}, {{27., 
+            0.5989861806182663}, 
+            Offset[{-3, 0}, {27., 0.5989861806182663}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{28., 0.755023708480531}, 
+            Offset[{3, 0}, {28., 0.755023708480531}]}, {{28., 
+            0.755023708480531}, Offset[{-3, 0}, {28., 0.755023708480531}]}, {{
+            28., 0.7173701460372169}, 
+            Offset[{3, 0}, {28., 0.7173701460372169}]}, {{28., 
+            0.7173701460372169}, 
+            Offset[{-3, 0}, {28., 0.7173701460372169}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{29., 0.7124903943550833}, 
+            Offset[{3, 0}, {29., 0.7124903943550833}]}, {{29., 
+            0.7124903943550833}, 
+            Offset[{-3, 0}, {29., 0.7124903943550833}]}, {{29., 
+            0.6876710916770612}, 
+            Offset[{3, 0}, {29., 0.6876710916770612}]}, {{29., 
+            0.6876710916770612}, 
+            Offset[{-3, 0}, {29., 0.6876710916770612}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}, 
+     {GrayLevel[0], 
+      StyleBox[{
+        GeometricTransformationBox[
+         LineBox[{}], {{{1., 0.}, {0., 1.}}, {0., 0.}}], 
+        GeometricTransformationBox[
+         LineBox[{{{30., 0.605485335524741}, 
+            Offset[{3, 0}, {30., 0.605485335524741}]}, {{30., 
+            0.605485335524741}, Offset[{-3, 0}, {30., 0.605485335524741}]}, {{
+            30., 0.5792149162969576}, 
+            Offset[{3, 0}, {30., 0.5792149162969576}]}, {{30., 
+            0.5792149162969576}, 
+            Offset[{-3, 0}, {30., 0.5792149162969576}]}}], {{{1., 0.}, {0., 
+          1.}}, {0., 0.}}]},
+       Antialiasing->False]}}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{False, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.043828264758497326`, 0.},
+  CoordinatesToolOptions:>{"DisplayFunction" -> ({
+      Identity[
+       Part[#, 1]], 
+      Identity[
+       Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+      Identity[
+       Part[#, 1]], 
+      Identity[
+       Part[#, 2]]}& )},
+  DisplayFunction->Identity,
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->{1208.8046875, Automatic},
+  PlotRange->{{All, All}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{None, Automatic}]], "Output",
+ CellChangeTimes->{3.771162666243881*^9, 3.7711633130983067`*^9, 
+  3.771163347290173*^9, 3.7711633799664917`*^9, 3.7711636733847427`*^9, 
+  3.771163795784849*^9},
+ CellLabel->
+  "Out[157]=",ExpressionUUID->"346006f9-56ef-4607-ab81-22d94b6d9c16"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -882,18 +2482,23 @@ Cell["wew", "Text",
   3.771102348771636*^9}},ExpressionUUID->"1e314e11-051b-4643-8db0-\
 01d456f6b7b3"],
 
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"ExtractFeatures", "[", "city_", "]"}], ":=", 
+   RowBox[{"ExtractCityStatsFeatures", "[", "city_", "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
-     RowBox[{"{", "}"}], ","}], " ", "\n", "\t", "\n", "]"}]}], ";"}]], "Code",\
-
+     RowBox[{"{", "}"}], ","}], " ", "\n", "\t", "\n", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ExtractCountryStatsFeatures", "[", "city_", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ExtractMapFeatures", "[", "city_", "]"}], ";"}]}], "Code",
  CellChangeTimes->{{3.771101273954318*^9, 3.7711014398267927`*^9}, {
   3.771101487741495*^9, 3.7711017038951178`*^9}, {3.771101737640126*^9, 
-  3.771101738955223*^9}, {3.771102348054689*^9, 3.771102377179801*^9}},
- CellLabel->"In[7]:=",ExpressionUUID->"ce916f56-0286-4291-9303-f08a2c807b22"]
+  3.771101738955223*^9}, {3.771102348054689*^9, 3.771102377179801*^9}, {
+  3.771151297276696*^9, 
+  3.7711513406172113`*^9}},ExpressionUUID->"ce916f56-0286-4291-9303-\
+f08a2c807b22"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -929,8 +2534,8 @@ a409c7f2831f"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1103, 878},
-WindowMargins->{{52, Automatic}, {Automatic, 4}},
+WindowSize->{1304, 878},
+WindowMargins->{{52, Automatic}, {Automatic, 0}},
 FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
@@ -954,31 +2559,35 @@ Cell[974, 34, 538, 8, 81, "Text",ExpressionUUID->"c6307c66-135d-4af1-918e-b52e22
 Cell[CellGroupData[{
 Cell[1549, 47, 254, 4, 56, "Chapter",ExpressionUUID->"ac13fabb-576a-4a4b-8847-2bb61f653aef"],
 Cell[1806, 53, 472, 8, 58, "Text",ExpressionUUID->"d7112578-2f96-4683-9976-1d246abd738b"],
-Cell[2281, 63, 2626, 62, 243, "Code",ExpressionUUID->"20961709-7c7a-45d4-a981-9ac2574c6877"]
+Cell[2281, 63, 2746, 64, 243, "Code",ExpressionUUID->"20961709-7c7a-45d4-a981-9ac2574c6877"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4944, 130, 270, 5, 56, "Chapter",ExpressionUUID->"684ffadd-38af-4be8-83bf-99937c2f50b6"],
-Cell[5217, 137, 293, 5, 35, "Text",ExpressionUUID->"2c0225ee-0b7c-4924-8b64-a72ab5040bfe"],
-Cell[5513, 144, 2192, 49, 139, "Code",ExpressionUUID->"acdb5163-89af-4011-8610-a985ea22ddfc"],
-Cell[7708, 195, 814, 14, 52, "Code",ExpressionUUID->"ac9cfed5-f409-4c3b-becd-c72835a8d983"],
-Cell[8525, 211, 1826, 44, 148, "Code",ExpressionUUID->"f23191de-01c1-4058-a510-c564fb3a536a"],
-Cell[10354, 257, 11330, 264, 206, "Code",ExpressionUUID->"a778518b-faf2-4f83-8bda-681e8f43dcd8"],
-Cell[21687, 523, 11717, 270, 319, "Code",ExpressionUUID->"09dab040-4674-4eed-af0e-a3547207de16"],
-Cell[33407, 795, 2623, 61, 319, "Code",ExpressionUUID->"4c25a172-1f5e-4ece-a2a0-a28dcc91de33"],
-Cell[36033, 858, 327, 7, 52, "Code",ExpressionUUID->"69f3f931-547e-44ed-abca-6971192283c7"]
+Cell[5064, 132, 270, 5, 56, "Chapter",ExpressionUUID->"684ffadd-38af-4be8-83bf-99937c2f50b6"],
+Cell[5337, 139, 293, 5, 35, "Text",ExpressionUUID->"2c0225ee-0b7c-4924-8b64-a72ab5040bfe"],
+Cell[5633, 146, 2210, 48, 139, "Code",ExpressionUUID->"acdb5163-89af-4011-8610-a985ea22ddfc"],
+Cell[7846, 196, 813, 14, 52, "Code",ExpressionUUID->"ac9cfed5-f409-4c3b-becd-c72835a8d983"],
+Cell[8662, 212, 19251, 440, 306, "Code",ExpressionUUID->"b7751103-9ec1-4927-af5b-15ab1fcb72e2"],
+Cell[27916, 654, 2839, 67, 319, "Code",ExpressionUUID->"4c25a172-1f5e-4ece-a2a0-a28dcc91de33"],
+Cell[30758, 723, 2286, 44, 205, "Code",ExpressionUUID->"69f3f931-547e-44ed-abca-6971192283c7"],
+Cell[33047, 769, 998, 17, 52, "Code",ExpressionUUID->"9711ea33-e3be-413f-9175-1b6147cbd792"],
+Cell[34048, 788, 1102, 19, 52, "Code",ExpressionUUID->"1ba0fedf-ebcf-47e3-8705-8f2f4c11ea50"],
+Cell[CellGroupData[{
+Cell[35175, 811, 1086, 19, 52, "Code",ExpressionUUID->"77c9c21f-8499-4330-890a-4069ecdd91a0"],
+Cell[36264, 832, 69671, 1632, 765, "Output",ExpressionUUID->"346006f9-56ef-4607-ab81-22d94b6d9c16"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36397, 870, 266, 5, 56, "Chapter",ExpressionUUID->"8a65fa07-75ab-4cd8-9e92-75fdfaaad169"],
-Cell[36666, 877, 293, 5, 35, "Text",ExpressionUUID->"1e314e11-051b-4643-8db0-01d456f6b7b3"],
-Cell[36962, 884, 506, 11, 91, "Code",ExpressionUUID->"ce916f56-0286-4291-9303-f08a2c807b22"]
+Cell[105984, 2470, 266, 5, 56, "Chapter",ExpressionUUID->"8a65fa07-75ab-4cd8-9e92-75fdfaaad169"],
+Cell[106253, 2477, 293, 5, 35, "Text",ExpressionUUID->"1e314e11-051b-4643-8db0-01d456f6b7b3"],
+Cell[106549, 2484, 711, 16, 129, "Code",ExpressionUUID->"ce916f56-0286-4291-9303-f08a2c807b22"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[37505, 900, 299, 5, 56, "Chapter",ExpressionUUID->"6c1bcee3-7d57-470c-83c9-d43fb7fc74bf"],
-Cell[37807, 907, 244, 4, 35, "Text",ExpressionUUID->"3283bbee-62a9-4fc6-b5fd-8bd09809fc32"]
+Cell[107297, 2505, 299, 5, 56, "Chapter",ExpressionUUID->"6c1bcee3-7d57-470c-83c9-d43fb7fc74bf"],
+Cell[107599, 2512, 244, 4, 35, "Text",ExpressionUUID->"3283bbee-62a9-4fc6-b5fd-8bd09809fc32"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[38088, 916, 320, 5, 56, "Chapter",ExpressionUUID->"ab3308a3-abcb-4b85-978f-770e36f58aa0"],
-Cell[38411, 923, 247, 4, 35, "Text",ExpressionUUID->"5e201699-c7fa-4448-9db3-a409c7f2831f"]
+Cell[107880, 2521, 320, 5, 56, "Chapter",ExpressionUUID->"ab3308a3-abcb-4b85-978f-770e36f58aa0"],
+Cell[108203, 2528, 247, 4, 35, "Text",ExpressionUUID->"5e201699-c7fa-4448-9db3-a409c7f2831f"]
 }, Open  ]]
 }, Open  ]]
 }

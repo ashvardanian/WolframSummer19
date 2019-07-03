@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9309,        232]
-NotebookOptionsPosition[      8511,        212]
-NotebookOutlinePosition[      8851,        227]
-CellTagsIndexPosition[      8808,        224]
+NotebookDataLength[     12562,        310]
+NotebookOptionsPosition[     11667,        289]
+NotebookOutlinePosition[     12007,        304]
+CellTagsIndexPosition[     11964,        301]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -139,8 +139,85 @@ Project/Drafts/WordsNegative.txt\>\"", "]"}], "]"}]}], ";",
       RowBox[{"{", " ", 
        RowBox[{"resultPositivness", ",", " ", "resultCertainity"}], " ", 
        "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
- CellChangeTimes->{{3.770978802431697*^9, 3.770978805842566*^9}},
- CellLabel->"In[88]:=",ExpressionUUID->"024176b9-d8a2-41aa-8e56-71801267c386"],
+ CellChangeTimes->{{3.770978802431697*^9, 3.770978805842566*^9}, {
+  3.771165544981613*^9, 
+  3.771165545954401*^9}},ExpressionUUID->"024176b9-d8a2-41aa-8e56-\
+71801267c386"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ParseFile", "[", "filename_String", "]"}], ":=", 
+   RowBox[{"StringDelete", "[", 
+    RowBox[{
+     RowBox[{"ToLowerCase", "[", 
+      RowBox[{"ReadString", "[", "filename", "]"}], "]"}], ",", " ", 
+     "PunctuationCharacter"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SentimentFromEmbeddings", "[", "sentence_String", "]"}], " ", ":=",
+    " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "cntGood", ",", " ", "cntBad", ",", " ", "wordsInput", ",", " ", 
+       "cntAll", ",", " ", "resultPositivness", ",", " ", 
+       "resultCertainity"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"wordsGood", " ", "=", " ", 
+       RowBox[{
+       "ParseFile", "[", 
+        "\"\</Users/ashvardanian/CodeMine/WolframSummer19/Final \
+Project/Drafts/WordsPositive.txt\>\"", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"wordsBad", " ", "=", " ", 
+       RowBox[{
+       "ParseFile", "[", 
+        "\"\</Users/ashvardanian/CodeMine/WolframSummer19/Final \
+Project/Drafts/WordsNegative.txt\>\"", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"embedding", "=", 
+       RowBox[{
+       "NetModel", "[", 
+        "\"\<GloVe 100-Dimensional Word Vectors Trained on Tweets\>\"", 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Map", "[", 
+       RowBox[{"embedding", ",", " ", "wordsGood"}], "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"wordsInput", " ", "=", " ", 
+       RowBox[{"StringSplit", "[", "sentence", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cntAll", " ", "=", " ", 
+       RowBox[{"Length", "[", "wordsInput", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cntGood", " ", "=", " ", 
+       RowBox[{"Length", "[", 
+        RowBox[{"Intersection", "[", 
+         RowBox[{"wordsGood", ",", " ", "wordsInput"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cntBad", " ", "=", " ", 
+       RowBox[{"Length", "[", 
+        RowBox[{"Intersection", "[", 
+         RowBox[{"wordsBad", ",", " ", "wordsInput"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"resultCertainity", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"cntGood", " ", "+", " ", "cntBad"}], ")"}], " ", "/", " ", 
+        "cntAll"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"resultPositivness", " ", "=", " ", 
+       RowBox[{"0.5", " ", "-", " ", 
+        RowBox[{"(", 
+         RowBox[{"cntBad", " ", "/", " ", "cntAll"}], ")"}], " ", "+", " ", 
+        RowBox[{"(", 
+         RowBox[{"cntGood", " ", "/", " ", "cntAll"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", " ", 
+       RowBox[{"resultPositivness", ",", " ", "resultCertainity"}], " ", 
+       "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.770978802431697*^9, 3.770978805842566*^9}, {
+  3.771165544981613*^9, 3.771165546904336*^9}, {3.771165591925145*^9, 
+  3.771165618299053*^9}},ExpressionUUID->"ec5cda91-b87f-4d19-b34b-\
+f096a8f10cb6"],
 
 Cell[BoxData[
  RowBox[{
@@ -228,11 +305,12 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 970, 17, 220, "Input",ExpressionUUID->"ce15abe3-d2ff-4119-b905-c0cb2301cd90"],
 Cell[1531, 39, 1885, 42, 199, "Input",ExpressionUUID->"da70538a-56b2-4d78-b8ac-1dc3329f945a"],
-Cell[3419, 83, 2509, 59, 241, "Input",ExpressionUUID->"024176b9-d8a2-41aa-8e56-71801267c386"],
-Cell[5931, 144, 635, 16, 30, "Input",ExpressionUUID->"5da9f12f-8a08-4077-a20a-759c3185e238"],
+Cell[3419, 83, 2539, 61, 241, "Input",ExpressionUUID->"024176b9-d8a2-41aa-8e56-71801267c386"],
+Cell[5961, 146, 3123, 73, 325, "Input",ExpressionUUID->"ec5cda91-b87f-4d19-b34b-f096a8f10cb6"],
+Cell[9087, 221, 635, 16, 30, "Input",ExpressionUUID->"5da9f12f-8a08-4077-a20a-759c3185e238"],
 Cell[CellGroupData[{
-Cell[6591, 164, 337, 5, 30, "Input",ExpressionUUID->"8c5c03c0-86b6-4003-8cd1-22ce0b466be3"],
-Cell[6931, 171, 1564, 38, 77, "Output",ExpressionUUID->"f5a84880-9ca0-43ba-89fa-6a375f16f920"]
+Cell[9747, 241, 337, 5, 30, "Input",ExpressionUUID->"8c5c03c0-86b6-4003-8cd1-22ce0b466be3"],
+Cell[10087, 248, 1564, 38, 77, "Output",ExpressionUUID->"f5a84880-9ca0-43ba-89fa-6a375f16f920"]
 }, Open  ]]
 }
 ]
