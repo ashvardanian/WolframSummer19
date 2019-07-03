@@ -1,0 +1,214 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8639,        206]
+NotebookOptionsPosition[      7846,        186]
+NotebookOutlinePosition[      8184,        201]
+CellTagsIndexPosition[      8141,        198]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sentences", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "\"\<Hey! I am great! How are you?\>\"", ",", "\[IndentingNewLine]", 
+     "\"\<Hey? I am great: How are you>\>\"", ",", "\[IndentingNewLine]", 
+     "\"\<Hey! I am bad! How are you?\>\"", ",", "\[IndentingNewLine]", 
+     "\"\<Hey! I am exhausted. How are you?\>\"", ",", "\[IndentingNewLine]", 
+     "\"\<Hello! I am exhausted. How are you?\>\"", ",", 
+     "\[IndentingNewLine]", "\"\<I am exhausted. How are you?\>\"", ",", 
+     "\[IndentingNewLine]", "\"\<I am exhausted. What about you?\>\"", ",", 
+     "\[IndentingNewLine]", 
+     "\"\<Good morning! I am feeling so bad! What about you?\>\""}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.770974576680211*^9, 3.77097464398595*^9}, {
+  3.770974724354382*^9, 3.770974787362804*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"ce15abe3-d2ff-4119-b905-c0cb2301cd90"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SentimentWithWL", "[", "sentence_String", "]"}], " ", ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "probs", ",", " ", "pPos", ",", " ", "pNeu", ",", " ", "pNeg", ",", " ",
+        "resultPositivness", ",", " ", "resultCertainity"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"probs", " ", "=", " ", 
+       RowBox[{"Classify", "[", 
+        RowBox[{
+        "\"\<Sentiment\>\"", ",", "sentence", ",", " ", 
+         "\"\<Probabilities\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"pPos", " ", "=", " ", 
+       RowBox[{"Lookup", "[", 
+        RowBox[{"probs", ",", " ", "\"\<Positive\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"pNeu", " ", "=", " ", 
+       RowBox[{"Lookup", "[", 
+        RowBox[{"probs", ",", " ", "\"\<Neutral\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"pNeg", " ", "=", " ", 
+       RowBox[{"Lookup", "[", 
+        RowBox[{"probs", ",", " ", "\"\<Negative\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"resultPositivness", " ", "=", " ", 
+       RowBox[{"(", 
+        RowBox[{"pPos", " ", "+", " ", 
+         RowBox[{"pNeu", " ", "*", " ", "0.5"}]}], ")"}]}], ";"}]}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.770974654210484*^9, 3.770974683448842*^9}, {
+  3.770976078411172*^9, 3.770976085181056*^9}, {3.7709784074502907`*^9, 
+  3.770978461595831*^9}, {3.770978554562128*^9, 
+  3.770978704145863*^9}},ExpressionUUID->"da70538a-56b2-4d78-b8ac-\
+1dc3329f945a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ClassifyWFunc", "[", 
+    RowBox[{"func_", ",", " ", "sentence_List"}], "]"}], " ", ":=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"{", 
+        RowBox[{"#", ",", " ", 
+         RowBox[{"func", "[", "#", "]"}]}], "}"}], ")"}], " ", "&"}], ",", 
+     " ", "sentence"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.770974654210484*^9, 3.770974683448842*^9}, {
+  3.770976078411172*^9, 3.770976108665442*^9}, {3.770976151199245*^9, 
+  3.770976235994649*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"5da9f12f-8a08-4077-a20a-759c3185e238"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ClassifyWFunc", "[", 
+  RowBox[{"ClassifyWL", ",", " ", "sentences"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7709746906668*^9, 3.770974703720701*^9}, 
+   3.77097620899747*^9},
+ CellLabel->"In[59]:=",ExpressionUUID->"8c5c03c0-86b6-4003-8cd1-22ce0b466be3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"Hey! I am great! How are you?\"\>", ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Positive\"\>", "\[Rule]", "0.9974982518839878`"}], ",", 
+       RowBox[{"\<\"Neutral\"\>", "\[Rule]", "0.0006790735117366273`"}], ",", 
+       
+       RowBox[{"\<\"Negative\"\>", "\[Rule]", "0.0018226746042754598`"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Hey? I am great: How are you>\"\>", ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Positive\"\>", "\[Rule]", "0.8909879568207661`"}], ",", 
+       RowBox[{"\<\"Neutral\"\>", "\[Rule]", "0.04821985196278006`"}], ",", 
+       RowBox[{"\<\"Negative\"\>", "\[Rule]", "0.0607921912164536`"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Hey! I am bad! How are you?\"\>", ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Positive\"\>", "\[Rule]", "0.9646423519639616`"}], ",", 
+       RowBox[{"\<\"Neutral\"\>", "\[Rule]", "0.0035858472502446914`"}], ",", 
+       
+       RowBox[{"\<\"Negative\"\>", "\[Rule]", "0.031771800785793725`"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Hey! I am exhausted. How are you?\"\>", ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Positive\"\>", "\[Rule]", "0.8890199855296501`"}], ",", 
+       RowBox[{"\<\"Neutral\"\>", "\[Rule]", "0.08556629318012009`"}], ",", 
+       RowBox[{"\<\"Negative\"\>", "\[Rule]", "0.025413721290229868`"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Hello! I am exhausted. How are you?\"\>", ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Positive\"\>", "\[Rule]", "0.8691515479480979`"}], ",", 
+       RowBox[{"\<\"Neutral\"\>", "\[Rule]", "0.11535713152674633`"}], ",", 
+       RowBox[{"\<\"Negative\"\>", "\[Rule]", "0.015491320525155908`"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"I am exhausted. How are you?\"\>", ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Positive\"\>", "\[Rule]", "0.2615416567108569`"}], ",", 
+       RowBox[{"\<\"Neutral\"\>", "\[Rule]", "0.5684892423572834`"}], ",", 
+       RowBox[{"\<\"Negative\"\>", "\[Rule]", "0.1699691009318597`"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"I am exhausted. What about you?\"\>", ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Positive\"\>", "\[Rule]", "0.2615416567108569`"}], ",", 
+       RowBox[{"\<\"Neutral\"\>", "\[Rule]", "0.5684892423572834`"}], ",", 
+       RowBox[{"\<\"Negative\"\>", "\[Rule]", "0.1699691009318597`"}]}], 
+      "\[RightAssociation]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Good morning! I am feeling so bad! What about you?\"\>", ",", 
+     RowBox[{"\[LeftAssociation]", 
+      RowBox[{
+       RowBox[{"\<\"Positive\"\>", "\[Rule]", "0.9891936515491908`"}], ",", 
+       RowBox[{"\<\"Neutral\"\>", "\[Rule]", "0.0009214868298725453`"}], ",", 
+       
+       RowBox[{"\<\"Negative\"\>", "\[Rule]", "0.009884861620936753`"}]}], 
+      "\[RightAssociation]"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.770974732015503*^9, 3.7709747528798656`*^9}, 
+   3.770974790598321*^9, {3.7709762100160427`*^9, 3.7709762386280746`*^9}},
+ CellLabel->"Out[59]=",ExpressionUUID->"99634a21-bacd-4bb1-a220-507c393b71ab"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7709762736790047`*^9, 
+  3.770976274862804*^9}},ExpressionUUID->"88211409-cc4d-43c2-a1a2-\
+6477dc36e004"]
+},
+WindowSize->{1278, 832},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 970, 17, 220, "Input",ExpressionUUID->"ce15abe3-d2ff-4119-b905-c0cb2301cd90"],
+Cell[1531, 39, 1644, 38, 178, "Input",ExpressionUUID->"da70538a-56b2-4d78-b8ac-1dc3329f945a"],
+Cell[3178, 79, 635, 16, 30, "Input",ExpressionUUID->"5da9f12f-8a08-4077-a20a-759c3185e238"],
+Cell[CellGroupData[{
+Cell[3838, 99, 279, 5, 30, "Input",ExpressionUUID->"8c5c03c0-86b6-4003-8cd1-22ce0b466be3"],
+Cell[4120, 106, 3553, 72, 198, "Output",ExpressionUUID->"99634a21-bacd-4bb1-a220-507c393b71ab"]
+}, Open  ]],
+Cell[7688, 181, 154, 3, 30, "Input",ExpressionUUID->"88211409-cc4d-43c2-a1a2-6477dc36e004"]
+}
+]
+*)
+

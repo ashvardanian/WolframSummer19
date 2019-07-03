@@ -1,0 +1,136 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4830,        128]
+NotebookOptionsPosition[      4226,        110]
+NotebookOutlinePosition[      4567,        125]
+CellTagsIndexPosition[      4524,        122]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "inputQuery", " ", "=", " ", 
+   "\"\<I have had an excellent beautiful sunny day! What about your own \
+problems?\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.7709775314127493`*^9, 3.7709775650628633`*^9}, {
+  3.7709776252073383`*^9, 3.77097763525438*^9}, {3.77097831240653*^9, 
+  3.770978312849874*^9}},
+ CellLabel->"In[82]:=",ExpressionUUID->"7edb576b-04a8-456d-9901-71e048e4fce3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SentimentFromWordLists", "[", "sentence_String", "]"}], " ", ":=",
+    " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "cntGood", ",", " ", "cntBad", ",", " ", "wordsInput", ",", " ", 
+       "cntAll", ",", " ", "resultPositivness", ",", " ", 
+       "resultCertainity"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"wordsGood", " ", "=", " ", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{
+        "ReadString", "[", 
+         "\"\</Users/ashvardanian/CodeMine/WolframSummer19/Final \
+Project/Drafts/WordsPositive.txt\>\"", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"wordsBad", " ", "=", " ", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{
+        "ReadString", "[", 
+         "\"\</Users/ashvardanian/CodeMine/WolframSummer19/Final \
+Project/Drafts/WordsNegative.txt\>\"", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"wordsInput", " ", "=", " ", 
+       RowBox[{"StringSplit", "[", "sentence", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cntAll", " ", "=", " ", 
+       RowBox[{"Length", "[", "wordsInput", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cntGood", " ", "=", " ", 
+       RowBox[{"Length", "[", 
+        RowBox[{"Intersection", "[", 
+         RowBox[{"wordsGood", ",", " ", "wordsInput"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cntBad", " ", "=", " ", 
+       RowBox[{"Length", "[", 
+        RowBox[{"Intersection", "[", 
+         RowBox[{"wordsBad", ",", " ", "wordsInput"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"resultCertainity", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"cntGood", " ", "+", " ", "cntBad"}], ")"}], " ", "/", " ", 
+        "cntAll"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"resultPositivness", " ", "=", " ", 
+       RowBox[{"0.5", " ", "-", " ", 
+        RowBox[{"(", 
+         RowBox[{"cntBad", " ", "/", " ", "cntAll"}], ")"}], " ", "+", " ", 
+        RowBox[{"(", 
+         RowBox[{"cntGood", " ", "/", " ", "cntAll"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", " ", 
+       RowBox[{"resultPositivness", ",", " ", "resultCertainity"}], " ", 
+       "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.770977569830496*^9, 3.770977587837903*^9}, {
+  3.770977819702421*^9, 3.7709780172294407`*^9}, {3.770978075517954*^9, 
+  3.770978077822019*^9}, {3.770978112253109*^9, 3.7709781522623043`*^9}, {
+  3.7709782174565496`*^9, 3.770978292683538*^9}},
+ CellLabel->"In[79]:=",ExpressionUUID->"9fcc2479-96c6-4ef2-ab04-331a3d47db7f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SentimentFromWordLists", "[", "inputQuery", "]"}]], "Input",
+ CellChangeTimes->{{3.770978236777362*^9, 3.770978274177766*^9}},
+ CellLabel->"In[83]:=",ExpressionUUID->"2c33ce70-3c9c-4343-a224-7971ff70fdf1"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.6538461538461539`", ",", 
+   FractionBox["2", "13"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.7709782751874104`*^9, 3.770978319920321*^9}},
+ CellLabel->"Out[83]=",ExpressionUUID->"48b71042-5863-4184-8ec2-aa6eb3800223"]
+}, Open  ]]
+},
+WindowSize->{1371, 832},
+WindowMargins->{{Automatic, -162}, {-93, Automatic}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 423, 9, 30, "Input",ExpressionUUID->"7edb576b-04a8-456d-9901-71e048e4fce3"],
+Cell[984, 31, 2708, 62, 241, "Input",ExpressionUUID->"9fcc2479-96c6-4ef2-ab04-331a3d47db7f"],
+Cell[CellGroupData[{
+Cell[3717, 97, 229, 3, 30, "Input",ExpressionUUID->"2c33ce70-3c9c-4343-a224-7971ff70fdf1"],
+Cell[3949, 102, 261, 5, 85, "Output",ExpressionUUID->"48b71042-5863-4184-8ec2-aa6eb3800223"]
+}, Open  ]]
+}
+]
+*)
+
