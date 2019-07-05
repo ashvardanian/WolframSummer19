@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     46923,       1104]
-NotebookOptionsPosition[     46197,       1085]
-NotebookOutlinePosition[     46535,       1100]
-CellTagsIndexPosition[     46492,       1097]
+NotebookDataLength[     48994,       1154]
+NotebookOptionsPosition[     48171,       1134]
+NotebookOutlinePosition[     48510,       1149]
+CellTagsIndexPosition[     48467,       1146]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1077,14 +1077,63 @@ Cell[BoxData[
    "Default" -> 
     FrontEnd`FileName[{"Typeset", "PrintTemporary"}, "LightBlue.9.png"]},
   FrameMargins->{{12, 12}, {8, 12}}]], "PrintTemporary",
- CellChangeTimes->{3.771165114455113*^9},
- CellLabel->
-  "During evaluation of \
-In[1]:=",ExpressionUUID->"66809453-c6a7-4840-9ac2-851b710e04c2"]
-}, Open  ]]
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.771165114455113*^9, {3.771323918030369*^9, 
+   3.771323919504492*^9}},ExpressionUUID->"66809453-c6a7-4840-9ac2-\
+851b710e04c2"]
+}, Open  ]],
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{
+   RowBox[{"citiesRankedUS", " ", "=", " ", 
+    RowBox[{"Drop", "[", 
+     RowBox[{
+      RowBox[{
+      "Import", "[", 
+       "\"\</Users/ashvardanian/CodeMine/WolframSummer19/Final \
+Project/Drafts/Inputs/CitiesMercer2019.csv\>\"", "]"}], ",", " ", "1"}], 
+     "]"}]}], ";"}], "Code"], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CityRowParse", "[", "cityRow_List", "]"}], " ", ":=", " ", 
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Interpreter", "[", "\"\<City\>\"", "]"}], "[", 
+      RowBox[{"StringJoin", "[", 
+       RowBox[{
+        RowBox[{
+        "cityRow", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+        ",", " ", "\"\<, \>\"", ",", " ", 
+        RowBox[{
+        "cityRow", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}], 
+       "]"}], "]"}], ",", " ", 
+     RowBox[{
+     "cityRow", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], " ",
+     "}"}]}], ";"}], "\n", 
+ RowBox[{"Map", "[", 
+  RowBox[{"CityRowParse", ",", " ", "citiesRankedUS"}], "]"}]}], "Code",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.771165114455113*^9, {3.771323918030369*^9, 3.771323919504492*^9}, {
+   3.771324009849373*^9, 3.771324021960926*^9}, {3.771324088442198*^9, 
+   3.771324106484481*^9}, {3.7713241495296307`*^9, 3.771324280664925*^9}, 
+   3.771324327810679*^9, {3.7713243834754467`*^9, 3.771324395274242*^9}, {
+   3.771324430986862*^9, 3.7713244361777563`*^9}, 3.7713244817538443`*^9, {
+   3.771324524993273*^9, 3.771324561656579*^9}, {3.771325151335053*^9, 
+   3.7713251597547626`*^9}, {3.771325217057048*^9, 3.771325286196629*^9}, {
+   3.7713253356015997`*^9, 3.771325358080909*^9}, {3.771325499817443*^9, 
+   3.771325559968729*^9}, {3.7713259079383917`*^9, 3.771325908268847*^9}, {
+   3.77132632370648*^9, 
+   3.771326330686508*^9}},ExpressionUUID->"eaea18b1-b81c-46ea-839f-\
+32816f7d5bc6"]
 },
 WindowSize->{1344, 729},
-WindowMargins->{{20, Automatic}, {Automatic, 44}},
+WindowMargins->{{Automatic, 156}, {Automatic, 90}},
 FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
@@ -1104,8 +1153,9 @@ Cell[19489, 455, 11843, 271, 266, "Input",ExpressionUUID->"9d2f3913-dfeb-489d-83
 Cell[31335, 728, 11300, 262, 246, "Input",ExpressionUUID->"b4b47fee-fe4a-49af-b6cc-90ddaa2141b3"],
 Cell[CellGroupData[{
 Cell[42660, 994, 2793, 66, 209, "Input",ExpressionUUID->"afd5ce1a-d0c5-40c0-b6ce-09eb2e43d08f"],
-Cell[45456, 1062, 725, 20, 56, "PrintTemporary",ExpressionUUID->"66809453-c6a7-4840-9ac2-851b710e04c2"]
-}, Open  ]]
+Cell[45456, 1062, 781, 22, 56, "PrintTemporary",ExpressionUUID->"66809453-c6a7-4840-9ac2-851b710e04c2"]
+}, Open  ]],
+Cell[46252, 1087, 1915, 45, 91, "Code",ExpressionUUID->"eaea18b1-b81c-46ea-839f-32816f7d5bc6"]
 }
 ]
 *)
