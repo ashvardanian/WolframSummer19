@@ -1,0 +1,451 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19202,        443]
+NotebookOptionsPosition[     18028,        419]
+NotebookOutlinePosition[     18367,        434]
+CellTagsIndexPosition[     18324,        431]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", "\"\</Users/ashvardanian/CodeMine/WolframSummer19\>\"",
+    "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"constantShareTraining", " ", "=", " ", "0.9"}], ";"}]}], "Code",
+ CellChangeTimes->{{3.7717043825424337`*^9, 3.7717043881061068`*^9}, {
+   3.771704460120316*^9, 3.771704465240242*^9}, {3.771704964684354*^9, 
+   3.771704983172789*^9}, 3.771705981424868*^9, {3.771706144998393*^9, 
+   3.771706147157942*^9}, {3.7717078388561373`*^9, 
+   3.771707841357524*^9}},ExpressionUUID->"5406cba9-a360-4a1d-8403-\
+725f6e74802a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cnnFull", " ", "=", " ", 
+   RowBox[{
+   "NetModel", "[", "\"\<ResNet-101 Trained on YFCC100m Geotagged Data\>\"", 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.7717043825424337`*^9, 3.7717043881061068`*^9}, 
+   3.771704460120316*^9, {3.771707971124288*^9, 3.771707971354678*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"3ab59a2d-9719-4539-8239-fd462ba770ef"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"citiesWHappiness", " ", "=", " ", 
+   RowBox[{
+   "Import", "[", "\"\<Data/Inputs/CitiesWPositivness.mx\>\"", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"citiesPopular", " ", "=", " ", 
+   RowBox[{"Keys", "[", "citiesWHappiness", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"citiesPositivness", " ", "=", " ", 
+   RowBox[{"Values", "[", "citiesWHappiness", "]"}]}], ";"}]}], "Code",
+ CellChangeTimes->{{3.77170440044378*^9, 3.771704473628944*^9}, {
+  3.771704930005945*^9, 3.7717049388587418`*^9}, {3.771705000091448*^9, 
+  3.771705073670135*^9}, {3.7717061069283447`*^9, 3.771706112696816*^9}, {
+  3.7717063806456413`*^9, 3.77170638135746*^9}, {3.7717075544066477`*^9, 
+  3.771707555710414*^9}, {3.7717076134374113`*^9, 
+  3.771707652199746*^9}},ExpressionUUID->"7860a6f2-6908-4790-a882-\
+21e09a1fdc96"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"AssociationsFromPair", "[", 
+    RowBox[{"keys_List", ",", " ", "vals_List"}], "]"}], " ", ":=", " ", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"#1", " ", "\[Rule]", " ", "#2"}], ")"}], " ", "&"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"keys", ",", " ", "vals"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"BuildDataset", "[", 
+    RowBox[{"city_", ",", " ", "rating_Real", ",", " ", "imgs_"}], "]"}], " ",
+    ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "ratings", "}"}], ",", "\n", "\t", 
+     RowBox[{
+      RowBox[{"ratings", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{"rating", ",", " ", 
+         RowBox[{"Length", "[", "imgs", "]"}]}], "]"}]}], ";", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Same", " ", "for", " ", "all", " ", "images", " ", "within", " ", 
+        "city"}], "*)"}], "\n", "\t", 
+      RowBox[{"AssociationsFromPair", "[", 
+       RowBox[{"imgs", ",", " ", "ratings"}], "]"}]}]}], "\n", "]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.771695084462446*^9, 3.771695092612587*^9}, {
+  3.771695420377442*^9, 3.7716954240693274`*^9}, {3.771695525490217*^9, 
+  3.7716955427053223`*^9}, {3.77169557475178*^9, 3.771695608141577*^9}, {
+  3.7717013125325403`*^9, 3.771701315713105*^9}, {3.7717013958100977`*^9, 
+  3.771701472688505*^9}, {3.771706131262759*^9, 3.771706139028161*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"1c22dbf6-7123-4f6f-9f8c-bfd546d47265"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ImportSatellites", "[", "city_", "]"}], " ", ":=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"StringJoin", "[", 
+     RowBox[{"\"\<Data/Satellites/\>\"", ",", " ", 
+      RowBox[{"EntityValue", "[", 
+       RowBox[{"city", ",", " ", "\"\<Name\>\""}], "]"}], ",", " ", 
+      "\"\<.mx\>\""}], "]"}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.7717051397805223`*^9, 3.7717052104086027`*^9}, {
+  3.7717060061947603`*^9, 3.771706006944724*^9}, {3.771706064011836*^9, 
+  3.771706064463767*^9}, {3.771706373893092*^9, 3.771706374023625*^9}, {
+  3.771706554056126*^9, 3.771706555907933*^9}, {3.771707848744543*^9, 
+  3.771707849522214*^9}, {3.7717078866708803`*^9, 3.7717078872617598`*^9}},
+ CellLabel->"In[41]:=",ExpressionUUID->"8d279da0-6e32-4c6b-b581-c0f03fa93607"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"datasetSatellites", " ", "=", " ", 
+   RowBox[{"RandomSample", "[", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"MapThread", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"BuildDataset", "[", 
+         RowBox[{"#1", ",", " ", "#2", ",", " ", 
+          RowBox[{"ImportSatellites", "[", "#1", "]"}]}], "]"}], " ", "&"}], 
+       ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"citiesPopular", ",", " ", "citiesPositivness"}], "}"}]}], 
+      "]"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"datasetTrain", " ", "=", " ", 
+   RowBox[{"Take", "[", 
+    RowBox[{"datasetSatellites", ",", " ", 
+     RowBox[{"constantShareTraining", " ", "*", " ", 
+      RowBox[{"Length", "[", "datasetSatellites", "]"}]}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"datasetValidate", " ", "=", " ", 
+   RowBox[{"Drop", "[", 
+    RowBox[{"datasetSatellites", ",", " ", 
+     RowBox[{"constantShareTraining", " ", "*", " ", 
+      RowBox[{"Length", "[", "datasetSatellites", "]"}]}]}], "]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.77170440044378*^9, 3.771704473628944*^9}, {
+   3.771704930005945*^9, 3.7717049388587418`*^9}, {3.771705000091448*^9, 
+   3.771705073670135*^9}, 3.77170616931196*^9},
+ CellLabel->"In[27]:=",ExpressionUUID->"b46e78ca-5899-4836-ae7c-b01c1fb73fd2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"modelGeoCNN", " ", "=", " ", 
+   RowBox[{"NetFlatten", "[", 
+    RowBox[{
+     RowBox[{"NetChain", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"NetTake", "[", 
+         RowBox[{"cnnFull", ",", " ", "\"\<pool1\>\""}], "]"}], ",", " ", 
+        RowBox[{"LinearLayer", "[", 
+         RowBox[{"{", "}"}], "]"}], ",", " ", "LogisticSigmoid"}], "}"}], 
+      "]"}], ",", " ", "1"}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.771702051691362*^9, 3.771702057357749*^9}, {
+   3.7717020944380827`*^9, 3.771702100249503*^9}, {3.77170219270057*^9, 
+   3.7717022120480337`*^9}, 3.771703475495027*^9, {3.771703646880005*^9, 
+   3.771703704613678*^9}, {3.771703777811902*^9, 3.771703807402351*^9}, 
+   3.7717038433808413`*^9, {3.771703926567396*^9, 3.7717039384147387`*^9}, {
+   3.7717041901368637`*^9, 3.771704193396693*^9}, {3.771706262258758*^9, 
+   3.771706312958228*^9}, {3.771707674327112*^9, 3.771707753936625*^9}, {
+   3.771707855293914*^9, 3.771707857108738*^9}, {3.771707975571192*^9, 
+   3.7717079770714912`*^9}, {3.771708007563373*^9, 3.771708015212887*^9}, {
+   3.77170804805585*^9, 3.771708080526829*^9}, {3.771708135264983*^9, 
+   3.771708147164008*^9}},ExpressionUUID->"8def6631-98af-4b1e-917a-\
+dbb7753bccaa"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NetTrain", "[", 
+  RowBox[{"modelGeoCNN", ",", " ", "\n", "\t", 
+   RowBox[{"Association", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\"\<Input\>\"", "\[Rule]", 
+       RowBox[{"Keys", "[", "datasetTrain", "]"}]}], ",", 
+      RowBox[{"\"\<Output\>\"", "\[Rule]", 
+       RowBox[{"Values", "[", "datasetTrain", "]"}]}]}], "}"}], "]"}], ",", 
+   " ", "\n", "\t", "All", ",", "\n", "\t", 
+   RowBox[{"ValidationSet", "\[Rule]", 
+    RowBox[{"Association", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\"\<Input\>\"", "\[Rule]", 
+        RowBox[{"Keys", "[", "datasetValidate", "]"}]}], ",", 
+       RowBox[{"\"\<Output\>\"", "\[Rule]", 
+        RowBox[{"Values", "[", "datasetValidate", "]"}]}]}], "}"}], "]"}]}]}],
+   "]"}]], "Code",
+ CellChangeTimes->{{3.771702051691362*^9, 3.771702057357749*^9}, {
+   3.7717020944380827`*^9, 3.771702100249503*^9}, {3.77170219270057*^9, 
+   3.7717022120480337`*^9}, 3.771703475495027*^9, {3.771703646880005*^9, 
+   3.771703704613678*^9}, {3.771703777811902*^9, 3.771703807402351*^9}, 
+   3.7717038433808413`*^9, {3.771703926567396*^9, 3.7717039384147387`*^9}, {
+   3.7717041901368637`*^9, 3.771704193396693*^9}, {3.771706262258758*^9, 
+   3.771706312958228*^9}, {3.771707674327112*^9, 3.771707753936625*^9}, {
+   3.771707855293914*^9, 3.771707857108738*^9}, {3.771707975571192*^9, 
+   3.7717079770714912`*^9}, {3.771708007563373*^9, 3.771708015212887*^9}, {
+   3.77170804805585*^9, 3.771708080526829*^9}, {3.771708135264983*^9, 
+   3.771708147164008*^9}},
+ CellLabel->"In[56]:=",ExpressionUUID->"e898ea06-93ef-4dd3-a333-27c578b481ab"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   FrameBox[GridBox[{
+      {
+       ItemBox[
+        FrameBox[
+         StyleBox["\<\"Training Progress\"\>", "SuggestionsBarText",
+          StripOnInput->False,
+          FontSize->12],
+         FrameMargins->{{10, 5}, {-4, 2}},
+         FrameStyle->None,
+         StripOnInput->False],
+        Alignment->{Left, Bottom},
+        Background->GrayLevel[0.96],
+        Frame->{{False, False}, {True, False}},
+        FrameStyle->Opacity[0.1],
+        ItemSize->{Automatic, 1},
+        StripOnInput->False]},
+      {
+       ItemBox[
+        FrameBox[
+         DynamicBox[ToBoxes[
+           Grid[{{
+              Item[
+               ProgressIndicator[
+               NeuralNetworks`Private`NetTrain`$progressFraction], Alignment -> 
+               Center], SpanFromLeft}, {"progress", 
+              NeuralNetworks`Private`NetTrain`row[
+               Round[NeuralNetworks`Private`NetTrain`$progressFraction 100], 
+               "% ", "(round ", NeuralNetworks`Private`NetTrain`$round, 
+               If[
+                Not[NeuralNetworks`Private`NetTrain`$noRoundLimit], {
+                "/", NeuralNetworks`Private`NetTrain`maxTrainingRounds}], 
+               If[
+               NeuralNetworks`Private`NetTrain`$showBatch, {
+                NeuralNetworks`Private`NetTrain`$c, "batch ", 
+                 NeuralNetworks`Private`NetTrain`$batch, "/", 
+                 NeuralNetworks`Private`NetTrain`$batchesPerRound}], ")"]}, {
+             "time", 
+              NeuralNetworks`Private`NetTrain`row[
+               GeneralUtilities`TimeString[
+                Round[NeuralNetworks`Private`NetTrain`$timeElapsed]], 
+               " elapsed", NeuralNetworks`Private`NetTrain`$c, 
+               If[
+                And[
+                NeuralNetworks`Private`NetTrain`$timeElapsed > 1, 
+                 NeuralNetworks`Private`NetTrain`$absoluteBatch > 4], {
+                 GeneralUtilities`TimeString[
+                  Round[NeuralNetworks`Private`NetTrain`$timeRemaining]], 
+                 " left", NeuralNetworks`Private`NetTrain`$c}], 
+               NeuralNetworks`Private`NetTrain`rateForm[
+               NeuralNetworks`Private`NetTrain`$batchRate 
+                NeuralNetworks`Private`NetTrain`$updatesPerBatch 
+                NeuralNetworks`Private`NetTrain`batchSize], " examples/s"]}, {
+             "method", 
+              
+              Row[{"ADAM", " optimizer", ", ", "batch size ", 8, ", ", 
+                "CPU"}]}, {"", 
+              NeuralNetworks`Private`NetTrain`fixedWidthRow[
+               Map[
+               NeuralNetworks`Private`NetTrain`keystyle, {
+                "current", "round", 
+                 If[
+                 NeuralNetworks`Private`NetTrain`$doValidation, "validation", 
+                  Nothing]}]]}, {
+              Tooltip["loss", 
+               Column[{
+                 Row[{"Measurement: ", "loss"}]}]], 
+              NeuralNetworks`Private`NetTrain`fixedWidthRow[{
+                If[True, 
+                 NeuralNetworks`Private`NetTrain`lossForm[
+                  Identity[
+                   Lookup[
+                   NeuralNetworks`Private`NetTrain`$lastReportingObservation, 
+                    "Loss", None]]], 
+                 NeuralNetworks`Private`NetTrain`keystyle["n.a."]], 
+                NeuralNetworks`Private`NetTrain`lossForm[
+                 Identity[
+                  Lookup[
+                  NeuralNetworks`Private`NetTrain`$roundMeasurements, "Loss", 
+                   None]]], 
+                If[NeuralNetworks`Private`NetTrain`$doValidation, 
+                 If[
+                 NeuralNetworks`Private`NetTrain`$computingValidation, 
+                  "computing...", 
+                  NeuralNetworks`Private`NetTrain`lossForm[
+                   Identity[
+                    Lookup[
+                    NeuralNetworks`Private`NetTrain`$validationMeasurements, 
+                    "Loss", None]]]], Nothing]}]}, {
+              Tooltip["error", 
+               Column[{
+                 Row[{"Measurement: ", "ErrorRate"}]}]], 
+              NeuralNetworks`Private`NetTrain`fixedWidthRow[{
+                If[True, 
+                 NeuralNetworks`Private`NetTrain`percentForm[
+                  Identity[
+                   Lookup[
+                   NeuralNetworks`Private`NetTrain`$lastReportingObservation, 
+                    "ErrorRate", None]]], 
+                 NeuralNetworks`Private`NetTrain`keystyle["n.a."]], 
+                NeuralNetworks`Private`NetTrain`percentForm[
+                 Identity[
+                  Lookup[
+                  NeuralNetworks`Private`NetTrain`$roundMeasurements, 
+                   "ErrorRate", None]]], 
+                If[NeuralNetworks`Private`NetTrain`$doValidation, 
+                 If[
+                 NeuralNetworks`Private`NetTrain`$computingValidation, 
+                  "computing...", 
+                  NeuralNetworks`Private`NetTrain`percentForm[
+                   Identity[
+                    Lookup[
+                    NeuralNetworks`Private`NetTrain`$validationMeasurements, 
+                    "ErrorRate", None]]]], Nothing]}]}, {
+              RawBoxes[
+               GridBox[{{
+                  StyleBox[
+                   RowBox[{
+                    
+                    GraphicsBox[{}, Background -> Hue[0.083, 1., 1.], 
+                    ImageSize -> {13, 1}, ImagePadding -> {{0, 0}, {5, 2}}, 
+                    Axes -> None], "  ", "\"training set\"", "\t", 
+                    
+                    GraphicsBox[{}, Background -> Hue[0.59, 0.7, 0.75], 
+                    ImageSize -> {13, 1}, ImagePadding -> {{0, 0}, {5, 2}}, 
+                    Axes -> None], "  ", "\"validation set\""}], FontSize -> 
+                   8, FontFamily -> "Verdana", FontColor -> 
+                   GrayLevel[0.4]]}, {"loss"}, {
+                 NeuralNetworks`Private`NetTrain`$lastLossPlotBoxes}, {
+                  TagBox[
+                   GridBox[{{
+                    ButtonBox[
+                    "\"\"", ButtonFunction :> {}, Evaluator -> None, 
+                    Appearance -> None, Method -> "Preemptive"], 
+                    "\"error rate\"", 
+                    ButtonBox[
+                    "\"\"", ButtonFunction :> {}, Evaluator -> None, 
+                    Appearance -> None, Method -> "Preemptive"]}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {3, 20, 3}, "Rows" -> {2}}], "Grid"]}, {
+                 NeuralNetworks`Private`NetTrain`$lastMetricPlotBoxes}}, 
+                GridBoxSpacings -> {"Columns" -> {{0}}}]], SpanFromLeft}, {
+              NeuralNetworks`Private`staticNiceButton[
+              "Stop", NeuralNetworks`Private`NetTrain`$manualStop = (
+                 NeuralNetworks`Private`NetTrain`$shouldStop = True); 
+               NeuralNetworks`Private`NetTrain`$reasonTrainingStopped = 
+                "ManualStop"], SpanFromLeft}}, Dividers -> {{False, 
+               Opacity[0.15]}, {}}, ItemStyle -> {{
+               GrayLevel[0.4], None}}, ColumnWidths -> {7, 25}, 
+            ColumnAlignments -> {Right, Left}, ColumnSpacings -> {1.6, 2.5}, 
+            RowSpacings -> 1.4, RowMinHeight -> 1.3, 
+            BaseStyle -> {FontSize -> 11}], StandardForm],
+          ContentPadding->False,
+          ImageSizeCache->{317., {310.65869140625, 316.34130859375}},
+          TrackedSymbols:>{},
+          UpdateInterval->0.33],
+         FrameMargins->{{10, 10}, {10, 5}},
+         FrameStyle->None,
+         StripOnInput->False],
+        Alignment->Left,
+        BaseStyle->{
+         FontWeight -> "Light", FontFamily -> ".SF NS Text", NumberMarks -> 
+          False, ScriptBaselineShifts -> {0, 0.5}, ScriptMinSize -> 8, 
+          ScriptSizeMultipliers -> 0.5},
+        StripOnInput->False]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], 
+         Offset[1.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Background->GrayLevel[1],
+    FrameMargins->{{0, 0}, {0, 0}},
+    FrameStyle->GrayLevel[0.85],
+    RoundingRadius->5,
+    StripOnInput->False],
+   StripOnInput->False,
+   LineBreakWithin->False],
+  Deploy,
+  DefaultBaseStyle->"Deploy"]], "PrintTemporary",
+ CellChangeTimes->{3.771708158874826*^9},
+ CellLabel->
+  "During evaluation of \
+In[56]:=",ExpressionUUID->"487e88a3-79e0-4871-b32f-235a34e8854d"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<Train/model.wlnet\>\"", ",", " ", "modelGeoCNN"}], "]"}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.7717078641441813`*^9, 
+  3.771707872184496*^9}},ExpressionUUID->"00c6ff52-e1df-4c05-9212-\
+4174f8af889b"]
+},
+WindowSize->{1254, 832},
+WindowMargins->{{Automatic, 154}, {26, Automatic}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 576, 12, 72, "Code",ExpressionUUID->"5406cba9-a360-4a1d-8403-725f6e74802a"],
+Cell[1137, 34, 400, 8, 52, "Code",ExpressionUUID->"3ab59a2d-9719-4539-8239-fd462ba770ef"],
+Cell[1540, 44, 842, 18, 91, "Code",ExpressionUUID->"7860a6f2-6908-4790-a882-21e09a1fdc96"],
+Cell[2385, 64, 1556, 37, 129, "Code",ExpressionUUID->"1c22dbf6-7123-4f6f-9f8c-bfd546d47265"],
+Cell[3944, 103, 816, 15, 52, "Code",ExpressionUUID->"8d279da0-6e32-4c6b-b581-c0f03fa93607"],
+Cell[4763, 120, 1317, 32, 91, "Code",ExpressionUUID->"b46e78ca-5899-4836-ae7c-b01c1fb73fd2"],
+Cell[6083, 154, 1265, 24, 52, "Code",ExpressionUUID->"8def6631-98af-4b1e-917a-dbb7753bccaa"],
+Cell[CellGroupData[{
+Cell[7373, 182, 1614, 31, 110, "Code",ExpressionUUID->"e898ea06-93ef-4dd3-a333-27c578b481ab"],
+Cell[8990, 215, 8749, 192, 688, "PrintTemporary",ExpressionUUID->"487e88a3-79e0-4871-b32f-235a34e8854d"]
+}, Open  ]],
+Cell[17754, 410, 270, 7, 52, "Code",ExpressionUUID->"00c6ff52-e1df-4c05-9212-4174f8af889b"]
+}
+]
+*)
+
